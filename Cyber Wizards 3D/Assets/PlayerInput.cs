@@ -7,21 +7,27 @@ public class PlayerInput : MonoBehaviour {
 
     NavMeshAgent nav;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         nav = GetComponent<NavMeshAgent>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit)) {
-                nav.SetDestination(hit.point);
+            if (Physics.Raycast(ray, out hit)) {
+                if (hit.transform.CompareTag("Ground")) {
+                    nav.SetDestination(hit.point);
+                }
+
+                if (hit.transform.CompareTag("Enemy")) {
+                    Debug.Log("Attacking enemy");
+                }
             }
         }
-	}
+    }
 }

@@ -5,14 +5,10 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour {
 
+    public int health;
+    public int actionPoints;
 
-    // Use this for initialization
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+    public void TakeDamage(int amount) {
+        health -= amount;
     }
 }

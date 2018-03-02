@@ -65,8 +65,7 @@ public class TileManager : MonoBehaviour {
             }
         }
 
-        return new Vector3(0, 0, 0);
         Debug.LogWarning("No tile found in position: " + x + ", " + z);
-
+        return new Vector3(0, 0, 0);
     }
 }

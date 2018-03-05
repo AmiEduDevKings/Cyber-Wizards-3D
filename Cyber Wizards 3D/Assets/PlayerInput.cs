@@ -45,7 +45,6 @@ public class PlayerInput : MonoBehaviour {
             if (elapsed > 0.02f) {
                 elapsed -= 0.02f;
                 NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
-                lr.material.SetColor("_EmissionColor", Color.green);
             }
 
             lr.positionCount = path.corners.Length;
@@ -61,15 +60,31 @@ public class PlayerInput : MonoBehaviour {
             //    Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.green);
 
             //}
+            float radius = actionPoints;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
+
+                Vector3 mousePosition = hit.point;
+                Vector3 playerPosition = transform.position;
+
+                float distanceFromPlayer = Vector3.Distance(playerPosition, mousePosition);
+                distanceFromPlayer = Mathf.Clamp(distanceFromPlayer, 0, radius);
+                Vector3 dir = mousePosition - playerPosition;
+                dir = Vector3.ClampMagnitude(dir, radius);
+                Debug.DrawRay(playerPosition, dir);
+
+                Vector3 pos = playerPosition + (dir.normalized * distanceFromPlayer);
+
                 if (hit.transform.CompareTag("Ground")) {
                     //nav.SetDestination(hit.point);
-                    target = hit.point;
+                    NavMeshHit hitp;
+                    if (NavMesh.SamplePosition(pos, out hitp, 1f, NavMesh.AllAreas)) {
+                        target = hitp.position;
+                    }
 
                     if (Input.GetMouseButtonDown(0)) {
                         nav.SetDestination(lr.GetPosition(lr.positionCount - 1));

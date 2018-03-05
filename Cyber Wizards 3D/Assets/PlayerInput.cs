@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour {
 
     private Vector3[] corners;
     private int posCount;
-
+    float radius;
     public LineRenderer lr;
 
     bool moving = false;
@@ -29,6 +29,7 @@ public class PlayerInput : MonoBehaviour {
         actionPoints = player.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;
+        radius = actionPoints;
     }
 
     // Update is called once per frame
@@ -47,8 +48,10 @@ public class PlayerInput : MonoBehaviour {
                 NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
             }
 
-            lr.positionCount = path.corners.Length;
-            lr.SetPositions(path.corners);
+            if (GetPathLength(path.corners) < actionPoints) {
+                lr.positionCount = path.corners.Length;
+                lr.SetPositions(path.corners);
+            }
 
             //for (int i = 0; i < path.corners.Length - 1; i++) {
 
@@ -60,7 +63,6 @@ public class PlayerInput : MonoBehaviour {
             //    Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.green);
 
             //}
-            float radius = actionPoints;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -75,7 +77,6 @@ public class PlayerInput : MonoBehaviour {
                 distanceFromPlayer = Mathf.Clamp(distanceFromPlayer, 0, radius);
                 Vector3 dir = mousePosition - playerPosition;
                 dir = Vector3.ClampMagnitude(dir, radius);
-                Debug.DrawRay(playerPosition, dir);
 
                 Vector3 pos = playerPosition + (dir.normalized * distanceFromPlayer);
 
@@ -113,6 +114,6 @@ public class PlayerInput : MonoBehaviour {
             }
         }
 
-        return (Mathf.RoundToInt(lng) / 3) + 1;
+        return (Mathf.RoundToInt(lng) / 2) + 1;
     }
 }

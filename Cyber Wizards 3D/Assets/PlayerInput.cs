@@ -6,10 +6,17 @@ using UnityEngine.AI;
 public class PlayerInput : MonoBehaviour {
 
     NavMeshAgent nav;
+    Player player;
 
     public Vector3 target;
+    public LayerMask mask;
+
     private NavMeshPath path;
     private float elapsed = 0.0f;
+    private int actionPoints;
+
+    private Vector3[] corners;
+    private int posCount;
 
     public LineRenderer lr;
 
@@ -18,7 +25,8 @@ public class PlayerInput : MonoBehaviour {
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
-
+        player = GetComponent<Player>();
+        actionPoints = player.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;
     }
@@ -43,28 +51,28 @@ public class PlayerInput : MonoBehaviour {
             lr.positionCount = path.corners.Length;
             lr.SetPositions(path.corners);
 
-            for (int i = 0; i < path.corners.Length - 1; i++) {
+            //for (int i = 0; i < path.corners.Length - 1; i++) {
 
-                if (i <= path.corners.Length - 2) {
-                    Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
-                    continue;
-                }
+            //    if (i <= path.corners.Length - 2) {
+            //        Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+            //        continue;
+            //    }
 
-                Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.green);
+            //    Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.green);
 
-            }
+            //}
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit)) {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
                 if (hit.transform.CompareTag("Ground")) {
                     //nav.SetDestination(hit.point);
                     target = hit.point;
 
                     if (Input.GetMouseButtonDown(0)) {
-                        nav.SetDestination(target);
+                        nav.SetDestination(lr.GetPosition(lr.positionCount - 1));
                         moving = true;
                     }
                 }
@@ -79,5 +87,17 @@ public class PlayerInput : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public int GetPathLength(Vector3[] corners) {
+        float lng = 0.0f;
+
+        if ((path.status != NavMeshPathStatus.PathInvalid)) {
+            for (int i = 1; i < corners.Length; ++i) {
+                lng += Vector3.Distance(corners[i - 1], corners[i]);
+            }
+        }
+
+        return (Mathf.RoundToInt(lng) / 3) + 1;
     }
 }

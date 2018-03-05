@@ -1307,7 +1307,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 68bbe0378c02ec7409b5355358bcb9dd, type: 2}
+  - {fileID: 2100000, guid: 9bd0a5af562dbfa4193e304712cc8d1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1661,9 +1661,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2144771713}
-  cameraDepth: 25
+  cameraDepth: 15
   smoothTime: 0.1
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: -5}
 --- !u!114 &1515124913
 MonoBehaviour:
   m_ObjectHideFlags: 0

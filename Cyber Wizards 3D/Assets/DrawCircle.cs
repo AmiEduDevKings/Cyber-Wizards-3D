@@ -34,7 +34,7 @@ public class DrawCircle : MonoBehaviour {
             x = Mathf.Sin(Mathf.Deg2Rad * angle) * xradius;
             z = Mathf.Cos(Mathf.Deg2Rad * angle) * yradius;
 
-            line.SetPosition(i, new Vector3(x, 0, z));
+            line.SetPosition(i, new Vector3(x, -0.5f, z));
 
             angle += (360f / segments);
         }

@@ -10,12 +10,12 @@ public class DrawCircle : MonoBehaviour {
     public float xradius = 5;
     public float yradius = 5;
 
-    Player player;
+    Character player;
     LineRenderer line;
 
     void Start() {
         line = gameObject.GetComponent<LineRenderer>();
-        player = transform.parent.GetComponent<Player>();
+        player = transform.parent.GetComponent<Character>();
         xradius = player.actionPoints;
         yradius = player.actionPoints;
         line.positionCount = segments + 1;

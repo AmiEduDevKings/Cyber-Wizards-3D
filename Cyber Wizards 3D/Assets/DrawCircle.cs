@@ -20,10 +20,10 @@ public class DrawCircle : MonoBehaviour {
         yradius = player.actionPoints;
         line.positionCount = segments + 1;
         line.useWorldSpace = false;
-        CreatePoints();
     }
 
-    void CreatePoints() {
+    public void CreatePoints() {
+        line.positionCount = segments + 1;
         float x;
         float y;
         float z;
@@ -38,5 +38,9 @@ public class DrawCircle : MonoBehaviour {
 
             angle += (360f / segments);
         }
+    }
+
+    public void RemovePoints() {
+        line.positionCount = 0;
     }
 }

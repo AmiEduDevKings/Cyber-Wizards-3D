@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour {
 
@@ -17,15 +18,19 @@ public class PlayerInput : MonoBehaviour {
 
     private Vector3[] corners;
     private int posCount;
+    private DrawCircle drawCircle;
+
     float radius;
     public LineRenderer lr;
 
     bool moving = false;
+    bool circleDrawn = false;
 
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
         player = GetComponent<Character>();
+        drawCircle = GetComponentInChildren<DrawCircle>();
         actionPoints = player.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;
@@ -38,9 +43,14 @@ public class PlayerInput : MonoBehaviour {
         float dist = nav.remainingDistance;
         if (dist != Mathf.Infinity && nav.pathStatus == NavMeshPathStatus.PathComplete && nav.remainingDistance == 0) {
             moving = false;
+
+            if (!circleDrawn) {
+                drawCircle.CreatePoints();
+                circleDrawn = true;
+            }
         }
 
-        if (!moving) {
+        if (!moving && !EventSystem.current.IsPointerOverGameObject()) {
             // Update the way to the goal every second.
             elapsed += Time.deltaTime;
             if (elapsed > 0.02f) {
@@ -90,6 +100,8 @@ public class PlayerInput : MonoBehaviour {
                     if (Input.GetMouseButtonDown(0)) {
                         nav.SetDestination(lr.GetPosition(lr.positionCount - 1));
                         moving = true;
+                        drawCircle.RemovePoints();
+                        circleDrawn = false;
                     }
                 }
 

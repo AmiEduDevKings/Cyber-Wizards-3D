@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PlayerInput : MonoBehaviour {
 
     NavMeshAgent nav;
-    Player player;
+    Character player;
 
     public Vector3 target;
     public LayerMask mask;
@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour {
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
-        player = GetComponent<Player>();
+        player = GetComponent<Character>();
         actionPoints = player.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;

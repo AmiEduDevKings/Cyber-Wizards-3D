@@ -17,7 +17,7 @@ public class TurnManager : MonoBehaviour {
 
 	void Start(){
 		index = 0;
-		Invoke("StartMatch", 2f);
+		Invoke("StartMatch", 1f);
 	}
 
 	public void AddToTurnList(GameObject obj) {
@@ -52,5 +52,9 @@ public class TurnManager : MonoBehaviour {
 
 	public GameObject GetCharacterOnTurn() {
 		return turnList[index];
+	}
+
+	public void EndTurn() {
+		turnList[index].GetComponent<TurnStatus>().EndTurn();
 	}
 }

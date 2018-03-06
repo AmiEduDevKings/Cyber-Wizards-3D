@@ -2,28 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class StatsUI : MonoBehaviour {
+
+public class StatsUI : MonoBehaviour{
 
 	public static StatsUI current;
 
-	public Text ap;
-	public Text hp;
+	public GameObject ap;
+	public GameObject hp;
 
 	GameObject currentChar;
 
 
-	void Awake() {
-		if (current == null) {
+	void Awake(){
+		if (current == null){
 			current = this;
 		}
 	}
 
-	public void UpdateUI() {
-		if (currentChar != TurnManager.current.GetCharacterOnTurn()) {
+	void Start(){
+		ap = gameObject.transform.Find("AP").gameObject;
+		hp = gameObject.transform.Find("HP").gameObject;
+	}
+
+	public void UpdateUI(){
+		if (currentChar != TurnManager.current.GetCharacterOnTurn()){
 			currentChar = TurnManager.current.GetCharacterOnTurn();
 		}
 
-		ap.text = "AP: " + currentChar.GetComponent<Character>().currentActionPoints;
-		hp.text = "HP: " + currentChar.GetComponent<Character>().health;
+		ap.GetComponent<Text>().text = "AP: " + currentChar.GetComponent<Character>().currentActionPoints;
+		hp.GetComponent<Text>().text = "HP: " + currentChar.GetComponent<Character>().health;
 	}
 }

@@ -19,6 +19,7 @@ public class TurnStatus : MonoBehaviour {
 		if (gameObject.CompareTag("Player")) {
 			gameObject.GetComponent<PlayerInput>().enabled = true;
 		}
+		StatsUI.current.UpdateUI();
 		ch.currentActionPoints = ch.actionPoints;
 		Debug.Log(gameObject.name + " turn");
 		cam.GetComponent<Follow>().target = gameObject;
@@ -37,5 +38,7 @@ public class TurnStatus : MonoBehaviour {
 		if (gameObject.CompareTag("Player")){
 			gameObject.GetComponent<PlayerInput>().enabled = false;
 		}
+		StatsUI.current.UpdateUI();
+		ch.currentActionPoints = ch.actionPoints;
 	}
 }

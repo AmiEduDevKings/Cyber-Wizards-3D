@@ -33,11 +33,11 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	public void NextTurn() {
-		turnList[index].GetComponent<TurnStatus>().StartTurn();
 		index++;
 		if (index >= turnList.Count) {
 			index = 0;
 		}
+		turnList[index].GetComponent<TurnStatus>().StartTurn();
 	}
 
 
@@ -46,7 +46,11 @@ public class TurnManager : MonoBehaviour {
 		for (int i = 0; i < turnList.Count; i++) {
 			turnList[i].GetComponent<TurnStatus>().StartMatch();
 		}
-		NextTurn();
+		turnList[index].GetComponent<TurnStatus>().StartTurn();
 		Debug.Log("Match Start");
+	}
+
+	public GameObject GetCharacterOnTurn() {
+		return turnList[index];
 	}
 }

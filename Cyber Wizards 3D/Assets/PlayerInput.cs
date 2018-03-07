@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour {
 
     NavMeshAgent nav;
     Character player;
+    TurnStatus turnStatus;
 
     public Vector3 target;
     public LayerMask mask;
@@ -35,6 +36,7 @@ public class PlayerInput : MonoBehaviour {
         path = new NavMeshPath();
         elapsed = 0.0f;
         radius = actionPoints;
+        turnStatus = GetComponent<TurnStatus>();
     }
 
     // Update is called once per frame
@@ -58,10 +60,8 @@ public class PlayerInput : MonoBehaviour {
                 NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
             }
 
-            if (GetPathLength(path.corners) < actionPoints) {
-                lr.positionCount = path.corners.Length;
-                lr.SetPositions(path.corners);
-            }
+            lr.positionCount = path.corners.Length;
+            lr.SetPositions(path.corners);
 
             //for (int i = 0; i < path.corners.Length - 1; i++) {
 

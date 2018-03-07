@@ -18,7 +18,8 @@ public class TurnStatus : MonoBehaviour {
 		turn = Turn.ON;
 		if (gameObject.CompareTag("Player")) {
 			gameObject.GetComponent<PlayerInput>().enabled = true;
-		}
+            gameObject.GetComponentInChildren<DrawCircle>().CreatePoints();
+        }
 		StatsUI.current.UpdateUI();
 		ch.currentActionPoints = ch.actionPoints;
 		Debug.Log(gameObject.name + " turn");
@@ -29,7 +30,9 @@ public class TurnStatus : MonoBehaviour {
 		turn = Turn.OFF;
 		if (gameObject.CompareTag("Player")){
 			gameObject.GetComponent<PlayerInput>().enabled = false;
-		}
+            gameObject.GetComponent<PlayerInput>().lr.positionCount = 0;
+            gameObject.GetComponentInChildren<DrawCircle>().RemovePoints();
+        }
 		TurnManager.current.NextTurn();
 	}
 
@@ -37,7 +40,9 @@ public class TurnStatus : MonoBehaviour {
 		turn = Turn.OFF;
 		if (gameObject.CompareTag("Player")){
 			gameObject.GetComponent<PlayerInput>().enabled = false;
-		}
+            gameObject.GetComponent<PlayerInput>().lr.positionCount = 0;
+            gameObject.GetComponentInChildren<DrawCircle>().RemovePoints();
+        }
 		StatsUI.current.UpdateUI();
 		ch.currentActionPoints = ch.actionPoints;
 	}

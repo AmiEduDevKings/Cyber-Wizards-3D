@@ -17,7 +17,7 @@ public class TurnManager : MonoBehaviour {
 
 	void Start(){
 		index = 0;
-		Invoke("StartMatch", 1f);
+		Invoke("StartMatch", 0.1f);
 	}
 
 	public void AddToTurnList(GameObject obj) {

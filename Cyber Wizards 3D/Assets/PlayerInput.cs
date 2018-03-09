@@ -91,6 +91,9 @@ public class PlayerInput : MonoBehaviour {
                 Vector3 pos = playerPosition + (dir.normalized * distanceFromPlayer);
 
                 if (hit.transform.CompareTag("Ground")) {
+
+                    lr.material.SetColor("_EmissionColor", Color.green);
+
                     //nav.SetDestination(hit.point);
                     NavMeshHit hitp;
                     if (NavMesh.SamplePosition(pos, out hitp, 1f, NavMesh.AllAreas)) {
@@ -108,8 +111,8 @@ public class PlayerInput : MonoBehaviour {
                 if (hit.transform.CompareTag("Enemy")) {
                     lr.material.SetColor("_EmissionColor", Color.red);
                     target = hit.transform.position;
-
                     if (Input.GetMouseButtonDown(0)) {
+                        player.Damage(hit.collider.gameObject.GetComponent<Character>());
                         Debug.Log("Attacking enemy");
                     }
                 }

@@ -22,7 +22,7 @@ public class TurnStatus : MonoBehaviour {
 			gameObject.GetComponent<PlayerInput>().enabled = true;
             gameObject.GetComponentInChildren<DrawCircle>().CreatePoints();
         }
-		canvas.SetActive(true);
+		//canvas.SetActive(true);
 		StatsUI.current.UpdateUI();
 		ch.currentActionPoints = ch.actionPoints;
 		Debug.Log(gameObject.name + " turn");

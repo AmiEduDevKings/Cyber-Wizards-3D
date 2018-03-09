@@ -7,11 +7,13 @@ public class TurnStatus : MonoBehaviour {
 	public Turn turn;
 	private Character ch;
 	public GameObject cam;
+	public GameObject canvas;
 
 	void Start(){
 		TurnManager.current.AddToTurnList(gameObject);
 		ch = gameObject.GetComponent<Character>();
 		cam = GameObject.Find("Main Camera");
+		canvas = transform.Find("CharacterCanvas").gameObject;
 	}
 
 	public void StartTurn() {
@@ -20,6 +22,7 @@ public class TurnStatus : MonoBehaviour {
 			gameObject.GetComponent<PlayerInput>().enabled = true;
             gameObject.GetComponentInChildren<DrawCircle>().CreatePoints();
         }
+		canvas.SetActive(true);
 		StatsUI.current.UpdateUI();
 		ch.currentActionPoints = ch.actionPoints;
 		Debug.Log(gameObject.name + " turn");
@@ -33,6 +36,7 @@ public class TurnStatus : MonoBehaviour {
             gameObject.GetComponent<PlayerInput>().lr.positionCount = 0;
             gameObject.GetComponentInChildren<DrawCircle>().RemovePoints();
         }
+		canvas.SetActive(false);
 		TurnManager.current.NextTurn();
 	}
 
@@ -43,6 +47,8 @@ public class TurnStatus : MonoBehaviour {
             gameObject.GetComponent<PlayerInput>().lr.positionCount = 0;
             gameObject.GetComponentInChildren<DrawCircle>().RemovePoints();
         }
+		canvas.SetActive(false);
+
 		StatsUI.current.UpdateUI();
 		ch.currentActionPoints = ch.actionPoints;
 	}

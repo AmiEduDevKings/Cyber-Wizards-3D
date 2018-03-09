@@ -33,11 +33,9 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	public void NextTurn() {
-		index++;
-		if (index >= turnList.Count) {
-			index = 0;
-		}
+		index = (index + 1) % turnList.Count;
 		turnList[index].GetComponent<TurnStatus>().StartTurn();
+		Debug.Log("Vuoro indeksissä: " + index);
 	}
 
 

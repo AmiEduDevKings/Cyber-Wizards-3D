@@ -52,7 +52,7 @@ public class PlayerInput : MonoBehaviour {
             }
         }
 
-        if (!moving && !EventSystem.current.IsPointerOverGameObject()) {
+        if (!moving) {
             // Update the way to the goal every second.
             elapsed += Time.deltaTime;
             if (elapsed > 0.02f) {
@@ -101,10 +101,12 @@ public class PlayerInput : MonoBehaviour {
                     }
 
                     if (Input.GetMouseButtonDown(0)) {
-                        nav.SetDestination(lr.GetPosition(lr.positionCount - 1));
-                        moving = true;
-                        drawCircle.RemovePoints();
-                        circleDrawn = false;
+                        if(!EventSystem.current.IsPointerOverGameObject()){
+                            nav.SetDestination(lr.GetPosition(lr.positionCount - 1));
+                            moving = true;
+                            drawCircle.RemovePoints();
+                            circleDrawn = false;
+                        }
                     }
                 }
 
@@ -112,8 +114,11 @@ public class PlayerInput : MonoBehaviour {
                     lr.material.SetColor("_EmissionColor", Color.red);
                     target = hit.transform.position;
                     if (Input.GetMouseButtonDown(0)) {
-                        player.Damage(hit.collider.gameObject.GetComponent<Character>());
-                        Debug.Log("Attacking enemy");
+                        if (!EventSystem.current.IsPointerOverGameObject())
+                        {
+                            player.Damage(hit.collider.gameObject.GetComponent<Character>());
+                            Debug.Log("Attacking enemy");
+                        }
                     }
                 }
             }

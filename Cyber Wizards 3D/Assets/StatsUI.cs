@@ -16,7 +16,11 @@ public class StatsUI : MonoBehaviour{
 	void Awake(){
 		if (current == null){
 			current = this;
-		}
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 
 	void Start(){

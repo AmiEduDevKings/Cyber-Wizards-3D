@@ -15,9 +15,6 @@ public class DrawCircle : MonoBehaviour {
 
     void Start() {
         line = gameObject.GetComponent<LineRenderer>();
-        player = transform.parent.GetComponent<Character>();
-        xradius = player.actionPoints;
-        yradius = player.actionPoints;
         line.positionCount = segments + 1;
         line.useWorldSpace = false;
     }
@@ -25,7 +22,7 @@ public class DrawCircle : MonoBehaviour {
     public void CreatePoints() {
         line.positionCount = segments + 1;
         float x;
-        float y;
+        //float y;
         float z;
 
         float angle = 20f;

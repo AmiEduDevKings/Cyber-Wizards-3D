@@ -8,10 +8,12 @@ public class PlayerInput : MonoBehaviour {
 
     NavMeshAgent nav;
     Character player;
-    TurnStatus turnStatus;
 
     public Vector3 target;
     public LayerMask mask;
+    public GameObject pointer;
+    public GameObject circleRadiusGO;
+    DrawCircle circleRadius;
 
     private NavMeshPath path;
     private float elapsed = 0.0f;
@@ -22,21 +24,18 @@ public class PlayerInput : MonoBehaviour {
     private DrawCircle drawCircle;
 
     float radius;
-    public LineRenderer lr;
 
     bool moving = false;
-    bool circleDrawn = false;
 
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
         player = GetComponent<Character>();
-        drawCircle = GetComponentInChildren<DrawCircle>();
         actionPoints = player.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;
         radius = actionPoints;
-        turnStatus = GetComponent<TurnStatus>();
+        circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
     }
 
     // Update is called once per frame
@@ -45,11 +44,6 @@ public class PlayerInput : MonoBehaviour {
         float dist = nav.remainingDistance;
         if (dist != Mathf.Infinity && nav.pathStatus == NavMeshPathStatus.PathComplete && nav.remainingDistance == 0) {
             moving = false;
-
-            if (!circleDrawn) {
-                drawCircle.CreatePoints();
-                circleDrawn = true;
-            }
         }
 
         if (!moving) {
@@ -59,9 +53,6 @@ public class PlayerInput : MonoBehaviour {
                 elapsed -= 0.02f;
                 NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
             }
-
-            lr.positionCount = path.corners.Length;
-            lr.SetPositions(path.corners);
 
             //for (int i = 0; i < path.corners.Length - 1; i++) {
 
@@ -81,43 +72,52 @@ public class PlayerInput : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
 
                 Vector3 mousePosition = hit.point;
-                Vector3 playerPosition = transform.position;
+                Vector3 circlePosition = circleRadiusGO.transform.position;
 
-                float distanceFromPlayer = Vector3.Distance(playerPosition, mousePosition);
-                distanceFromPlayer = Mathf.Clamp(distanceFromPlayer, 0, radius);
-                Vector3 dir = mousePosition - playerPosition;
+                float distanceFromCircle = Vector3.Distance(circlePosition, mousePosition);
+                distanceFromCircle = Mathf.Clamp(distanceFromCircle, 0, radius);
+                Vector3 dir = mousePosition - circlePosition;
                 dir = Vector3.ClampMagnitude(dir, radius);
 
-                Vector3 pos = playerPosition + (dir.normalized * distanceFromPlayer);
+                Vector3 pos = circlePosition + (dir.normalized * distanceFromCircle);
 
-                if (hit.transform.CompareTag("Ground")) {
+                pointer.transform.position = pos;
 
-                    lr.material.SetColor("_EmissionColor", Color.green);
+                Debug.DrawRay(circlePosition, dir, Color.green);
 
-                    //nav.SetDestination(hit.point);
-                    NavMeshHit hitp;
-                    if (NavMesh.SamplePosition(pos, out hitp, 1f, NavMesh.AllAreas)) {
-                        target = hitp.position;
-                    }
+                RaycastHit hitinfo;
 
-                    if (Input.GetMouseButtonDown(0)) {
-                        if(!EventSystem.current.IsPointerOverGameObject()){
-                            nav.SetDestination(lr.GetPosition(lr.positionCount - 1));
-                            moving = true;
-                            drawCircle.RemovePoints();
-                            circleDrawn = false;
+                Vector3 dirFromPlayer = pos - transform.position;
+
+                if (Physics.Raycast(new Ray(transform.position, dirFromPlayer), out hitinfo)) {
+
+                    Debug.DrawRay(transform.position, dirFromPlayer, Color.yellow);
+
+
+                    if (hitinfo.collider.CompareTag("Wall")) {
+                        NavMeshHit hitp;
+                        if (NavMesh.SamplePosition(hitinfo.point, out hitp, 1f, NavMesh.AllAreas)) {
+                            pointer.transform.position = hitp.position;
                         }
                     }
-                }
 
-                if (hit.transform.CompareTag("Enemy")) {
-                    lr.material.SetColor("_EmissionColor", Color.red);
-                    target = hit.transform.position;
-                    if (Input.GetMouseButtonDown(0)) {
-                        if (!EventSystem.current.IsPointerOverGameObject())
-                        {
-                            player.Damage(hit.collider.gameObject.GetComponent<Character>());
-                            Debug.Log("Attacking enemy");
+                    if (hit.transform.CompareTag("Ground")) {
+
+                        if (Input.GetMouseButtonDown(0)) {
+                            if (!EventSystem.current.IsPointerOverGameObject()) {
+                                nav.SetDestination(pointer.transform.position);
+                                moving = true;
+                            }
+                        }
+                    }
+
+                    if (hit.transform.CompareTag("Enemy")) {
+                        target = hit.transform.position;
+                        if (Input.GetMouseButtonDown(0)) {
+                            if (!EventSystem.current.IsPointerOverGameObject()) {
+                                player.Damage(hit.collider.gameObject.GetComponent<Character>());
+                                Debug.Log("Attacking enemy");
+                            }
                         }
                     }
                 }

@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class TargetClass {
 
-	private GameObject targetPoint;
 	private Transform input;
-	private List<string> tagit; 
 
-	public TargetClass(Transform input, GameObject targetPoint){
+	public TargetClass(Transform input) {
 		this.input = input;
-		this.targetPoint = targetPoint;
 	}
 
 
-	private Vector3 CalculateTarget(){
+	private Vector3 CalculateTarget() {
 
 		Ray ray = Camera.main.ScreenPointToRay(input.position);
 		RaycastHit hit;
 
-		if (Physics.Raycast(ray, out hit, 100)){
+		if (Physics.Raycast(ray, out hit, 100)) {
 			Debug.DrawLine(ray.origin, hit.point);
 		}
 
 		return hit.point;
 	}
-	
+
 	private string GetHitTag() {
+
+		Ray ray = Camera.main.ScreenPointToRay(input.position);
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit, 100)) {
+			Debug.DrawLine(ray.origin, hit.point);
+		}
+
+		return hit.collider.tag;
+	}
+
+	private RaycastHit GetHit(){
 
 		Ray ray = Camera.main.ScreenPointToRay(input.position);
 		RaycastHit hit;
@@ -35,12 +44,11 @@ public class TargetClass {
 			Debug.DrawLine(ray.origin, hit.point);
 		}
 
-		return hit.collider.tag;
+		return hit;
 	}
-	
 
 	//hakee targetin
-	public Vector3 GetDestination(){
+	public Vector3 GetDestination() {
 		return CalculateTarget();
 	}
 
@@ -48,5 +56,11 @@ public class TargetClass {
 	public string GetTag() {
 		return GetHitTag();
 	}
+
+	public RaycastHit GetRayCastHit() {
+		return GetHit();
+	}
+
+	
 	
 }

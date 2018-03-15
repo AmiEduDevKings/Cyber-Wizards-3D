@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour {
     float dist;
 
     bool moving = false;
+	TargetClass tc = new TargetClass();
 
     // Use this for initialization
     void Start() {
@@ -41,6 +42,7 @@ public class Movement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+		CalculatePath(tc.GetRayCastHit(Input.mousePosition));
         dist = nav.remainingDistance;
         if (dist != Mathf.Infinity && nav.pathStatus == NavMeshPathStatus.PathComplete && nav.remainingDistance == 0) {
             moving = false;

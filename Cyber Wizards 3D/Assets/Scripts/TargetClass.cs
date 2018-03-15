@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class TargetClass {
 
-	private Transform input;
+	private Vector3 input;
 
-	public TargetClass(Transform input) {
-		this.input = input;
+	public TargetClass() {
+		
 	}
 
-	private Vector3 CalculateTarget() {
 
-		Ray ray = Camera.main.ScreenPointToRay(input.position);
+
+	private Vector3 CalculateTarget(Vector3 input) {
+
+
+		Ray ray = Camera.main.ScreenPointToRay(input);
 		RaycastHit hit;
 
 		if (Physics.Raycast(ray, out hit, 100)) {
@@ -22,9 +25,9 @@ public class TargetClass {
 		return hit.point;
 	}
 
-	private string GetHitTag() {
+	private string GetHitTag(Vector3 input) {
 
-		Ray ray = Camera.main.ScreenPointToRay(input.position);
+		Ray ray = Camera.main.ScreenPointToRay(input);
 		RaycastHit hit;
 
 		if (Physics.Raycast(ray, out hit, 100)) {
@@ -34,9 +37,9 @@ public class TargetClass {
 		return hit.collider.tag;
 	}
 
-	private RaycastHit GetHit(){
+	private RaycastHit GetHit(Vector3 input){
 
-		Ray ray = Camera.main.ScreenPointToRay(input.position);
+		Ray ray = Camera.main.ScreenPointToRay(input);
 		RaycastHit hit;
 
 		if (Physics.Raycast(ray, out hit, 100)){
@@ -47,17 +50,17 @@ public class TargetClass {
 	}
 
 	//hakee targetin
-	public Vector3 GetDestination() {
-		return CalculateTarget();
+	public Vector3 GetDestination(Vector3 input) {
+		return CalculateTarget(input);
 	}
 
 	//hakee tagin
-	public string GetTag() {
-		return GetHitTag();
+	public string GetTag(Vector3 input) {
+		return GetHitTag(input);
 	}
 
-	public RaycastHit GetRayCastHit() {
-		return GetHit();
+	public RaycastHit GetRayCastHit(Vector3 input) {
+		return GetHit(input);
 	}
 
 	

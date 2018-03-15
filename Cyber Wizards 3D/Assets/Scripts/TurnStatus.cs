@@ -26,7 +26,7 @@ public class TurnStatus : MonoBehaviour {
     public void StartTurn() {
         turn = Turn.ON;
         if (gameObject.CompareTag("Player")) {
-            gameObject.GetComponent<PlayerInput>().enabled = true;
+            gameObject.GetComponent<Movement>().enabled = true;
         }
         circleRadiusGO.transform.position = transform.position;
         circleRadius.CreatePoints();
@@ -42,7 +42,7 @@ public class TurnStatus : MonoBehaviour {
     public void EndTurn() {
         turn = Turn.OFF;
         if (gameObject.CompareTag("Player")) {
-            gameObject.GetComponent<PlayerInput>().enabled = false;
+            gameObject.GetComponent<Movement>().enabled = false;
         }
         canvas.SetActive(false);
         TurnManager.current.NextTurn();
@@ -53,7 +53,7 @@ public class TurnStatus : MonoBehaviour {
     public void StartMatch() {
         turn = Turn.OFF;
         if (gameObject.CompareTag("Player")) {
-            gameObject.GetComponent<PlayerInput>().enabled = false;
+            gameObject.GetComponent<Movement>().enabled = false;
         }
         canvas.SetActive(false);
 

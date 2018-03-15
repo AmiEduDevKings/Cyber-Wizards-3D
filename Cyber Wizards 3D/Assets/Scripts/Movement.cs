@@ -43,13 +43,17 @@ public class Movement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 		CalculatePath(tc.GetRayCastHit(Input.mousePosition));
+
+        // Tallennetaan Navmeshin distance
         dist = nav.remainingDistance;
+
+        // Jos ollaan määränpäässä niin laitetaan liikkuminen falseksi
         if (dist != Mathf.Infinity && nav.pathStatus == NavMeshPathStatus.PathComplete && nav.remainingDistance == 0) {
             moving = false;
         }
 
         if (!moving) {
-            // Update the way to the goal every second.
+            // Päivitetään navmeshin pathi joka # välein
             elapsed += Time.deltaTime;
             if (elapsed > 0.02f) {
                 elapsed -= 0.02f;
@@ -60,29 +64,45 @@ public class Movement : MonoBehaviour {
 
     public void CalculatePath(RaycastHit hit) {
 
+        // Hiiren positioni
         Vector3 mousePosition = hit.point;
+
+        // Liikkumis ympyrän keskipiste
         Vector3 circlePosition = circleRadiusGO.transform.position;
 
+        // Hiiren etäisyys ympyrän keskipisteestä
         float distanceFromCircle = Vector3.Distance(circlePosition, mousePosition);
+
+        // Clämpätään se jollain radiuksella
         distanceFromCircle = Mathf.Clamp(distanceFromCircle, 0, radius);
+
+        // Lasketaan suunta ympyrän keskipisteestä hiireen
         Vector3 dir = mousePosition - circlePosition;
+
+        // Taas clämppiä
         dir = Vector3.ClampMagnitude(dir, radius);
 
+        // En muista miksi tää
         Vector3 pos = circlePosition + (dir.normalized * distanceFromCircle);
 
+        // Laitetaan hiiren pointteri laskettuun positioniin
         pointer.transform.position = pos;
 
+        // Piiretään ray debuggausta varten
         Debug.DrawRay(circlePosition, dir, Color.green);
 
         RaycastHit hitinfo;
 
+        // Lasketaan hiiren suunta pelaajan hahmosta
         Vector3 dirFromPlayer = pos - transform.position;
 
+
+        // Tarkistetaan onko seinä hiiren ja pelaajan välissä.
         if (Physics.Raycast(new Ray(transform.position, dirFromPlayer), out hitinfo)) {
 
             Debug.DrawRay(transform.position, dirFromPlayer, Color.yellow);
 
-
+            // Jos löytyy seinä, niin laitetaan hiiren-pointteri lähimpään navmesh areaan
             if (hitinfo.collider.CompareTag("Wall")) {
                 NavMeshHit hitp;
                 if (NavMesh.SamplePosition(hitinfo.point, out hitp, 1f, NavMesh.AllAreas)) {
@@ -90,6 +110,7 @@ public class Movement : MonoBehaviour {
                 }
             }
 
+            // Ei löytynyt seinää, joten liikutaan normaalisti targettiin
             if (hit.transform.CompareTag("Ground")) {
                 if (Input.GetMouseButtonDown(0)) {
                     if (!EventSystem.current.IsPointerOverGameObject()) {

@@ -10,7 +10,6 @@ public class TargetClass {
 		this.input = input;
 	}
 
-
 	private Vector3 CalculateTarget() {
 
 		Ray ray = Camera.main.ScreenPointToRay(input.position);

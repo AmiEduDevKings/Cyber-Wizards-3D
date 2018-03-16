@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
     NavMeshAgent nav;
     Character character;
 
+    public Transform raypoint;
     public Vector3 target;
     public LayerMask mask;
     public GameObject pointer;
@@ -27,7 +28,6 @@ public class Movement : MonoBehaviour {
     float dist;
 
     bool moving = false;
-	TargetClass tc = new TargetClass();
 
     // Use this for initialization
     void Start() {
@@ -42,7 +42,13 @@ public class Movement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-		CalculatePath(tc.GetRayCastHit(Input.mousePosition));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+        {
+            CalculatePath(hit);
+        }
 
         // Tallennetaan Navmeshin distance
         dist = nav.remainingDistance;
@@ -57,7 +63,7 @@ public class Movement : MonoBehaviour {
             elapsed += Time.deltaTime;
             if (elapsed > 0.02f) {
                 elapsed -= 0.02f;
-                NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+                NavMesh.CalculatePath(raypoint.position, target, NavMesh.AllAreas, path);
             }
         }
     }
@@ -68,7 +74,7 @@ public class Movement : MonoBehaviour {
         Vector3 mousePosition = hit.point;
 
         // Liikkumis ympyrän keskipiste
-        Vector3 circlePosition = circleRadiusGO.transform.position;
+        Vector3 circlePosition = new Vector3(circleRadiusGO.transform.position.x, 0f, circleRadiusGO.transform.position.z);
 
         // Hiiren etäisyys ympyrän keskipisteestä
         float distanceFromCircle = Vector3.Distance(circlePosition, mousePosition);
@@ -82,7 +88,6 @@ public class Movement : MonoBehaviour {
         // Taas clämppiä
         dir = Vector3.ClampMagnitude(dir, radius);
 
-        // En muista miksi tää
         Vector3 pos = circlePosition + (dir.normalized * distanceFromCircle);
 
         // Laitetaan hiiren pointteri laskettuun positioniin
@@ -94,27 +99,31 @@ public class Movement : MonoBehaviour {
         RaycastHit hitinfo;
 
         // Lasketaan hiiren suunta pelaajan hahmosta
-        Vector3 dirFromPlayer = pos - transform.position;
+        Vector3 dirFromPlayer = pos - raypoint.position;
 
 
         // Tarkistetaan onko seinä hiiren ja pelaajan välissä.
-        if (Physics.Raycast(new Ray(transform.position, dirFromPlayer), out hitinfo)) {
+        if (Physics.Raycast(new Ray(raypoint.position, dirFromPlayer), out hitinfo, Mathf.Infinity)) {
 
-            Debug.DrawRay(transform.position, dirFromPlayer, Color.yellow);
-
+            Debug.DrawRay(raypoint.position, dirFromPlayer, Color.yellow);
+            NavMeshHit hitp;
             // Jos löytyy seinä, niin laitetaan hiiren-pointteri lähimpään navmesh areaan
             if (hitinfo.collider.CompareTag("Wall")) {
-                NavMeshHit hitp;
-                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 1f, NavMesh.AllAreas)) {
+                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas)) {
                     pointer.transform.position = hitp.position;
                 }
             }
 
             // Ei löytynyt seinää, joten liikutaan normaalisti targettiin
             if (hit.transform.CompareTag("Ground")) {
-                if (Input.GetMouseButtonDown(0)) {
-                    if (!EventSystem.current.IsPointerOverGameObject()) {
-                        Move(pointer.transform.position);
+                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas))
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (!EventSystem.current.IsPointerOverGameObject())
+                        {
+                            Move(hitp.position);
+                        }
                     }
                 }
             }

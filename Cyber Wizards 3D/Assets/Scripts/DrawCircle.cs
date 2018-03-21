@@ -10,7 +10,7 @@ public class DrawCircle : MonoBehaviour {
     public float xradius = 5;
     public float yradius = 5;
 
-    Character player;
+    CharacterStats player;
     LineRenderer line;
 
 

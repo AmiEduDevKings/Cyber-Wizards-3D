@@ -44,14 +44,6 @@ public class Movement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
-        {
-            CalculatePath(hit);
-        }
-
         // Tallennetaan Navmeshin distance
         dist = nav.remainingDistance;
 
@@ -60,14 +52,23 @@ public class Movement : MonoBehaviour {
             moving = false;
         }
 
-        if (!moving) {
-            // Päivitetään navmeshin pathi joka # välein
-            elapsed += Time.deltaTime;
-            if (elapsed > 0.02f) {
-                elapsed -= 0.02f;
-                NavMesh.CalculatePath(raypoint.position, target, NavMesh.AllAreas, path);
-            }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
+            if(!moving)
+            CalculatePath(hit);
         }
+
+        //if (!moving) {
+        //Päivitetään navmeshin pathi joka # välein
+        //elapsed += Time.deltaTime;
+        //if (elapsed > 0.02f) {
+        //    elapsed -= 0.02f;
+        //    NavMesh.CalculatePath(raypoint.position, target, NavMesh.AllAreas, path);
+        //}
+        //}
     }
 
     public void CalculatePath(RaycastHit hit) {
@@ -118,12 +119,9 @@ public class Movement : MonoBehaviour {
 
             // Ei löytynyt seinää, joten liikutaan normaalisti targettiin
             if (hit.transform.CompareTag("Ground")) {
-                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas))
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        if (!EventSystem.current.IsPointerOverGameObject())
-                        {
+                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas)) {
+                    if (Input.GetMouseButtonDown(0)) {
+                        if (!EventSystem.current.IsPointerOverGameObject()) {
                             Move(hitp.position);
                         }
                     }

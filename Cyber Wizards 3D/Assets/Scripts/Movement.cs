@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour {
     NavMeshAgent nav;
     CharacterStats character;
 
+    [Range(1, 50)]
+    public float movementRange;
+
     public Transform raypoint;
     public Vector3 target;
     public LayerMask mask;
@@ -18,7 +21,6 @@ public class Movement : MonoBehaviour {
 
     private NavMeshPath path;
     private float elapsed = 0.0f;
-    private int actionPoints;
 
     private Vector3[] corners;
     private int posCount;
@@ -32,24 +34,16 @@ public class Movement : MonoBehaviour {
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
-        character = GetComponent<CharacterStats>();
-        actionPoints = character.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;
-        radius = actionPoints;
+        radius = movementRange;
         circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
+        circleRadius.xradius = movementRange;
+        circleRadius.yradius = movementRange;
     }
 
     // Update is called once per frame
     void Update() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
-        {
-            CalculatePath(hit);
-        }
-
         // Tallennetaan Navmeshin distance
         dist = nav.remainingDistance;
 
@@ -58,14 +52,23 @@ public class Movement : MonoBehaviour {
             moving = false;
         }
 
-        if (!moving) {
-            // Päivitetään navmeshin pathi joka # välein
-            elapsed += Time.deltaTime;
-            if (elapsed > 0.02f) {
-                elapsed -= 0.02f;
-                NavMesh.CalculatePath(raypoint.position, target, NavMesh.AllAreas, path);
-            }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
+            if(!moving)
+            CalculatePath(hit);
         }
+
+        //if (!moving) {
+        //Päivitetään navmeshin pathi joka # välein
+        //elapsed += Time.deltaTime;
+        //if (elapsed > 0.02f) {
+        //    elapsed -= 0.02f;
+        //    NavMesh.CalculatePath(raypoint.position, target, NavMesh.AllAreas, path);
+        //}
+        //}
     }
 
     public void CalculatePath(RaycastHit hit) {
@@ -116,12 +119,9 @@ public class Movement : MonoBehaviour {
 
             // Ei löytynyt seinää, joten liikutaan normaalisti targettiin
             if (hit.transform.CompareTag("Ground")) {
-                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas))
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        if (!EventSystem.current.IsPointerOverGameObject())
-                        {
+                if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas)) {
+                    if (Input.GetMouseButtonDown(0)) {
+                        if (!EventSystem.current.IsPointerOverGameObject()) {
                             Move(hitp.position);
                         }
                     }
@@ -145,5 +145,11 @@ public class Movement : MonoBehaviour {
         }
 
         return (Mathf.RoundToInt(lng) / 2) + 1;
+    }
+
+    private void OnEnable() {
+        radius = movementRange;
+        circleRadius.xradius = movementRange;
+        circleRadius.yradius = movementRange;
     }
 }

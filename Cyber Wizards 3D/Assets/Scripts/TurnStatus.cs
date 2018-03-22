@@ -28,13 +28,13 @@ public class TurnStatus : MonoBehaviour {
         if (gameObject.CompareTag("Player")) {
             gameObject.GetComponent<Movement>().enabled = true;
         }
-        circleRadiusGO.transform.position = transform.position;
-        circleRadius.CreatePoints();
         //canvas.SetActive(true);
         UIManager.current.UpdateUI();
         ch.currentActionPoints = ch.actionPoints;
         Debug.Log(gameObject.name + " turn");
         cam.GetComponent<Follow>().target = gameObject;
+        circleRadiusGO.transform.position = transform.position;
+        circleRadius.CreatePoints();
     }
 
 

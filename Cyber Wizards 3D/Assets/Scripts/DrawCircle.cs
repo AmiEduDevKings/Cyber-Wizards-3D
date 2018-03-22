@@ -7,8 +7,8 @@ public class DrawCircle : MonoBehaviour {
     [Range(0, 50)]
     public int segments = 50;
 
-    public float xradius = 5;
-    public float yradius = 5;
+    public float xradius { get; set; }
+    public float yradius { get; set; }
 
     CharacterStats player;
     LineRenderer line;

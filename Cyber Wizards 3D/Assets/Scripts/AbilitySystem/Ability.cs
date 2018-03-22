@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Abilities/New Ability")]
+public class Ability : ScriptableObject {
 
-public abstract class Ability : ScriptableObject {
+	public int id = -1;
+	public Sprite icon;
+	public new string name = "new ability";
 
-	public Sprite uiImage;
-	public string aName = "new ability";
-	public int Damage;
+	ParticleSystem effect1;
+	ParticleSystem effect2;
+	ParticleSystem effect3;
 
-	public abstract void Initialize(GameObject obj);
-	public abstract void TriggerAbility();
+	public float velocity;
+	public float range;
+	public int damage;
 }

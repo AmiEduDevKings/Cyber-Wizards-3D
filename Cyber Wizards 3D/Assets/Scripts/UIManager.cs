@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsUI : MonoBehaviour{
+public class UIManager : MonoBehaviour{
 
-	public static StatsUI current;
+	public static UIManager current;
 
 	public GameObject ap;
 	public GameObject hp;
@@ -29,11 +29,13 @@ public class StatsUI : MonoBehaviour{
 	}
 
 	public void UpdateUI(){
-		if (currentChar != TurnManager.current.GetCharacterOnTurn()){
-			currentChar = TurnManager.current.GetCharacterOnTurn();
+		if (currentChar != GameManager.current.GetCharacterOnTurn()){
+			currentChar = GameManager.current.GetCharacterOnTurn();
 		}
 
-		ap.GetComponent<Text>().text = "AP: " + currentChar.GetComponent<Character>().currentActionPoints;
-		hp.GetComponent<Text>().text = "HP: " + currentChar.GetComponent<Character>().health;
+		ap.GetComponent<Text>().text = "AP: " + currentChar.GetComponent<CharacterStats>().currentActionPoints;
+		hp.GetComponent<Text>().text = "HP: " + currentChar.GetComponent<CharacterStats>().health;
 	}
+
+
 }

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Movement : MonoBehaviour {
 
     NavMeshAgent nav;
-    Character character;
+    CharacterStats character;
 
     public Transform raypoint;
     public Vector3 target;
@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour {
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
-        character = GetComponent<Character>();
+        character = GetComponent<CharacterStats>();
         actionPoints = character.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;

@@ -12,7 +12,7 @@ public class TargetClass {
 
 
 
-	private Vector3 CalculateTarget(Vector3 input) {
+	public Vector3 GetVector(Vector3 input) {
 
 
 		Ray ray = Camera.main.ScreenPointToRay(input);
@@ -25,7 +25,7 @@ public class TargetClass {
 		return hit.point;
 	}
 
-	private string GetHitTag(Vector3 input) {
+	public string GetTag(Vector3 input) {
 
 		Ray ray = Camera.main.ScreenPointToRay(input);
 		RaycastHit hit;
@@ -37,7 +37,7 @@ public class TargetClass {
 		return hit.collider.tag;
 	}
 
-	private RaycastHit GetHit(Vector3 input){
+	public RaycastHit GetraycastHit(Vector3 input){
 
 		Ray ray = Camera.main.ScreenPointToRay(input);
 		RaycastHit hit;
@@ -49,19 +49,9 @@ public class TargetClass {
 		return hit;
 	}
 
-	//hakee targetin
-	public Vector3 GetDestination(Vector3 input) {
-		return CalculateTarget(input);
-	}
+	
 
-	//hakee tagin
-	public string GetTag(Vector3 input) {
-		return GetHitTag(input);
-	}
-
-	public RaycastHit GetRayCastHit(Vector3 input) {
-		return GetHit(input);
-	}
+	
 
 	
 	

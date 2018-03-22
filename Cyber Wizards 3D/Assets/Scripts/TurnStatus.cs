@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurnStatus : MonoBehaviour {
 
     public Turn turn;
-    private Character ch;
+    private CharacterStats ch;
     public GameObject cam;
     public GameObject canvas;
     public GameObject circleRadiusGO;
@@ -14,8 +14,8 @@ public class TurnStatus : MonoBehaviour {
 
 	//start nyt on vaan start
     void Start() {
-        TurnManager.current.AddToTurnList(gameObject);
-        ch = gameObject.GetComponent<Character>();
+        GameManager.current.AddToTurnList(gameObject);
+        ch = gameObject.GetComponent<CharacterStats>();
         cam = GameObject.Find("Main Camera");
         canvas = transform.Find("CharacterCanvas").gameObject;
         circleRadiusGO = GameObject.Find("CircleRadius");
@@ -31,7 +31,7 @@ public class TurnStatus : MonoBehaviour {
         circleRadiusGO.transform.position = transform.position;
         circleRadius.CreatePoints();
         //canvas.SetActive(true);
-        StatsUI.current.UpdateUI();
+        UIManager.current.UpdateUI();
         ch.currentActionPoints = ch.actionPoints;
         Debug.Log(gameObject.name + " turn");
         cam.GetComponent<Follow>().target = gameObject;
@@ -45,7 +45,7 @@ public class TurnStatus : MonoBehaviour {
             gameObject.GetComponent<Movement>().enabled = false;
         }
         canvas.SetActive(false);
-        TurnManager.current.NextTurn();
+        GameManager.current.NextTurn();
     }
 
 
@@ -57,7 +57,7 @@ public class TurnStatus : MonoBehaviour {
         }
         canvas.SetActive(false);
 
-        StatsUI.current.UpdateUI();
+        UIManager.current.UpdateUI();
         ch.currentActionPoints = ch.actionPoints;
     }
 }

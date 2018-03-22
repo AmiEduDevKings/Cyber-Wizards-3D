@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
-	public static TurnManager current;
+	public static GameManager current;
 	public List<GameObject> turnList;
 
 	private int index;
 
 	void Awake() {
-		if (current == null) {
+		if (current == null)
+		{
 			current = this;
+		}
+		else {
+			Destroy(gameObject);	
 		}
 	}
 
@@ -25,7 +29,7 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	private static int SortBySpeed(GameObject o1, GameObject o2){
-		return o1.GetComponent<Character>().speed.CompareTo(o2.GetComponent<Character>().speed);
+		return o1.GetComponent<CharacterStats>().speed.CompareTo(o2.GetComponent<CharacterStats>().speed);
 	}
 
 	public void SortTurnList() {

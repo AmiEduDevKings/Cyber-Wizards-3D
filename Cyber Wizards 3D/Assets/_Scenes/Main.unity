@@ -1744,6 +1744,11 @@ Prefab:
       propertyPath: circleRadiusGO
       value: 
       objectReference: {fileID: 1918811472}
+    - target: {fileID: 114041285548516524, guid: aad7d9a5034df9242b0d01d56a04eb7a,
+        type: 2}
+      propertyPath: movementRange
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aad7d9a5034df9242b0d01d56a04eb7a, type: 2}
   m_IsPrefabParent: 0
@@ -1953,6 +1958,11 @@ Prefab:
       propertyPath: circleRadiusGO
       value: 
       objectReference: {fileID: 1918811472}
+    - target: {fileID: 114041285548516524, guid: aad7d9a5034df9242b0d01d56a04eb7a,
+        type: 2}
+      propertyPath: movementRange
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aad7d9a5034df9242b0d01d56a04eb7a, type: 2}
   m_IsPrefabParent: 0
@@ -2798,8 +2808,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segments: 50
-  xradius: 5
-  yradius: 5
 --- !u!120 &1918811475
 LineRenderer:
   m_ObjectHideFlags: 0

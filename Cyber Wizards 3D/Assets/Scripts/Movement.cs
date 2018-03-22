@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour {
     NavMeshAgent nav;
     CharacterStats character;
 
+    [Range(1, 50)]
+    public float movementRange;
+
     public Transform raypoint;
     public Vector3 target;
     public LayerMask mask;
@@ -18,7 +21,6 @@ public class Movement : MonoBehaviour {
 
     private NavMeshPath path;
     private float elapsed = 0.0f;
-    private int actionPoints;
 
     private Vector3[] corners;
     private int posCount;
@@ -32,12 +34,12 @@ public class Movement : MonoBehaviour {
     // Use this for initialization
     void Start() {
         nav = GetComponent<NavMeshAgent>();
-        character = GetComponent<CharacterStats>();
-        actionPoints = character.actionPoints;
         path = new NavMeshPath();
         elapsed = 0.0f;
-        radius = actionPoints;
+        radius = movementRange;
         circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
+        circleRadius.xradius = movementRange;
+        circleRadius.yradius = movementRange;
     }
 
     // Update is called once per frame
@@ -145,5 +147,11 @@ public class Movement : MonoBehaviour {
         }
 
         return (Mathf.RoundToInt(lng) / 2) + 1;
+    }
+
+    private void OnEnable() {
+        radius = movementRange;
+        circleRadius.xradius = movementRange;
+        circleRadius.yradius = movementRange;
     }
 }

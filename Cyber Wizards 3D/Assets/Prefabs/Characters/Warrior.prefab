@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114041285548516524}
   - component: {fileID: 114015666180188296}
   - component: {fileID: 114163492667787434}
+  - component: {fileID: 114475394154966686}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Player
@@ -312,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5b75826f66b5c45815678d81d2f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementRange: 0
   raypoint: {fileID: 4658903018634542}
   target: {x: 0, y: 0, z: 0}
   mask:
@@ -421,6 +423,17 @@ MonoBehaviour:
   currentActionPoints: 0
   speed: 5
   character: {fileID: 11400000, guid: 3c7c8a31acd0d324581868882446351a, type: 2}
+--- !u!114 &114475394154966686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1208778414134096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18557531e5af944e8611a83adb2ae04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114587479400363980
 MonoBehaviour:
   m_ObjectHideFlags: 1

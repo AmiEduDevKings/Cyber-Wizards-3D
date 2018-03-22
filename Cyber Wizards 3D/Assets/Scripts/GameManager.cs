@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	public List<GameObject> turnList;
 
 	private int index;
-
+	
 	void Awake() {
 		if (current == null)
 		{
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
 		index = 0;
 		Invoke("StartMatch", 0.1f);
 	}
-
+	
 	public void AddToTurnList(GameObject obj) {
 		turnList.Add(obj);
 	}
@@ -41,9 +41,7 @@ public class GameManager : MonoBehaviour {
 		turnList[index].GetComponent<TurnStatus>().StartTurn();
 		Debug.Log("Vuoro indeksissä: " + index);
 	}
-
-
-
+	
 	void StartMatch() {
 		for (int i = 0; i < turnList.Count; i++) {
 			turnList[i].GetComponent<TurnStatus>().StartMatch();

@@ -8,12 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6159bc1e8580ede44838b17d9445a0c7, type: 3}
-  m_Name: Fireball
+  m_Script: {fileID: 11500000, guid: 6d405dfc69a6224428cd3187343b734b, type: 3}
+  m_Name: Summon of  Death
   m_EditorClassIdentifier: 
-  id: 1
+  targetTag: Player
+  id: -1
   icon: {fileID: 0}
-  name: Fireball
-  velocity: 5
-  range: 5
-  damage: 10
+  name: Summon of Death
+  damage: 50
+  velocity: 50
+  range: 50

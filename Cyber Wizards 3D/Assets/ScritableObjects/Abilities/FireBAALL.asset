@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d405dfc69a6224428cd3187343b734b, type: 3}
-  m_Name: Ultimate Doom
+  m_Name: FireBAALL
   m_EditorClassIdentifier: 
   targetTag: Player
   id: -1
   icon: {fileID: 0}
-  name: Ultimate Doom
-  damage: 100
+  name: FireBAALL
+  damage: 10
   velocity: 50
-  range: 100
+  range: 40

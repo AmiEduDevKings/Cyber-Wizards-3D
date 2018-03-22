@@ -7,10 +7,8 @@ public class UIManager : MonoBehaviour{
 
 	public static UIManager current;
 
-	public GameObject ap;
-	public GameObject hp;
-
 	GameObject currentChar;
+	GameObject abilityPanel;
 
 
 	void Awake(){
@@ -21,20 +19,39 @@ public class UIManager : MonoBehaviour{
         {
             Destroy(gameObject);
         }
+
+		abilityPanel = GameObject.Find("AbilityPanel");
 	}
 
-	void Start(){
-		ap = gameObject.transform.Find("AP").gameObject;
-		hp = gameObject.transform.Find("HP").gameObject;
+	private void Start() {
+		if (currentChar != GameManager.current.GetCharacterOnTurn()) {
+			currentChar = GameManager.current.GetCharacterOnTurn();
+		}
+		UpdateUI();
 	}
 
 	public void UpdateUI(){
-		if (currentChar != GameManager.current.GetCharacterOnTurn()){
+		if (currentChar != GameManager.current.GetCharacterOnTurn()) {
 			currentChar = GameManager.current.GetCharacterOnTurn();
 		}
 
-		ap.GetComponent<Text>().text = "AP: " + currentChar.GetComponent<CharacterStats>().currentActionPoints;
-		hp.GetComponent<Text>().text = "HP: " + currentChar.GetComponent<CharacterStats>().health;
+		UpdateAbilityPanel();
+	}
+
+	void UpdateAbilityPanel() {
+		if(currentChar != null) {
+			Ability[] abilityList = currentChar.GetComponent<AbilitiesInformation>().abilityList;
+			Debug.Log("UIManager > Abilitylist length: " + abilityList.Length);
+			if (abilityList.Length > 0) {
+				for (int i = 0; i < abilityList.Length; i++) {
+					GameObject a = abilityPanel.transform.GetChild(i).gameObject;
+					a.GetComponentInChildren<Text>().text = abilityList[i].name;
+					string n = abilityList[i].name;
+					Debug.Log("UIManager > Adding ability #" + n);
+					a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(n));
+				}
+			}
+		}
 	}
 
 

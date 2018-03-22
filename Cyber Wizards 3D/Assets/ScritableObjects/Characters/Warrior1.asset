@@ -11,7 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c169978142b3bc4a86b347173439b7f, type: 3}
   m_Name: Warrior1
   m_EditorClassIdentifier: 
-  ablities: []
+  ablities:
+  - {fileID: 11400000, guid: d1d3347f64e09c74bb1e1dffda51c470, type: 2}
+  - {fileID: 11400000, guid: f3a2ca02c7cbfb54e9d429ef1197c2be, type: 2}
+  - {fileID: 11400000, guid: 33f88d173cb96f842af0ab3dfb63d813, type: 2}
+  - {fileID: 11400000, guid: 0d2903f9f72b4b646897561c2ed97c4a, type: 2}
+  - {fileID: 11400000, guid: 40a78914b7eb7994f90d2c10cfae0a56, type: 2}
+  - {fileID: 11400000, guid: 2d88d9ea07b055a4dbc2038f2b7baf3c, type: 2}
   health: 120
   actionPoints: 6
   speed: 100

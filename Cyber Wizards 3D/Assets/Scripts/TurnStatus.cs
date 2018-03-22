@@ -13,9 +13,10 @@ public class TurnStatus : MonoBehaviour {
     DrawCircle circleRadius;
 
 	//start nyt on vaan start
-    void Start() {
-        GameManager.current.AddToTurnList(gameObject);
-        ch = gameObject.GetComponent<CharacterStats>();
+
+	void Start() {
+		//GameManager.current.AddToTurnList(gameObject);
+		ch = gameObject.GetComponent<CharacterStats>();
         cam = GameObject.Find("Main Camera");
         canvas = transform.Find("CharacterCanvas").gameObject;
         circleRadiusGO = GameObject.Find("CircleRadius");
@@ -29,7 +30,6 @@ public class TurnStatus : MonoBehaviour {
             gameObject.GetComponent<Movement>().enabled = true;
         }
         //canvas.SetActive(true);
-        UIManager.current.UpdateUI();
         ch.currentActionPoints = ch.actionPoints;
         Debug.Log(gameObject.name + " turn");
         cam.GetComponent<Follow>().target = gameObject;
@@ -56,8 +56,6 @@ public class TurnStatus : MonoBehaviour {
             gameObject.GetComponent<Movement>().enabled = false;
         }
         canvas.SetActive(false);
-
-        UIManager.current.UpdateUI();
         ch.currentActionPoints = ch.actionPoints;
     }
 }

@@ -37,7 +37,12 @@ public class Movement : MonoBehaviour {
         path = new NavMeshPath();
         elapsed = 0.0f;
         radius = movementRange;
-        circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
+
+		try {
+			circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
+		} catch {
+			Debug.Log("Could not find CircleRadius");
+		}
         circleRadius.xradius = movementRange;
         circleRadius.yradius = movementRange;
     }
@@ -56,7 +61,7 @@ public class Movement : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask)) {
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask) && !EventSystem.current.IsPointerOverGameObject()) {
             if(!moving)
             CalculatePath(hit);
         }
@@ -121,9 +126,7 @@ public class Movement : MonoBehaviour {
             if (hit.transform.CompareTag("Ground")) {
                 if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas)) {
                     if (Input.GetMouseButtonDown(0)) {
-                        if (!EventSystem.current.IsPointerOverGameObject()) {
                             Move(hitp.position);
-                        }
                     }
                 }
             }
@@ -148,7 +151,8 @@ public class Movement : MonoBehaviour {
     }
 
     private void OnEnable() {
-        radius = movementRange;
+		circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
+		radius = movementRange;
         circleRadius.xradius = movementRange;
         circleRadius.yradius = movementRange;
     }

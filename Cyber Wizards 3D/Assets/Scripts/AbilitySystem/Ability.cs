@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Abilities/New DamageAbility")]
+
 public abstract class Ability : ScriptableObject {
 
 	public string targetTag = "Player";

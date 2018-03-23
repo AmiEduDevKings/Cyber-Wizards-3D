@@ -5,8 +5,28 @@ using UnityEngine;
 public class AbilitiesInformation : MonoBehaviour {
 
 	public Ability[] abilityList;
-	
-	public void UseAbility(int id) {
+    public Ability currentAbility;
+
+    private void Update()
+    {
+
+        //Fiksataan tää myöhemmin. Mut pohja targetoinnille on tässä. 
+        //if (Input.GetMouseButton(0)) {
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+
+        //    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //    {
+        //        if (hit.collider.gameObject.CompareTag(currentAbility.targetTag))
+        //        {
+        //            currentAbility.TriggerAbility(hit.collider.gameObject);
+        //        }
+        //    }
+            
+        //}
+    }
+
+    public void UseAbility(int id) {
 		Ability ability = GetAbility(id);
 		if (ability != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + ability.name);
@@ -15,10 +35,11 @@ public class AbilitiesInformation : MonoBehaviour {
 	}
 
 	public void UseAbility(string name) {
-		Ability ability = GetAbility(name);
-		if (ability != null) {
-			Debug.Log("AbilitiesInformation > Using ability: " + ability.name);
-			ability.TriggerAbility(gameObject);
+	    currentAbility = GetAbility(name);
+		if (currentAbility != null) {
+			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
+
+            //currentAbility.TriggerAbility(gameObject);
 		}
 	}
 

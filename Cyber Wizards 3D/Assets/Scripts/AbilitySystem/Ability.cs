@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AbilityType {
+	HEALING,
+	DAMAGE,
+	SHIELD
+}
+
 public abstract class Ability : ScriptableObject {
 
 
@@ -15,5 +21,5 @@ public abstract class Ability : ScriptableObject {
 
 	public float velocity;
 	public float range;
-	public int damage;
+
 }

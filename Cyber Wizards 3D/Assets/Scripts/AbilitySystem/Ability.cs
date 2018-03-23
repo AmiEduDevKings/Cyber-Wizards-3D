@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Abilities/New Ability")]
-public class Ability : ScriptableObject {
+public abstract class Ability : ScriptableObject {
+
 
 	public int id = -1;
 	public Sprite icon;

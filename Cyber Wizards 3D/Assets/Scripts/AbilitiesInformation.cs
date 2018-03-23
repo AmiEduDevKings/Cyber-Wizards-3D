@@ -6,9 +6,6 @@ public class AbilitiesInformation : MonoBehaviour {
 
 	public Ability[] abilityList;
 
-
-	public void UseAbility(int id) {
-
     public Ability currentAbility;
 
     private void Update()

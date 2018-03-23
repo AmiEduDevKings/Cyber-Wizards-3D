@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b974bd8b824f2940b641f1c1a84b947, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  targetTag: Player
   id: 1
   icon: {fileID: 0}
   name: Fireball
   velocity: 0
   range: 0
-  damagePower: 0
-  type: 1
+  damagePower: 50

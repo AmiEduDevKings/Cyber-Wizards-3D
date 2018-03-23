@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,14 @@ using UnityEngine;
 public class HealingAbility : Ability {
 
 	public int healingPower;
-	public AbilityType type = AbilityType.HEALING;
 
-	public void Print() {
-		Debug.Log("Ability > Type: " + type.ToString() + " Ability: " + name);
+	public override void Print() {
+		Debug.Log("Ability > Type: " + GetType() + " Ability: " + name);
+	}
+
+	public override void TriggerAbility(GameObject target)
+	{
+		target.GetComponent<CharacterStats>().TakeDamage(healingPower);
+		
 	}
 }

@@ -10,8 +10,6 @@ public class TargetClass {
 		
 	}
 
-
-
 	public Vector3 GetVector(Vector3 input) {
 
 

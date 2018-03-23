@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour{
 
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour{
 			if (abilityList.Length > 0) {
 				for (int i = 0; i < abilityList.Length; i++) {
 					GameObject a = abilityPanel.transform.GetChild(i).gameObject;
-					a.GetComponentInChildren<Text>().text = abilityList[i].name;
+					a.GetComponentInChildren<TextMeshProUGUI>().text = abilityList[i].name;
 					string n = abilityList[i].name;
 					Debug.Log("UIManager > Adding ability #" + n);
 					a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(n));

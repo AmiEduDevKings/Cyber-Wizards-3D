@@ -11,7 +11,8 @@ public class CharacterStats : MonoBehaviour {
 	public int actionPoints;
 
 	public int currentActionPoints;
-	
+	public int currentHealth;
+
 	[HideInInspector]
 	public int speed;
 
@@ -19,12 +20,14 @@ public class CharacterStats : MonoBehaviour {
 
 	private void Start()
 	{
-		character.Initialize(gameObject);	
+		character.Initialize(gameObject);
+		currentHealth = health;
 	}
 
 	public void TakeDamage(int amount) {
-        health -= amount;
-		if (health <= 0) {
+		Debug.Log("CharacterStats : " + name + "Ottaa damagea " + amount);
+		currentHealth -= amount;
+		if (currentHealth <= 0) {
 			Death();
 		}
     }

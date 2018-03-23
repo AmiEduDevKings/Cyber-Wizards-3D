@@ -8,39 +8,46 @@ public class AbilitiesInformation : MonoBehaviour {
 
     public Ability currentAbility;
 
+	bool isTargeting;
     private void Update()
     {
 
-        //Fiksataan tää myöhemmin. Mut pohja targetoinnille on tässä. 
-        //if (Input.GetMouseButton(0)) {
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit hit;
+		//Fiksataan tää myöhemmin. Mut pohja targetoinnille on tässä. 
+		if (isTargeting)
+		{
+			if (Input.GetMouseButton(0))
+			{
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				RaycastHit hit;
 
-        //    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        //    {
-        //        if (hit.collider.gameObject.CompareTag(currentAbility.targetTag))
-        //        {
-        //            currentAbility.TriggerAbility(hit.collider.gameObject);
-        //        }
-        //    }
-            
-        //}
-    }
+				if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+				{
+					if (hit.collider.gameObject.CompareTag(currentAbility.targetTag))
+					{
+						Debug.Log("AbilityInformation > Hit target");
+						currentAbility.TriggerAbility(hit.collider.gameObject);
+						currentAbility.Print();
+						isTargeting = false;
+					}
+				}
+
+			}
+		}
+	}
 
     public void UseAbility(int id) {
-
-		Ability ability = GetAbility(id);
-		if (ability != null) {
-			Debug.Log("AbilitiesInformation > Using ability: " + ability.name);
+		currentAbility = GetAbility(id);
+		if (currentAbility != null) {
+			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
+			isTargeting = true;
 		}
 	}
 
 	public void UseAbility(string name) {
-
-		Ability ability = GetAbility(name);
-		if (ability != null) {
-			Debug.Log("AbilitiesInformation > Using ability: " + ability.name);
-
+		currentAbility = GetAbility(name);
+		if (currentAbility != null) {
+			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
+			isTargeting = true;
 		}
 	}
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,16 @@ using UnityEngine;
 public class DamageAbility : Ability {
 
 	public int damagePower;
-	public AbilityType type = AbilityType.DAMAGE;
 
-	public void Print() {
-		Debug.Log("Ability > Type: " + type.ToString() + " Ability: " + name);
+
+	public override void Print() {
+		Debug.Log("Ability > Type: " + GetType() + " Ability: " + name);
 	}
+
+	public override void TriggerAbility(GameObject target)
+	{
+		target.GetComponent<CharacterStats>().TakeDamage(damagePower);
+	}
+
+	
 }

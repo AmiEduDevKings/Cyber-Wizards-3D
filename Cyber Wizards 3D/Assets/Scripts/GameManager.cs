@@ -58,5 +58,6 @@ public class GameManager : MonoBehaviour {
 
 	public void EndTurn() {
 		turnList[index].GetComponent<TurnStatus>().EndTurn();
+		UIManager.current.UpdateUI();
 	}
 }

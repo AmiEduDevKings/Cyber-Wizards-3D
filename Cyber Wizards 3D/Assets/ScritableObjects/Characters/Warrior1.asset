@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: Warrior1
   m_EditorClassIdentifier: 
   ablities:
-  - {fileID: 11400000, guid: 75efc4ff86283bf44bd58d2f50287197, type: 2}
-  - {fileID: 11400000, guid: 8c397f048cb9d2e4c8c2bbdd77b84b9a, type: 2}
-  - {fileID: 11400000, guid: c1ec5f5ab2a6f834c80612b35ec86d5a, type: 2}
-  - {fileID: 11400000, guid: 82bbfb46e627e8843bc119ffbbc78d8d, type: 2}
-  - {fileID: 11400000, guid: 7823e3d9d2f3c31418de8e5e2f76807d, type: 2}
-  - {fileID: 11400000, guid: 6ddf9bed7e6a2bc4ba5501a39588a48a, type: 2}
+  - {fileID: 11400000, guid: d1d3347f64e09c74bb1e1dffda51c470, type: 2}
+  - {fileID: 11400000, guid: f3a2ca02c7cbfb54e9d429ef1197c2be, type: 2}
+  - {fileID: 11400000, guid: 33f88d173cb96f842af0ab3dfb63d813, type: 2}
+  - {fileID: 11400000, guid: 0d2903f9f72b4b646897561c2ed97c4a, type: 2}
+  - {fileID: 11400000, guid: 40a78914b7eb7994f90d2c10cfae0a56, type: 2}
+  - {fileID: 11400000, guid: 2d88d9ea07b055a4dbc2038f2b7baf3c, type: 2}
   health: 120
   actionPoints: 6
   speed: 100

@@ -5,12 +5,11 @@ using UnityEngine;
 public class AbilitiesInformation : MonoBehaviour {
 
 	public Ability[] abilityList;
-	
+
 	public void UseAbility(int id) {
 		Ability ability = GetAbility(id);
 		if (ability != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + ability.name);
-			ability.TriggerAbility(gameObject);
 		}
 	}
 
@@ -18,7 +17,6 @@ public class AbilitiesInformation : MonoBehaviour {
 		Ability ability = GetAbility(name);
 		if (ability != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + ability.name);
-			ability.TriggerAbility(gameObject);
 		}
 	}
 
@@ -44,6 +42,6 @@ public class AbilitiesInformation : MonoBehaviour {
 		return null;
 	}
 
-	
+
 
 }

@@ -39,6 +39,11 @@ public class AbilitiesInformation : MonoBehaviour {
 		currentAbility = GetAbility(id);
 		if (currentAbility != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
+
+			if (currentAbility.effect1 != null) {
+				Debug.Log("AbilitiesInformation >");
+				Instantiate(currentAbility.effect1, transform.position, Quaternion.identity);
+			}
 			isTargeting = true;
 		}
 	}
@@ -47,6 +52,10 @@ public class AbilitiesInformation : MonoBehaviour {
 		currentAbility = GetAbility(name);
 		if (currentAbility != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
+			if (currentAbility.effect1 != null) {
+				Debug.Log("AbilitiesInformation >");
+				Instantiate(currentAbility.effect1, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			}
 			isTargeting = true;
 		}
 	}

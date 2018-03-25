@@ -15,7 +15,7 @@ public class HealingAbility : Ability {
 
 	public override void TriggerAbility(GameObject target)
 	{
-		target.GetComponent<CharacterStats>().TakeDamage(healingPower);
+		target.GetComponent<CharacterStats>().TakeHealing(healingPower);
 		
 	}
 }

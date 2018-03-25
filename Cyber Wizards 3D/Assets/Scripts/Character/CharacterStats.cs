@@ -9,9 +9,10 @@ public class CharacterStats : MonoBehaviour {
 	public int health;
 	[HideInInspector]
 	public int actionPoints;
-
+	
 	public int currentActionPoints;
 	public int currentHealth;
+	public int currentShield;
 
 	[HideInInspector]
 	public int speed;
@@ -22,15 +23,31 @@ public class CharacterStats : MonoBehaviour {
 	{
 		character.Initialize(gameObject);
 		currentHealth = health;
+		currentShield = 0;
 	}
 
 	public void TakeDamage(int amount) {
-		Debug.Log("CharacterStats : " + name + "Ottaa damagea " + amount);
+		Debug.Log("CharacterStats: " + name + "Ottaa damagea " + amount);
 		currentHealth -= amount;
 		if (currentHealth <= 0) {
 			Death();
 		}
     }
+
+	public void TakeHealing(int amount) {
+		Debug.Log("CharacterStats: " + name + "ottaa healia " + amount);
+		if (currentHealth + amount <= health)
+		{
+			currentHealth += amount;
+		}
+		else if (currentHealth + amount > health) {
+			currentHealth = health;
+		}
+	}
+
+	public void MakeShield(int amount) {
+		currentShield += amount;
+	}
 
 	private void Death()
 	{

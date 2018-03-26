@@ -39,11 +39,7 @@ public class AbilitiesInformation : MonoBehaviour {
 		currentAbility = GetAbility(id);
 		if (currentAbility != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
-
-			if (currentAbility.effect1 != null) {
-				Debug.Log("AbilitiesInformation >");
-				Instantiate(currentAbility.effect1, transform.position, Quaternion.identity);
-			}
+			StartCoroutine(ExecuteAbility(currentAbility));
 			isTargeting = true;
 		}
 	}
@@ -52,10 +48,7 @@ public class AbilitiesInformation : MonoBehaviour {
 		currentAbility = GetAbility(name);
 		if (currentAbility != null) {
 			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
-			if (currentAbility.effect1 != null) {
-				Debug.Log("AbilitiesInformation >");
-				Instantiate(currentAbility.effect1, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
-			}
+			StartCoroutine(ExecuteAbility(currentAbility));
 			isTargeting = true;
 		}
 	}
@@ -83,5 +76,17 @@ public class AbilitiesInformation : MonoBehaviour {
 	}
 
 
+	IEnumerator ExecuteAbility(Ability ability) {
+		if(ability.effect1 != null) {
+			Instantiate(ability.effect1, transform.position, Quaternion.identity);
+			yield return new WaitForSeconds(ability.startUpTime);
+		}
 
+		if(ability.effect2 != null) {
+			Instantiate(ability.effect2, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			yield return new WaitForSeconds(ability.duration);
+		}
+
+		Debug.Log("AbilitiesInformation > Ability Executed!");
+	}
 }

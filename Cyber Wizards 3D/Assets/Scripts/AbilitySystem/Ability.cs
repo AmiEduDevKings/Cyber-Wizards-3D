@@ -15,6 +15,9 @@ public abstract class Ability : ScriptableObject {
 	public ParticleSystem effect2;
 	public ParticleSystem effect3;
 
+	public float startUpTime;
+	public float duration;
+
 	public float velocity;
 	public float range;
 

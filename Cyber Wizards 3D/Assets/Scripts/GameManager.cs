@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	public static GameManager current;
+	public static GameManager Instance;
 	public List<GameObject> turnList;
+
+	public bool moving = false;
+	public bool casting = false;
 
 	private int index;
 
 	void Awake() {
-		if (current == null)
+		if (Instance == null)
 		{
-			current = this;
+			Instance = this;
 		}
 		else {
 			Destroy(gameObject);	
@@ -58,6 +61,6 @@ public class GameManager : MonoBehaviour {
 
 	public void EndTurn() {
 		turnList[index].GetComponent<TurnStatus>().EndTurn();
-		UIManager.current.UpdateUI();
+		UIManager.Instance.UpdateUI();
 	}
 }

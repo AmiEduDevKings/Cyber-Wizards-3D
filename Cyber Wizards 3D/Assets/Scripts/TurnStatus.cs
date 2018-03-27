@@ -45,7 +45,7 @@ public class TurnStatus : MonoBehaviour {
             gameObject.GetComponent<Movement>().enabled = false;
         }
         canvas.SetActive(false);
-        GameManager.current.NextTurn();
+        GameManager.Instance.NextTurn();
     }
 
 

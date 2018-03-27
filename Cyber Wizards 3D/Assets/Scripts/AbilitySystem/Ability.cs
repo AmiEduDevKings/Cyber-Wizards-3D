@@ -17,6 +17,7 @@ public abstract class Ability : ScriptableObject {
 
 	public float startUpTime;
 	public float duration;
+	public float endTime;
 
 	public float velocity;
 	public float range;

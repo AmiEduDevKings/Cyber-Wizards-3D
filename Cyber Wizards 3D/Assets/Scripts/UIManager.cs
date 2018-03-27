@@ -6,15 +6,15 @@ using TMPro;
 
 public class UIManager : MonoBehaviour{
 
-	public static UIManager current;
+	public static UIManager Instance;
 
 	GameObject currentChar;
 	GameObject abilityPanel;
 
 
 	void Awake(){
-		if (current == null){
-			current = this;
+		if (Instance == null){
+			Instance = this;
         }
         else
         {
@@ -25,15 +25,15 @@ public class UIManager : MonoBehaviour{
 	}
 
 	private void Start() {
-		if (currentChar != GameManager.current.GetCharacterOnTurn()) {
-			currentChar = GameManager.current.GetCharacterOnTurn();
+		if (currentChar != GameManager.Instance.GetCharacterOnTurn()) {
+			currentChar = GameManager.Instance.GetCharacterOnTurn();
 		}
 		UpdateUI();
 	}
 
 	public void UpdateUI(){
-		if (currentChar != GameManager.current.GetCharacterOnTurn()) {
-			currentChar = GameManager.current.GetCharacterOnTurn();
+		if (currentChar != GameManager.Instance.GetCharacterOnTurn()) {
+			currentChar = GameManager.Instance.GetCharacterOnTurn();
 		}
 
 		UpdateAbilityPanel();
@@ -49,7 +49,9 @@ public class UIManager : MonoBehaviour{
 					a.GetComponentInChildren<TextMeshProUGUI>().text = abilityList[i].name;
 					string n = abilityList[i].name;
 					Debug.Log("UIManager > Adding ability #" + n);
-					a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(n));
+					Ability ability = abilityList[i];
+					if(abilityList != null)
+					a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(ability));
 				}
 			}
 		}

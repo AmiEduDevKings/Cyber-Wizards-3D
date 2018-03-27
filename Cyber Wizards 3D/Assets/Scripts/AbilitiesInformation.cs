@@ -6,26 +6,18 @@ public class AbilitiesInformation : MonoBehaviour {
 
 	public Ability[] abilityList;
 
-    public Ability currentAbility;
+	public Ability currentAbility;
 
 	bool isTargeting;
-    private void Update()
-    {
+	private void Update() {
 
 		//Fiksataan tää myöhemmin. Mut pohja targetoinnille on tässä. 
-		if (isTargeting)
-		{
-			if (Input.GetMouseButton(0))
-			{
-				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				RaycastHit hit;
-
-				if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-				{
-					if (hit.collider.gameObject.CompareTag(currentAbility.targetTag))
-					{
+		if (isTargeting) {
+			if (Input.GetMouseButton(0)) {
+				if (Raycaster.Instance.CheckHit()) {
+					if (Raycaster.Instance.GetObject().CompareTag(currentAbility.targetTag)) {
 						Debug.Log("AbilityInformation > Hit target");
-						currentAbility.TriggerAbility(hit.collider.gameObject);
+						currentAbility.TriggerAbility(Raycaster.Instance.GetHit().collider.gameObject);
 						currentAbility.Print();
 						isTargeting = false;
 					}
@@ -35,21 +27,15 @@ public class AbilitiesInformation : MonoBehaviour {
 		}
 	}
 
-    public void UseAbility(int id) {
-		currentAbility = GetAbility(id);
-		if (currentAbility != null) {
-			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
-			StartCoroutine(ExecuteAbility(currentAbility));
-			isTargeting = true;
-		}
-	}
-
-	public void UseAbility(string name) {
-		currentAbility = GetAbility(name);
-		if (currentAbility != null) {
-			Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
-			StartCoroutine(ExecuteAbility(currentAbility));
-			isTargeting = true;
+	public void UseAbility(Ability ability) {
+		if (!GameManager.Instance.casting && !GameManager.Instance.moving) {
+			currentAbility = ability;
+			GameManager.Instance.casting = true;
+			if (currentAbility != null) {
+				Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
+				StartCoroutine(ExecuteAbility(currentAbility));
+				isTargeting = true;
+			}
 		}
 	}
 
@@ -77,16 +63,22 @@ public class AbilitiesInformation : MonoBehaviour {
 
 
 	IEnumerator ExecuteAbility(Ability ability) {
-		if(ability.effect1 != null) {
+		if (ability.effect1 != null) {
 			Instantiate(ability.effect1, transform.position, Quaternion.identity);
 			yield return new WaitForSeconds(ability.startUpTime);
 		}
 
-		if(ability.effect2 != null) {
+		if (ability.effect2 != null) {
 			Instantiate(ability.effect2, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
 			yield return new WaitForSeconds(ability.duration);
 		}
 
+		if (ability.effect3 != null) {
+			Instantiate(ability.effect3, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			yield return new WaitForSeconds(ability.endTime);
+		}
+
 		Debug.Log("AbilitiesInformation > Ability Executed!");
+		GameManager.Instance.casting = false;
 	}
 }

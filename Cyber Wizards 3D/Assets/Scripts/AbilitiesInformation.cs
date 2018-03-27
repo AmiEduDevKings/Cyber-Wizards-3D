@@ -10,7 +10,6 @@ public class AbilitiesInformation : MonoBehaviour {
 
 	bool isTargeting;
 	private void Update() {
-
 		//Fiksataan tää myöhemmin. Mut pohja targetoinnille on tässä. 
 		if (isTargeting) {
 			if (Input.GetMouseButton(0)) {
@@ -22,7 +21,6 @@ public class AbilitiesInformation : MonoBehaviour {
 						isTargeting = false;
 					}
 				}
-
 			}
 		}
 	}

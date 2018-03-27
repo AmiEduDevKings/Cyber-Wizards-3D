@@ -8,7 +8,7 @@ public class Raycaster : MonoBehaviour {
 	private RaycastHit hit;
 
 	public static Raycaster Instance;
-
+	
 	private void Awake() {
 		if(Instance != null && Instance != this) {
 			Destroy(gameObject);

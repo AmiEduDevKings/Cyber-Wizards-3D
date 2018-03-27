@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour{
+public class UIManager : MonoBehaviour {
 
 	public static UIManager Instance;
 
@@ -12,14 +12,12 @@ public class UIManager : MonoBehaviour{
 	GameObject abilityPanel;
 
 
-	void Awake(){
-		if (Instance == null){
+	void Awake() {
+		if (Instance == null) {
 			Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+		} else {
+			Destroy(gameObject);
+		}
 
 		abilityPanel = GameObject.Find("AbilityPanel");
 	}
@@ -31,7 +29,7 @@ public class UIManager : MonoBehaviour{
 		UpdateUI();
 	}
 
-	public void UpdateUI(){
+	public void UpdateUI() {
 		if (currentChar != GameManager.Instance.GetCharacterOnTurn()) {
 			currentChar = GameManager.Instance.GetCharacterOnTurn();
 		}
@@ -40,7 +38,7 @@ public class UIManager : MonoBehaviour{
 	}
 
 	void UpdateAbilityPanel() {
-		if(currentChar != null) {
+		if (currentChar != null) {
 			Ability[] abilityList = currentChar.GetComponent<AbilitiesInformation>().abilityList;
 			Debug.Log("UIManager > Abilitylist length: " + abilityList.Length);
 			if (abilityList.Length > 0) {
@@ -50,12 +48,11 @@ public class UIManager : MonoBehaviour{
 					string n = abilityList[i].name;
 					Debug.Log("UIManager > Adding ability #" + n);
 					Ability ability = abilityList[i];
-					if(abilityList != null)
-					a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(ability));
+					if (abilityList != null) {
+						a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(ability));
+					}
 				}
 			}
 		}
 	}
-
-
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 
-public abstract class Ability : ScriptableObject {
+public abstract class Ability : ScriptableObject
+{
 
 	public string targetTag = "Player";
 	public int id = -1;
@@ -25,4 +26,33 @@ public abstract class Ability : ScriptableObject {
 	public abstract void Print();
 	public abstract void TriggerAbility(GameObject target);
 
+	public void Cast(GameObject self)
+	{
+		self.GetComponent<MonoBehaviour>().StartCoroutine(ExecuteAbilaity(self));
+	}
+
+	public IEnumerator ExecuteAbilaity(GameObject self)
+	{
+
+		if (effect1 != null)
+		{
+			Instantiate(effect1, self.transform.position, Quaternion.identity);
+			yield return new WaitForSeconds(startUpTime);
+		}
+
+		if (effect2 != null)
+		{
+			Instantiate(effect2, self.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			yield return new WaitForSeconds(duration);
+		}
+
+		if (effect3 != null)
+		{
+			Instantiate(effect3, self.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			yield return new WaitForSeconds(endTime);
+		}
+
+		Debug.Log("AbilitiesInformation > Ability Executed!");
+		GameManager.Instance.casting = false;
+	}
 }

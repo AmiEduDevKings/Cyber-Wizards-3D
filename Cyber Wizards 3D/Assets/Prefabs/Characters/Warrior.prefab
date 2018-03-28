@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4096088353632890}
+  - component: {fileID: 114033682993195300}
   - component: {fileID: 33247709589882314}
   - component: {fileID: 195390298542960756}
   - component: {fileID: 23876521244522764}
@@ -301,6 +302,18 @@ MonoBehaviour:
   cam: {fileID: 0}
   canvas: {fileID: 0}
   circleRadiusGO: {fileID: 0}
+--- !u!114 &114033682993195300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1208778414134096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d3fe22f9e1b5498c4d13f1f277a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tag: {fileID: 11400000, guid: f62880416a19667488ed31823d0ece12, type: 2}
 --- !u!114 &114041285548516524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5b75826f66b5c45815678d81d2f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementRange: 3
   raypoint: {fileID: 4658903018634542}
   target: {x: 0, y: 0, z: 0}
   mask:
@@ -357,13 +371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcfbd1642f0f4844a9c0e8688cd60d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  abilityList: []
+  currentAbility: {fileID: 0}
 --- !u!114 &114335873156196192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -419,6 +428,8 @@ MonoBehaviour:
   health: 100
   actionPoints: 5
   currentActionPoints: 0
+  currentHealth: 0
+  currentShield: 0
   speed: 5
   character: {fileID: 11400000, guid: 3c7c8a31acd0d324581868882446351a, type: 2}
 --- !u!114 &114587479400363980

@@ -31,7 +31,7 @@ public class AbilitiesInformation : MonoBehaviour {
 			GameManager.Instance.casting = true;
 			if (currentAbility != null) {
 				Debug.Log("AbilitiesInformation > Using ability: " + currentAbility.name);
-				StartCoroutine(ExecuteAbility(currentAbility));
+				currentAbility.Cast(gameObject);
 				isTargeting = true;
 			}
 		}
@@ -60,23 +60,23 @@ public class AbilitiesInformation : MonoBehaviour {
 	}
 
 
-	IEnumerator ExecuteAbility(Ability ability) {
-		if (ability.effect1 != null) {
-			Instantiate(ability.effect1, transform.position, Quaternion.identity);
-			yield return new WaitForSeconds(ability.startUpTime);
-		}
+	//IEnumerator ExecuteAbility(Ability ability) {
+	//	if (ability.effect1 != null) {
+	//		Instantiate(ability.effect1, transform.position, Quaternion.identity);
+	//		yield return new WaitForSeconds(ability.startUpTime);
+	//	}
 
-		if (ability.effect2 != null) {
-			Instantiate(ability.effect2, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
-			yield return new WaitForSeconds(ability.duration);
-		}
+	//	if (ability.effect2 != null) {
+	//		Instantiate(ability.effect2, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+	//		yield return new WaitForSeconds(ability.duration);
+	//	}
 
-		if (ability.effect3 != null) {
-			Instantiate(ability.effect3, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
-			yield return new WaitForSeconds(ability.endTime);
-		}
+	//	if (ability.effect3 != null) {
+	//		Instantiate(ability.effect3, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+	//		yield return new WaitForSeconds(ability.endTime);
+	//	}
 
-		Debug.Log("AbilitiesInformation > Ability Executed!");
-		GameManager.Instance.casting = false;
-	}
+	//	Debug.Log("AbilitiesInformation > Ability Executed!");
+	//	GameManager.Instance.casting = false;
+	//}
 }

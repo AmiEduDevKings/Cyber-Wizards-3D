@@ -26,6 +26,10 @@ public class CharacterStats : MonoBehaviour {
 		currentShield = 0;
 	}
 
+	public void ResetActionPoints() {
+		currentActionPoints = actionPoints;
+	}
+
 	public void TakeDamage(int amount) {
 		Debug.Log("CharacterStats: " + name + "Ottaa damagea " + amount);
 		currentHealth -= amount;
@@ -53,4 +57,6 @@ public class CharacterStats : MonoBehaviour {
 	{
 		Debug.Log("Im Dead");
 	}
+
+
 }

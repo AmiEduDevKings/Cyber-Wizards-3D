@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour {
 	public static GameManager Instance;
 
 	public List<GameObject> turnList;
+	
+	private CharacterStats ch;
+	public GameObject cam;
+	public GameObject circleRadiusGO;
+
+	DrawCircle circleRadius;
 
 	public bool moving = false;
 	public bool casting = false;
@@ -24,8 +30,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start(){
+		ch = gameObject.GetComponent<CharacterStats>();
+		cam = GameObject.Find("Main Camera");
+		circleRadiusGO = GameObject.Find("CircleRadius");
+		circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
+
 		index = 0;
 		Invoke("StartMatch", 0.1f);
+	}
+
+	public GameObject GetCharacterOnTurn() { 
+		return turnList[index];
 	}
 
 	public void AddToTurnList(GameObject obj) {
@@ -36,32 +51,51 @@ public class GameManager : MonoBehaviour {
 		return o1.GetComponent<CharacterStats>().speed.CompareTo(o2.GetComponent<CharacterStats>().speed);
 	}
 
-	public void SortTurnList() {
-		turnList.Sort(SortBySpeed);
-	}
-
-	public void NextTurn() {
-		index = (index + 1) % turnList.Count;
-		turnList[index].GetComponent<TurnStatus>().StartTurn();
-		Debug.Log("Vuoro indeksissä: " + index);
-	}
-
-
-
+	
 	void StartMatch() {
+		turnList.Sort(SortBySpeed);
 		for (int i = 0; i < turnList.Count; i++) {
-			turnList[i].GetComponent<TurnStatus>().StartMatch();
+			SetMatchStartToCharacter(turnList[i]);
 		}
-		turnList[index].GetComponent<TurnStatus>().StartTurn();
+		StartTurn();
 		Debug.Log("Match Start");
 	}
 
-	public GameObject GetCharacterOnTurn() {
-		return turnList[index];
-	}
+	
 
 	public void EndTurn() {
-		turnList[index].GetComponent<TurnStatus>().EndTurn();
+		if (turnList[index].CompareTag("Player"))
+		{
+			turnList[index].GetComponent<Movement>().enabled = false;
+		}
+		index = (index + 1) % turnList.Count;
+		StartTurn();
 		UIManager.Instance.UpdateUI();
+	}
+
+
+	void StartTurn() {
+		Debug.Log("vuoro indeksissä: " + index + ", " + turnList[index].name);
+		
+		if (turnList[index].CompareTag("Player"))
+		{
+			turnList[index].GetComponent<Movement>().enabled = true;
+		}
+		turnList[index].GetComponent<CharacterStats>().ResetActionPoints();
+
+		Debug.Log(gameObject.name + " turn");
+		cam.GetComponent<Follow>().target = turnList[index];
+		circleRadiusGO.transform.position = turnList[index].transform.position;
+		circleRadius.CreatePoints();
+		UIManager.Instance.UpdateUI();
+	}
+
+
+	void SetMatchStartToCharacter(GameObject character) {
+		if (character.CompareTag("Player"))
+		{
+			character.GetComponent<Movement>().enabled = false;
+		}
+		character.GetComponent<CharacterStats>().ResetActionPoints();
 	}
 }

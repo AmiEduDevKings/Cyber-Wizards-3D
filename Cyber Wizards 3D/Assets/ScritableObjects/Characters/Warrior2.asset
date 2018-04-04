@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c169978142b3bc4a86b347173439b7f, type: 3}
   m_Name: Warrior2
   m_EditorClassIdentifier: 
-  ablities:
+  abilities:
   - {fileID: 11400000, guid: d1d3347f64e09c74bb1e1dffda51c470, type: 2}
   - {fileID: 11400000, guid: 52e0f6750294f374eb376958e349a4a0, type: 2}
   - {fileID: 11400000, guid: 39b7f83873cfe82428863ad2fb8fd327, type: 2}

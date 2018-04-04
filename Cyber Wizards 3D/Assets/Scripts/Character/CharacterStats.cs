@@ -9,6 +9,8 @@ public class CharacterStats : MonoBehaviour {
 	public int health;
 	[HideInInspector]
 	public int actionPoints;
+
+	public Ability[] abilities;
 	
 	public int currentActionPoints;
 	public int currentHealth;

@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour {
 
 	void UpdateAbilityPanel() {
 		if (currentChar != null) {
-			Ability[] abilityList = currentChar.GetComponent<AbilitiesInformation>().abilityList;
+			Ability[] abilityList = currentChar.GetComponent<CharacterStats>().abilities;
 			Debug.Log("UIManager > Abilitylist length: " + abilityList.Length);
 			if (abilityList.Length > 0) {
 				for (int i = 0; i < abilityList.Length; i++) {
@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour {
 					Debug.Log("UIManager > Adding ability #" + n);
 					Ability ability = abilityList[i];
 					if (abilityList != null) {
-						a.GetComponent<Button>().onClick.AddListener(() => currentChar.GetComponent<AbilitiesInformation>().UseAbility(ability));
+						a.GetComponent<Button>().onClick.AddListener(() => AbilityHandler.Instance.SelectAbility(ability));
 					}
 				}
 			}

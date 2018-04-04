@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour {
 	DrawCircle circleRadius;
 
 	private NavMeshPath path;
-	private float elapsed = 0.0f;
 
 	private Vector3[] corners;
 	private int posCount;
@@ -29,13 +28,10 @@ public class Movement : MonoBehaviour {
 	float radius;
 	float dist;
 
-	bool moving = false;
-
 	// Use this for initialization
 	void Start() {
 		nav = GetComponent<NavMeshAgent>();
 		path = new NavMeshPath();
-		elapsed = 0.0f;
 		radius = movementRange;
 
 		try {
@@ -48,7 +44,7 @@ public class Movement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update() {
+	public void GetMovement() {
 		// Tallennetaan Navmeshin distance
 		dist = nav.remainingDistance;
 
@@ -153,5 +149,15 @@ public class Movement : MonoBehaviour {
 		radius = movementRange;
 		circleRadius.xradius = movementRange;
 		circleRadius.yradius = movementRange;
+	}
+
+	public void EnablePointer() {
+		if (!pointer.activeSelf)
+			pointer.SetActive(true);
+	}
+
+	public void DisablePointer() {
+		if (pointer.activeSelf)
+			pointer.SetActive(false);
 	}
 }

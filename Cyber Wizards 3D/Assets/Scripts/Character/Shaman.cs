@@ -14,7 +14,7 @@ public class Shaman : Character{
         characterStats.actionPoints = actionPoints;
         characterStats.speed = speed;
 
-        character.GetComponent<AbilitiesInformation>().abilityList = ablities;
+		characterStats.abilities = abilities;
     }
 
 }

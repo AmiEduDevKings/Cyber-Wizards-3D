@@ -14,6 +14,6 @@ public class Warrior : Character
 		characterStats.actionPoints = actionPoints;
 		characterStats.speed = speed;
 
-		character.GetComponent<AbilitiesInformation>().abilityList = ablities;
+		characterStats.abilities = abilities;
 	}
 }

@@ -7,7 +7,7 @@ public abstract class Character : ScriptableObject {
 
 	
 
-	public Ability[] ablities;
+	public Ability[] abilities;
 
 	public int health;
 	public int actionPoints;

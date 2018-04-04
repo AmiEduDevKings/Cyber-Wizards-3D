@@ -14,6 +14,6 @@ public class Archer : Character {
         characterStats.actionPoints = actionPoints;
         characterStats.speed = speed;
 
-        character.GetComponent<AbilitiesInformation>().abilityList = ablities;
-    }
+		characterStats.abilities = abilities;
+	}
 }

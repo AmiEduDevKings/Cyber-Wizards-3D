@@ -40,13 +40,13 @@ public class UIManager : MonoBehaviour {
 	void UpdateAbilityPanel() {
 		if (currentChar != null) {
 			Ability[] abilityList = currentChar.GetComponent<CharacterStats>().abilities;
-			Debug.Log("UIManager > Abilitylist length: " + abilityList.Length);
+			//Debug.Log("UIManager > Abilitylist length: " + abilityList.Length);
 			if (abilityList.Length > 0) {
 				for (int i = 0; i < abilityList.Length; i++) {
 					GameObject a = abilityPanel.transform.GetChild(i).gameObject;
 					a.GetComponentInChildren<TextMeshProUGUI>().text = abilityList[i].name;
 					string n = abilityList[i].name;
-					Debug.Log("UIManager > Adding ability #" + n);
+					//Debug.Log("UIManager > Adding ability #" + n);
 					Ability ability = abilityList[i];
 					if (abilityList != null) {
 						a.GetComponent<Button>().onClick.AddListener(() => AbilityHandler.Instance.SelectAbility(ability));

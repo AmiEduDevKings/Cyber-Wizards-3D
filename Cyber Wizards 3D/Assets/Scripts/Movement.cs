@@ -55,9 +55,12 @@ public class Movement : MonoBehaviour {
 
 
 		if (Raycaster.Instance.CheckHit(mask) && !EventSystem.current.IsPointerOverGameObject()) {
+			EnablePointer();
 			if (!GameManager.Instance.moving && !GameManager.Instance.casting) {
 				CalculatePath(Raycaster.Instance.GetHit());
 			}
+		} else {
+			DisablePointer();
 		}
 
 		//if (!moving) {
@@ -152,12 +155,14 @@ public class Movement : MonoBehaviour {
 	}
 
 	public void EnablePointer() {
-		if (!pointer.activeSelf)
+		if (!pointer.activeSelf) {
 			pointer.SetActive(true);
+		}
 	}
 
 	public void DisablePointer() {
-		if (pointer.activeSelf)
+		if (pointer.activeSelf) {
 			pointer.SetActive(false);
+		}
 	}
 }

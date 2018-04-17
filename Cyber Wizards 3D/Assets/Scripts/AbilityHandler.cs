@@ -37,7 +37,7 @@ public class AbilityHandler : MonoBehaviour {
 
 	public void CastAbility(GameObject target) {
 		if (!GameManager.Instance.casting && !GameManager.Instance.moving) {
-			selectedAbility.Cast(target);
+			selectedAbility.Cast(GameManager.Instance.GetCharacterOnTurn(), target);
 		}
 	}
 }

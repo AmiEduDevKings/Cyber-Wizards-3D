@@ -2029,7 +2029,32 @@ Prefab:
     - target: {fileID: 224054133872145920, guid: 747519c5421eb6e4a95ee717120dac89,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1644.3984
+      value: 1786
+      objectReference: {fileID: 0}
+    - target: {fileID: 224054133872145920, guid: 747519c5421eb6e4a95ee717120dac89,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -1128
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952904530133506, guid: 747519c5421eb6e4a95ee717120dac89,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -55.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952904530133506, guid: 747519c5421eb6e4a95ee717120dac89,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -695.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952904530133506, guid: 747519c5421eb6e4a95ee717120dac89,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -550.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224952904530133506, guid: 747519c5421eb6e4a95ee717120dac89,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -1101.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 747519c5421eb6e4a95ee717120dac89, type: 2}
@@ -2088,7 +2113,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4096088353632890, guid: aad7d9a5034df9242b0d01d56a04eb7a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8.36
       objectReference: {fileID: 0}
     - target: {fileID: 4096088353632890, guid: aad7d9a5034df9242b0d01d56a04eb7a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2396,8 +2421,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraHandler: {fileID: 166414109}
   aswdSpeed: 15
+  scrollAmount: 15
   cameraDepth: 15
-  smoothTime: 0.2
+  smoothTime: 0.3
   offset: {x: 0, y: 0, z: -5}
 --- !u!114 &1515124913
 MonoBehaviour:

@@ -6,6 +6,7 @@ public class Follow : MonoBehaviour {
 
 	public GameObject cameraHandler;
 	public float aswdSpeed;
+	public float scrollAmount;
 	public float cameraDepth;
 	public float smoothTime = 0.3f;
 	public Vector3 offset;
@@ -37,16 +38,24 @@ public class Follow : MonoBehaviour {
 			isKeyPressed = Input.anyKey;
 		}
 
-		Debug.Log(isKeyPressed);
+		float mouseScroll = Input.GetAxis("Mouse ScrollWheel");
 		//Debug.DrawRay(transform.position, transform.forward * 20f, Color.green);
 		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 		move = move.normalized * Time.deltaTime * aswdSpeed;
+
+		move += new Vector3(0f, mouseScroll * scrollAmount, 0f);
+
 		cameraHandler.transform.Translate(move);
 	}
 
 	public void CenterCameraOn(GameObject target) {
 		isKeyPressed = false;
 		StartCoroutine(Move(target.transform.position));
+	}
+
+	public void CenterCameraOn(Vector3 target) {
+		isKeyPressed = false;
+		StartCoroutine(Move(target));
 	}
 
 	IEnumerator Move(Vector3 target) {

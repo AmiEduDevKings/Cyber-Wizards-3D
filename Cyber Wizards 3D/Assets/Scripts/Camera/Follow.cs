@@ -4,35 +4,60 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour {
 
-    public GameObject target;
-    public float cameraDepth;
-    public float smoothTime = 0.3f;
-    public Vector3 offset;
+	public GameObject cameraHandler;
+	public float aswdSpeed;
+	public float cameraDepth;
+	public float smoothTime = 0.3f;
+	public Vector3 offset;
 
-    private Vector3 velocity = Vector3.zero;
-    Vector3 pos;
-    Vector3 targetPos;
+	private Vector3 velocity = Vector3.zero;
+	Vector3 pos;
+	Vector3 targetPos;
 
-    // Use this for initialization
-    void Start() {
-        if (target) {
-            pos = target.transform.position;
-            pos.y = cameraDepth;
-            transform.position = pos;
-        }
-    }
+	bool isCentering;
+	bool isKeyPressed;
 
-    private void FixedUpdate() {
-    }
+	// Use this for initialization
+	void Start() {
+		//if (target) {
+		//	pos = target.transform.position;
+		//	pos.y = cameraDepth;
+		//	targetPos = new Vector3(pos.x, cameraDepth, pos.z);
+		//	pos = Vector3.SmoothDamp(transform.position, targetPos + offset, ref velocity, smoothTime);
 
-    private void LateUpdate() {
-        if (target) {
-            pos = target.transform.position;
-            pos.y = cameraDepth;
-            targetPos = new Vector3(pos.x, cameraDepth, pos.z);
-            pos = Vector3.SmoothDamp(transform.position, targetPos + offset, ref velocity, smoothTime);
-        }
+		//	transform.position = new Vector3(pos.x, pos.y, pos.z);
+		//}
+		isKeyPressed = false;
+		isCentering = false;
+		Camera.main.transform.position = new Vector3(offset.x, cameraDepth + offset.y, offset.z);
+	}
 
-        transform.position = new Vector3(pos.x, pos.y, pos.z);
-    }
+	private void LateUpdate() {
+		if (isCentering) {
+			isKeyPressed = Input.anyKey;
+		}
+
+		Debug.Log(isKeyPressed);
+		//Debug.DrawRay(transform.position, transform.forward * 20f, Color.green);
+		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+		move = move.normalized * Time.deltaTime * aswdSpeed;
+		cameraHandler.transform.Translate(move);
+	}
+
+	public void CenterCameraOn(GameObject target) {
+		isKeyPressed = false;
+		StartCoroutine(Move(target.transform.position));
+	}
+
+	IEnumerator Move(Vector3 target) {
+		while (isKeyPressed != true && Vector3.Distance(cameraHandler.transform.position, target) > 0.3f) {
+			Debug.Log("Camera Follow -> Moving...");
+			isCentering = true;
+			cameraHandler.transform.position = Vector3.SmoothDamp(cameraHandler.transform.position, target, ref velocity, smoothTime);
+			yield return new WaitForEndOfFrame();
+		}
+
+		Debug.Log("Camera Follow -> Exiting Move...");
+		isCentering = false;
+	}
 }

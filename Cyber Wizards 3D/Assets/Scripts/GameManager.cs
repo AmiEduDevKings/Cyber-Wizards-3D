@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour {
 		turnList[index].GetComponent<CharacterStats>().ResetActionPoints();
 
 		Debug.Log(gameObject.name + " turn");
-		cam.GetComponent<Follow>().target = turnList[index];
+		cam.GetComponent<Follow>().CenterCameraOn(turnList[index]);
 		circleRadiusGO.transform.position = turnList[index].transform.position;
 		EnableMovement();
 		UIManager.Instance.UpdateUI();

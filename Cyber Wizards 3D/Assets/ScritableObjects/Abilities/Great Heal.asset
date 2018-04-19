@@ -11,16 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d0f2ff0bfa3334fa3b51f9c39f767a, type: 3}
   m_Name: Great Heal
   m_EditorClassIdentifier: 
-  targetTag: Player
+  damagePopUpPrefab: {fileID: 1127080562722348, guid: b7b8abd770716324b878202901d69cd3,
+    type: 2}
+  textColor: {r: 0.48492348, g: 1, b: 0, a: 0}
+  targetTag: {fileID: 0}
   id: 2
   icon: {fileID: 0}
   name: Great Heal
   effect1: {fileID: 198237783957565098, guid: 491851e5bda74b942836ce2878370381, type: 2}
-  effect2: {fileID: 198507384423787826, guid: 81e74e35328c3ad48a0dd7090d13fcd7, type: 2}
-  effect3: {fileID: 0}
+  effect2: {fileID: 0}
+  effect3: {fileID: 198507384423787826, guid: 81e74e35328c3ad48a0dd7090d13fcd7, type: 2}
   startUpTime: 2
   duration: 2
   endTime: 0
   velocity: 0
   range: 0
-  healingPower: 0
+  healingPower: 350

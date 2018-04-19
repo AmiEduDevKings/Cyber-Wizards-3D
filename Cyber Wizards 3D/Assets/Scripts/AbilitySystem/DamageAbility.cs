@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [CreateAssetMenu(fileName = "New Damage Ability", menuName = "Ability/Damage", order = 1)]
 public class DamageAbility : Ability {
@@ -18,7 +19,9 @@ public class DamageAbility : Ability {
 	public override void TriggerAbility(GameObject target)
 	{
 		target.GetComponent<CharacterStats>().TakeDamage(damagePower);
-		
+		GameObject p = Instantiate(damagePopUpPrefab, target.transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
+		p.GetComponent<TextMeshPro>().color = textColor;
+		p.GetComponent<TextMeshPro>().text = damagePower.ToString();
 	}
 
 
@@ -42,9 +45,9 @@ public class DamageAbility : Ability {
 
 		if (effect3 != null) {
 			p3 = Instantiate(effect3, target.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			TriggerAbility(target);
 			yield return new WaitForSeconds(endTime);
 		}
-
 		Debug.Log("AbilitiesInformation > Ability Executed!");
 		GameManager.Instance.casting = false;
 	}

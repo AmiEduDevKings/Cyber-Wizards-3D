@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Healing Ability", menuName = "Ability/Healing", order = 3)]
@@ -16,6 +17,9 @@ public class HealingAbility : Ability {
 	public override void TriggerAbility(GameObject target)
 	{
 		target.GetComponent<CharacterStats>().TakeHealing(healingPower);
+		GameObject p = Instantiate(damagePopUpPrefab, target.transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
+		p.GetComponent<TextMeshPro>().color = textColor;
+		p.GetComponent<TextMeshPro>().text = healingPower.ToString();
 	}
 
 
@@ -35,8 +39,11 @@ public class HealingAbility : Ability {
 
 		if (effect3 != null) {
 			Instantiate(effect3, target.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			TriggerAbility(target);
 			yield return new WaitForSeconds(endTime);
 		}
+
+
 
 		Debug.Log("AbilitiesInformation > Ability Executed!");
 		GameManager.Instance.casting = false;

@@ -12,7 +12,7 @@ public class Targeting : MonoBehaviour {
 			Debug.Log("Targeting > Hitting " + hit.collider.gameObject.name);
 
 			if (Input.GetMouseButtonDown(0) && !GameManager.Instance.casting) {
-				AbilityHandler.Instance.CastAbility(hit.collider.gameObject);
+				AbilityHandler.Instance.CastAbility(hit.collider.gameObject, gameObject);
 			}
 		}
 	}

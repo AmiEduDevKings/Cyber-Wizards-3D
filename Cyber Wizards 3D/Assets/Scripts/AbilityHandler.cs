@@ -28,11 +28,9 @@ public class AbilityHandler : MonoBehaviour {
 	//}
 
 	public void SelectAbility(Ability ability) {
-		if (!GameManager.Instance.casting && !GameManager.Instance.moving) {
-			GameManager.Instance.EnableTargeting();
-			selectedAbility = ability;
-			Debug.Log("AbilityHandler: Selected Ability -> " + ability.name);
-		}
+		GameManager.Instance.EnableTargeting();
+		selectedAbility = ability;
+		Debug.Log("AbilityHandler: Selected Ability -> " + ability.name);
 	}
 
 	public void CastAbility(GameObject target) {

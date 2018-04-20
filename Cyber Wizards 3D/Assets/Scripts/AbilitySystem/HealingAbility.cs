@@ -17,9 +17,7 @@ public class HealingAbility : Ability {
 	public override void TriggerAbility(GameObject target)
 	{
 		target.GetComponent<CharacterStats>().TakeHealing(healingPower);
-		GameObject p = Instantiate(damagePopUpPrefab, target.transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
-		p.GetComponent<TextMeshPro>().color = textColor;
-		p.GetComponent<TextMeshPro>().text = healingPower.ToString();
+		UIManager.Instance.DamagePopup(target, healingPower, textColor);
 	}
 
 
@@ -51,6 +49,7 @@ public class HealingAbility : Ability {
 
 	public override void Cast(GameObject caster, GameObject self) {
 		self.GetComponent<MonoBehaviour>().StartCoroutine(ExecuteAbility(caster, self));
+		GameManager.Instance.casting = true;
 	}
 
 

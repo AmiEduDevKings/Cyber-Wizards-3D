@@ -19,14 +19,11 @@ public class DamageAbility : Ability {
 	public override void TriggerAbility(GameObject target)
 	{
 		target.GetComponent<CharacterStats>().TakeDamage(damagePower);
-		GameObject p = Instantiate(damagePopUpPrefab, target.transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
-		p.GetComponent<TextMeshPro>().color = textColor;
-		p.GetComponent<TextMeshPro>().text = damagePower.ToString();
+		UIManager.Instance.DamagePopup(target, damagePower, textColor);
 	}
 
 
 	public override IEnumerator ExecuteAbility(GameObject caster, GameObject target) {
-		GameManager.Instance.casting = true;
 		if (effect1 != null) {
 			p1 = Instantiate(effect1, caster.transform.position, Quaternion.identity);
 			yield return new WaitForSeconds(startUpTime);
@@ -53,6 +50,7 @@ public class DamageAbility : Ability {
 	}
 
 	public override void Cast(GameObject caster, GameObject target) {
+		GameManager.Instance.casting = true;
 		target.GetComponent<MonoBehaviour>().StartCoroutine(ExecuteAbility(caster, target));
 	}
 }

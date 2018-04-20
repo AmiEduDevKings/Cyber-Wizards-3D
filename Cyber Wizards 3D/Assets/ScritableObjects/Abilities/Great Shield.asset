@@ -11,10 +11,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b67217e35c554408b66945416cba4f, type: 3}
   m_Name: Great Shield
   m_EditorClassIdentifier: 
+  textColor: {r: 0, g: 0, b: 0, a: 0}
+  targetTag: {fileID: 11400000, guid: c60ba5ba398b95d44a7fa50eeb5aecef, type: 2}
   id: 3
   icon: {fileID: 0}
   name: Great Shield
+  effect1: {fileID: 0}
+  effect2: {fileID: 0}
+  effect3: {fileID: 0}
+  startUpTime: 0
+  duration: 0
+  endTime: 0
   velocity: 0
-  range: 0
+  range: 10
   shieldPower: 0
-  type: 2

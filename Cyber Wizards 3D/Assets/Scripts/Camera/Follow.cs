@@ -38,7 +38,7 @@ public class Follow : MonoBehaviour {
 			isKeyPressed = Input.anyKey;
 		}
 
-		float mouseScroll = Input.GetAxis("Mouse ScrollWheel");
+		float mouseScroll = -Input.GetAxis("Mouse ScrollWheel");
 		//Debug.DrawRay(transform.position, transform.forward * 20f, Color.green);
 		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 		move = move.normalized * Time.deltaTime * aswdSpeed;

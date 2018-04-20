@@ -16,7 +16,6 @@ public class ShieldAbility : Ability {
 	public override void TriggerAbility(GameObject target)
 	{
 		target.GetComponent<CharacterStats>().MakeShield(shieldPower);
-		
 	}
 
 

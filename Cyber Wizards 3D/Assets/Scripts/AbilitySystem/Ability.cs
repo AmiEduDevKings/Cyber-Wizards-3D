@@ -7,7 +7,6 @@ using TMPro;
 
 public abstract class Ability : ScriptableObject
 {
-	public GameObject damagePopUpPrefab;
 	public Color textColor;
 
 	public TagObject targetTag;

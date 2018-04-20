@@ -11,10 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b974bd8b824f2940b641f1c1a84b947, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  damagePopUpPrefab: {fileID: 1127080562722348, guid: b7b8abd770716324b878202901d69cd3,
-    type: 2}
   textColor: {r: 0.9811321, g: 0.530625, b: 0, a: 0}
-  targetTag: {fileID: 0}
+  targetTag: {fileID: 11400000, guid: c60ba5ba398b95d44a7fa50eeb5aecef, type: 2}
   id: 1
   icon: {fileID: 0}
   name: Fireball
@@ -25,5 +23,5 @@ MonoBehaviour:
   duration: 0
   endTime: 2
   velocity: 30
-  range: 0
+  range: 8
   damagePower: 360

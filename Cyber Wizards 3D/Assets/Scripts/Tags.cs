@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class Tags : MonoBehaviour {
 
-	public TagObject tag;
+	public TagObject[] tags;
+
+	public bool IsRightTag(Ability ability) {
+		foreach (var item in tags)
+		{
+			if (item.Equals(ability.targetTag)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

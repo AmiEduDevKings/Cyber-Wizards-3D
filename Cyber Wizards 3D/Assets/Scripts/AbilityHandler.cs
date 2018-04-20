@@ -33,8 +33,10 @@ public class AbilityHandler : MonoBehaviour {
 		Debug.Log("AbilityHandler: Selected Ability -> " + ability.name);
 	}
 
-	public void CastAbility(GameObject target) {
-		if (!GameManager.Instance.casting && !GameManager.Instance.moving) {
+	public void CastAbility(GameObject target, GameObject self) {
+        float dist = Vector3.Distance(target.transform.position, self.transform.position);
+        Debug.Log("AbilityHandler: CastAbility - > Ability " + selectedAbility + " distance: " + dist + " and range: " + selectedAbility.range);
+        if (!GameManager.Instance.casting && !GameManager.Instance.moving && dist <= selectedAbility.range) {
 			selectedAbility.Cast(GameManager.Instance.GetCharacterOnTurn(), target);
 		}
 	}

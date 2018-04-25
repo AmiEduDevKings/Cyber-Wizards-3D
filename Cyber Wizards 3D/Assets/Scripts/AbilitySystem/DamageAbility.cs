@@ -30,10 +30,12 @@ public class DamageAbility : Ability {
 		}
 
 		if (effect2 != null) {
-			p2 = Instantiate(effect2, caster.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			p2 = Instantiate(effect2, caster.transform.position + new Vector3(0, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
 
 			while (Vector3.Distance(p2.transform.position, target.transform.position) > 0.1f) {
-				p2.transform.position = Vector3.SmoothDamp(p2.transform.position, target.transform.position, ref vel, 0.1f, velocity);
+				p2.gameObject.transform.LookAt(target.transform);
+				p2.transform.position = Vector3.MoveTowards(p2.transform.position, target.transform.position, velocity * Time.deltaTime);
+				//p2.transform.position = Vector3.SmoothDamp(p2.transform.position, target.transform.position, ref vel, 0.1f, velocity);
 				yield return new WaitForFixedUpdate();
 			}
 

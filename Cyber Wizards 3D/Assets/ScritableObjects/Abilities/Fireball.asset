@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   textColor: {r: 0.9811321, g: 0.530625, b: 0, a: 0}
-  targetTag: {fileID: 11400000, guid: c60ba5ba398b95d44a7fa50eeb5aecef, type: 2}
+  targetTag: {fileID: 11400000, guid: 28d40f28fc5d31144b07ce8b1848e3a5, type: 2}
   id: 1
   icon: {fileID: 0}
   name: Fireball
   effect1: {fileID: 198326844878355520, guid: b78cc08759f495f4ba4ab90851aa6034, type: 2}
-  effect2: {fileID: 198858596364363800, guid: 803230a89be10b243a1fc95da71f59ce, type: 2}
+  effect2: {fileID: 198916854529027860, guid: 4ddfe2e39de127b4097fd9f7275e72b6, type: 2}
   effect3: {fileID: 198425627620820718, guid: e09fbbe38a0eb84418b1092473150b34, type: 2}
   startUpTime: 3
   duration: 0
   endTime: 2
-  velocity: 30
-  range: 8
+  velocity: 15
+  range: 30
   damagePower: 360

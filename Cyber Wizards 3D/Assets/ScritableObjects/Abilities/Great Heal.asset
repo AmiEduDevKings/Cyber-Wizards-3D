@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Great Heal
   m_EditorClassIdentifier: 
   textColor: {r: 0.48492348, g: 1, b: 0, a: 0}
-  targetTag: {fileID: 11400000, guid: c60ba5ba398b95d44a7fa50eeb5aecef, type: 2}
+  targetTag: {fileID: 11400000, guid: 28d40f28fc5d31144b07ce8b1848e3a5, type: 2}
   id: 2
   icon: {fileID: 0}
   name: Great Heal

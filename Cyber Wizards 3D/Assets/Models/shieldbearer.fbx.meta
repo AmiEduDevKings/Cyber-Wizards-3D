@@ -20,9 +20,12 @@ ModelImporter:
     2100020: Material.015
     2100022: Material.010
     2100024: Material.009
+    2100026: puku
+    2100028: "kyp\xE4r\xE4"
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cone.007
+    4300002: Sphere
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour {
 
 	NavMeshAgent nav;
 	CharacterStats character;
-
+	public Raycaster caster;
 	[Range(1, 50)]
 	public float movementRange;
 
@@ -56,10 +56,10 @@ public class Movement : MonoBehaviour {
 		}
 
 
-		if (Raycaster.Instance.CheckHit(mask) && !EventSystem.current.IsPointerOverGameObject()) {
+		if (caster.CheckHit(mask) && !EventSystem.current.IsPointerOverGameObject()) {
 			EnablePointer();
 			if (!GameManager.Instance.moving && !GameManager.Instance.casting) {
-				CalculatePath(Raycaster.Instance.GetHit());
+				CalculatePath(caster.GetHit());
 			}
 		} else {
 			DisablePointer();

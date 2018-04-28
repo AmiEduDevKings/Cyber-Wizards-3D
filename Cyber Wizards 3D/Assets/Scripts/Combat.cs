@@ -21,6 +21,7 @@ public class Combat : ScriptableObject {
 	{
 		turnList.Sort(SortBySpeed);
 		Debug.Log("Match Start");
+
 	}
 
 	private static int SortBySpeed(GameObject o1, GameObject o2)

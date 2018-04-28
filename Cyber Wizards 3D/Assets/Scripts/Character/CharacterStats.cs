@@ -58,6 +58,7 @@ public class CharacterStats : MonoBehaviour {
 	private void Death()
 	{
 		Debug.Log("Im Dead");
+		gameObject.SetActive(false);
 	}
 
 

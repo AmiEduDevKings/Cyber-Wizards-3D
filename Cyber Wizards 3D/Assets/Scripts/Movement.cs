@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour {
 		path = new NavMeshPath();
 		radius = movementRange;
 
+		
+
 		try {
 			circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
 		} catch {

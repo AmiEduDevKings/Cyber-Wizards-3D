@@ -84,9 +84,7 @@ public class GameManager : MonoBehaviour {
 
 	void StartTurn() {
 		Debug.Log("vuoro indeksissä: " + index + ", " + turnList[index].name);
-		if (turnList[index].CompareTag("Player")) {
-			turnList[index].GetComponent<Movement>().enabled = true;
-		}
+		turnList[index].GetComponent<Movement>().enabled = true;
 		turnList[index].GetComponent<CharacterStats>().ResetActionPoints();
 
 		Debug.Log(gameObject.name + " turn");

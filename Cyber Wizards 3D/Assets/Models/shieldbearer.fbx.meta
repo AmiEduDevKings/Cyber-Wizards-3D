@@ -22,10 +22,15 @@ ModelImporter:
     2100024: Material.009
     2100026: puku
     2100028: "kyp\xE4r\xE4"
+    2100030: tummahaaniska
+    2100032: vaaleahaarniska
+    2100034: "vy\xF6"
+    2100036: "silm\xE4t"
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cone.007
     4300002: Sphere
+    4300004: Plane
   externalObjects: {}
   materials:
     importMaterials: 1

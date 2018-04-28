@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 65107902124013196}
   - component: {fileID: 114457007182319046}
   - component: {fileID: 114041285548516524}
-  - component: {fileID: 114015666180188296}
   - component: {fileID: 114163492667787434}
   m_Layer: 0
   m_Name: Archer
@@ -286,21 +285,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114015666180188296
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1208778414134096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0147f6d808dd94b928f08f6f881f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turn: 0
-  cam: {fileID: 0}
-  canvas: {fileID: 0}
-  circleRadiusGO: {fileID: 0}
 --- !u!114 &114041285548516524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5b75826f66b5c45815678d81d2f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementRange: 0
   raypoint: {fileID: 4658903018634542}
   target: {x: 0, y: 0, z: 0}
   mask:
@@ -357,13 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcfbd1642f0f4844a9c0e8688cd60d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  selectedAbility: {fileID: 0}
 --- !u!114 &114335873156196192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,7 +397,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   actionPoints: 5
+  abilities: []
   currentActionPoints: 0
+  currentHealth: 0
+  currentShield: 0
   speed: 5
   character: {fileID: 0}
 --- !u!114 &114587479400363980

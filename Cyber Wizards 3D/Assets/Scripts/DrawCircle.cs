@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof (LineRenderer))]
 public class DrawCircle : MonoBehaviour {
 
     [Range(0, 50)]

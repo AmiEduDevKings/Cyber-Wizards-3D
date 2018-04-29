@@ -11,7 +11,6 @@ public class DrawCircle : MonoBehaviour {
     public float xradius { get; set; }
     public float yradius { get; set; }
 
-    CharacterStats player;
     LineRenderer line;
 
 

@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour {
 	[Range(1, 50)]
 	public float movementRange;
 
-	public Transform raypoint;
 	public Vector3 target;
 	public LayerMask mask;
 	public GameObject pointer;
@@ -32,9 +31,6 @@ public class Movement : MonoBehaviour {
 	void Start() {
 		nav = GetComponent<NavMeshAgent>();
 		path = new NavMeshPath();
-		radius = movementRange;
-
-		
 
 		try {
 			circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
@@ -77,51 +73,49 @@ public class Movement : MonoBehaviour {
 
 	public void CalculatePath(RaycastHit hit) {
 
-		// Hiiren positioni
+		// Hiiren worldspace positioni
 		Vector3 mousePosition = hit.point;
 
-		// Liikkumis ympyrän keskipiste
+		// Liikkumisalue ympyrän keskipiste
 		Vector3 circlePosition = new Vector3(circleRadiusGO.transform.position.x, 0f, circleRadiusGO.transform.position.z);
 
 		// Hiiren etäisyys ympyrän keskipisteestä
-		float distanceFromCircle = Vector3.Distance(circlePosition, mousePosition);
+		float mouseDistanceFromCircle = Vector3.Distance(circlePosition, mousePosition);
 
-		// Clämpätään se jollain radiuksella
-		distanceFromCircle = Mathf.Clamp(distanceFromCircle, 0, radius);
+		// Clämpätään se pelaajan liikkumis etäisyydellä
+		mouseDistanceFromCircle = Mathf.Clamp(mouseDistanceFromCircle, 0f, movementRange);
 
-		// Lasketaan suunta ympyrän keskipisteestä hiireen
+		// Luodaan vektori ympyrän keskipisteestä hiireen
 		Vector3 dir = mousePosition - circlePosition;
 
-		// Taas clämppiä
-		dir = Vector3.ClampMagnitude(dir, radius);
+		dir = Vector3.ClampMagnitude(dir, movementRange);
 
-		Vector3 pos = circlePosition + (dir.normalized * distanceFromCircle);
+		// Lasketaan 3D hiiren sijainti
+		Vector3 pointerPosition = circlePosition + (dir.normalized * mouseDistanceFromCircle);
 
-		// Laitetaan hiiren pointteri laskettuun positioniin
-		pointer.transform.position = pos;
+		// Laitetaan 3D hiiren laskettuun sijaintiin
+		pointer.transform.position = pointerPosition;
 
 		// Piiretään ray debuggausta varten
 		Debug.DrawRay(circlePosition, dir, Color.green);
 
+		// Lasketaan 3D hiiren suunta pelaajan hahmosta
+		Vector3 dirFromPlayer = pointerPosition - transform.position;
+
+		// Tarkistetaan onko seinä 3D hiiren ja pelaajan välissä.
 		RaycastHit hitinfo;
-
-		// Lasketaan hiiren suunta pelaajan hahmosta
-		Vector3 dirFromPlayer = pos - raypoint.position;
-
-
-		// Tarkistetaan onko seinä hiiren ja pelaajan välissä.
-		if (Physics.Raycast(new Ray(raypoint.position, dirFromPlayer), out hitinfo, Mathf.Infinity)) {
-
-			Debug.DrawRay(raypoint.position, dirFromPlayer, Color.yellow);
+		if (Physics.Raycast(new Ray(transform.position, dirFromPlayer), out hitinfo, Mathf.Infinity)) {
+			Debug.DrawRay(transform.position, dirFromPlayer, Color.yellow);
 			NavMeshHit hitp;
-			// Jos löytyy seinä, niin laitetaan hiiren-pointteri lähimpään navmesh areaan
+
+			// Jos löytyy seinä, niin laitetaan 3D hiiren lähimpään navmesh areaan
 			if (hitinfo.collider.CompareTag("Wall")) {
 				if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas)) {
 					pointer.transform.position = hitp.position;
 				}
 			}
 
-			// Ei löytynyt seinää, joten liikutaan normaalisti targettiin
+			// Ei löytynyt seinää, joten liikutaan normaalisti 3D hiiren sijaintiin
 			if (hit.transform.CompareTag("Ground")) {
 				if (NavMesh.SamplePosition(hitinfo.point, out hitp, 5f, NavMesh.AllAreas)) {
 					if (Input.GetMouseButtonDown(0)) {
@@ -151,7 +145,6 @@ public class Movement : MonoBehaviour {
 
 	private void OnEnable() {
 		circleRadius = circleRadiusGO.GetComponent<DrawCircle>();
-		radius = movementRange;
 		circleRadius.xradius = movementRange;
 		circleRadius.yradius = movementRange;
 	}

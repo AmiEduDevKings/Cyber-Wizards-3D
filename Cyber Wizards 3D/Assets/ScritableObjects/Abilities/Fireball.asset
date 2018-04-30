@@ -22,6 +22,6 @@ MonoBehaviour:
   startUpTime: 3
   duration: 0
   endTime: 2
-  velocity: 15
+  velocity: 7.5
   range: 30
-  damagePower: 360
+  damagePower: 1

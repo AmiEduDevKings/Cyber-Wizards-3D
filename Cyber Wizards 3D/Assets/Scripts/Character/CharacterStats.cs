@@ -58,6 +58,7 @@ public class CharacterStats : MonoBehaviour {
 	private void Death()
 	{
 		Debug.Log("Im Dead");
+		GameManager.Instance.RemoveFromTurnList(gameObject);
 		gameObject.SetActive(false);
 	}
 

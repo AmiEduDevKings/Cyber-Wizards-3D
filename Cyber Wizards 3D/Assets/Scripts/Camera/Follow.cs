@@ -41,9 +41,9 @@ public class Follow : MonoBehaviour {
 		float mouseScroll = -Input.GetAxis("Mouse ScrollWheel");
 		//Debug.DrawRay(transform.position, transform.forward * 20f, Color.green);
 		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-		move = move.normalized * Time.deltaTime * aswdSpeed;
+		move = move.normalized * Time.deltaTime * aswdSpeed * Camera.main.transform.position.y;
 
-		move += new Vector3(0f, mouseScroll * scrollAmount, 0f);
+		move += new Vector3(0f, mouseScroll * scrollAmount * Camera.main.transform.position.y, 0f);
 
 		cameraHandler.transform.Translate(move);
 	}

@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class Movement : MonoBehaviour {
 
 	NavMeshAgent nav;
-	CharacterStats character;
 	public Raycaster caster;
 	[Range(1, 50)]
 	public float movementRange;

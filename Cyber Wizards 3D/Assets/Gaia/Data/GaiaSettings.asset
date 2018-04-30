@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentDefaults: {fileID: 11400000, guid: 54f4fac3c7f0a1e44a45853d26c87b49, type: 2}
   m_currentResources: {fileID: 11400000, guid: 74b981f9b3da33445993da8678cdd662, type: 2}
-  m_publisherName: 
+  m_publisherName: DevKings
   m_playerPrefabName: 
   m_waterPrefabName: 
   m_showTooltips: 1

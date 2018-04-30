@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Update() {
+		
 		switch (Mode) {
 			case Mode.MOVEMENT:
 				GetCharacterOnTurn().GetComponent<Movement>().GetMovement();
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour {
 			case Mode.TARGETING:
 				GetCharacterOnTurn().GetComponent<Targeting>().GetTargeting();
 				break;
+
 		}
 	}
 
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour {
 
 	public void AddToTurnList(GameObject obj) {
 		turnList.Add(obj);
+	}
+
+	public void RemoveFromTurnList(GameObject obj) {
+		turnList.Remove(obj);
 	}
 
 	private static int SortBySpeed(GameObject o1, GameObject o2) {
@@ -89,7 +95,7 @@ public class GameManager : MonoBehaviour {
 
 		Debug.Log(gameObject.name + " turn");
 		cam.GetComponent<Follow>().CenterCameraOn(turnList[index]);
-		circleRadiusGO.transform.position = turnList[index].transform.position;
+		circleRadiusGO.transform.position = turnList[index].transform.position + new Vector3(0f, 0.5f, 0f);
 		EnableMovement();
 		UIManager.Instance.UpdateUI();
 	}

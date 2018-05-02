@@ -4,13 +4,14 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Combat")]
 public class Combat : ScriptableObject {
-
+	//jono vois toimia
 	List<GameObject> turnList = new List<GameObject>();
 
-
+	int index = 0;
 
 	public void AddToTurnList(GameObject charater) {
 		turnList.Add(charater);
+		Debug.Log(charater.name + " lisätty");
 	}
 
 	public void RemoveFromTurnList(GameObject character){
@@ -19,8 +20,17 @@ public class Combat : ScriptableObject {
 
 	public void StartMatch()
 	{
-		turnList.Sort(SortBySpeed);
+		//turnList.Sort(SortBySpeed);
 		Debug.Log("Match Start");
+		index = 0;
+
+		turnList[index].GetComponent<CombatMovement>().canMove = true;
+	}
+
+	public void EndTurn() {
+		turnList[index].GetComponent<CombatMovement>().canMove = false;
+		index = (index + 1) % turnList.Count;
+		turnList[index].GetComponent<CombatMovement>().canMove = true;
 
 	}
 

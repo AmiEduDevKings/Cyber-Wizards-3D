@@ -5,7 +5,7 @@ using UnityEngine;
 public class AddToTurnList : MonoBehaviour {
 
 	public Combat Combat;
-
+	//combat event lista vois olla hyvä
 	private void OnEnable()
 	{
 		Combat.AddToTurnList(gameObject);
@@ -14,7 +14,7 @@ public class AddToTurnList : MonoBehaviour {
 
 	private void OnDisable()
 	{
-		Combat.AddToTurnList(gameObject);
+		Combat.RemoveFromTurnList(gameObject);
 	}
 
 

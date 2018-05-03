@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Update() {
-		
+		//tää veks 
 		switch (Mode) {
 			case Mode.MOVEMENT:
 				GetCharacterOnTurn().GetComponent<Movement>().GetMovement();

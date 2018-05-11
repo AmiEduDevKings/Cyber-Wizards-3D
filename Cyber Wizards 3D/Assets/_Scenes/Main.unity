@@ -474,7 +474,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &809084860
 LineRenderer:
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  customCursor: {fileID: 1318585252}
+  worldspaceCursor: {fileID: 1318585252}
   movementRange: 5
 --- !u!114 &1305911674
 MonoBehaviour:
@@ -1683,6 +1683,7 @@ GameObject:
   - component: {fileID: 1815217288}
   - component: {fileID: 1815217287}
   - component: {fileID: 1815217291}
+  - component: {fileID: 1815217292}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1770,6 +1771,34 @@ MonoBehaviour:
   cameraDepth: 15
   smoothTime: 0.3
   offset: {x: 0, y: 0, z: -7}
+--- !u!114 &1815217292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1815217286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: bf2d0aab1d168ac4492b8a0a7dbaf571, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1815217291}
+        m_MethodName: OnTurnMasterChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1911470674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1826,7 @@ Transform:
   m_Children:
   - {fileID: 1522458809}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1920993639
 GameObject:

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "RayCaster")]
+[CreateAssetMenu(menuName = "Legacy/RayCaster")]
 public class Raycaster : ScriptableObject {
 
 	private Ray ray;

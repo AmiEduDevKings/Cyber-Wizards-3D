@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Healing Ability", menuName = "Ability/Healing", order = 3)]
+[CreateAssetMenu(fileName = "New Healing Ability", menuName = "Legacy/Ability/Healing", order = 3)]
 
 public class HealingAbility : Ability {
 

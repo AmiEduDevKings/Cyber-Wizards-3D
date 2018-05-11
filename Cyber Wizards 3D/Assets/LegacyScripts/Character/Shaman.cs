@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Characters/Shaman")]
+[CreateAssetMenu(menuName = "Legacy/Characters/Shaman")]
 public class Shaman : Character{
 
     private CharacterStats characterStats;

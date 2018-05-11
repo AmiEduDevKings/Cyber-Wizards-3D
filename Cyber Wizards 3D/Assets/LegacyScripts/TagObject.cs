@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "TagObject")]
+[CreateAssetMenu(menuName = "Legacy/TagObject")]
 public class TagObject : ScriptableObject {
 	
 	public override bool Equals(object obj)

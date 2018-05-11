@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Combat")]
+[CreateAssetMenu(menuName = "Legacy/Combat")]
 public class Combat : ScriptableObject {
 	//jono vois toimia
 	List<GameObject> turnList = new List<GameObject>();

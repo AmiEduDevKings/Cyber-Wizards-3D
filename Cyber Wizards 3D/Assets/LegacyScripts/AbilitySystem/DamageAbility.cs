@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[CreateAssetMenu(fileName = "New Damage Ability", menuName = "Ability/Damage", order = 1)]
+[CreateAssetMenu(fileName = "New Damage Ability", menuName = "Legacy/Ability/Damage", order = 1)]
 public class DamageAbility : Ability {
 
 	public int damagePower;

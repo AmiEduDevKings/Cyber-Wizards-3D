@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 namespace legacyScripts
 {
-	[CreateAssetMenu(fileName = "New Damage Ability", menuName = "Ability/Damage", order = 1)]
+	[CreateAssetMenu(fileName = "New Damage Ability", menuName = "LegacyScriptableObjects/Ability/Damage", order = 1)]
 	public class DamageAbility : Ability
 	{
 

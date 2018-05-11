@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace legacyScripts
 {
-	[CreateAssetMenu(menuName = "RayCaster")]
+	[CreateAssetMenu(menuName = "LegacyScriptableObjects/RayCaster")]
 	public class Raycaster : ScriptableObject
 	{
 

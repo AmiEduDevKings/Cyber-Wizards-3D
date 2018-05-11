@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace legacyScripts
 {
-	[CreateAssetMenu(menuName = "Combat")]
+	[CreateAssetMenu(menuName = "LegacyScriptableObjects/Combat")]
 	public class Combat : ScriptableObject
 	{
 		//jono vois toimia

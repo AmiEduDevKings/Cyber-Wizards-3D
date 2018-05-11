@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace legacyScripts
 {
-	[CreateAssetMenu(menuName = "Characters/Warrior")]
+	[CreateAssetMenu(menuName = "LegacyScriptableObjects/Characters/Warrior")]
 	public class Warrior : Character
 	{
 		private CharacterStats characterStats;

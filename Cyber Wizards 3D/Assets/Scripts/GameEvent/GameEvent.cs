@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Events/Game Event")]
+[CreateAssetMenu(menuName = "Events/New Game Event")]
 
 public class GameEvent : ScriptableObject {
 

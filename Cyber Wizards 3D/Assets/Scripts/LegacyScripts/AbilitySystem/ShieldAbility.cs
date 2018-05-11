@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace legacyScripts
 {
-	[CreateAssetMenu(fileName = "New Shield Ability", menuName = "Ability/Shield", order = 2)]
+	[CreateAssetMenu(fileName = "New Shield Ability", menuName = "LegacyScriptableObjects/Ability/Shield", order = 2)]
 
 	public class ShieldAbility : Ability
 	{

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 namespace legacyScripts
 {
-	[CreateAssetMenu(fileName = "New Healing Ability", menuName = "Ability/Healing", order = 3)]
+	[CreateAssetMenu(fileName = "New Healing Ability", menuName = "LegacyScriptableObjects/Ability/Healing", order = 3)]
 
 	public class HealingAbility : Ability
 	{

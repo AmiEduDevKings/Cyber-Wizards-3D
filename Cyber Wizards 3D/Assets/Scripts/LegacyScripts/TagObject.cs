@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace legacyScripts
 {
-	[CreateAssetMenu(menuName = "TagObject")]
+	[CreateAssetMenu(menuName = "LegacyScriptableObjects/TagObject")]
 	public class TagObject : ScriptableObject
 	{
 

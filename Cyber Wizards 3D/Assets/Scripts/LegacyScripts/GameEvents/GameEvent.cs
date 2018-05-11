@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace legacyScripts {
-	[CreateAssetMenu(menuName = "Game Event")]
+	[CreateAssetMenu(menuName = "LegacyScriptableObjects/Game Event")]
 	public class GameEvent : ScriptableObject {
 
 		List<GameEventListener> activeListeners = new List<GameEventListener>();

@@ -8,6 +8,12 @@ public class AbilityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 	Image button;
 
+	public GameEvent OnAbilityEnter;
+	public GameEvent OnAbilityExit;
+
+	public GameEvent OnClickEvent;
+	public GameEvent onSelectedEvent;
+
 	public Color color;
 	public Color hover;
 	public Color pressed;
@@ -26,6 +32,8 @@ public class AbilityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			transform.parent.GetChild(i).GetComponent<AbilityButton>().selected = false;
 		}
 
+		OnClickEvent.RaiseAll();
+		onSelectedEvent.RaiseAll();
 		selected = true;
 		button.color = pressed;
 	}
@@ -33,11 +41,16 @@ public class AbilityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 	public void OnPointerEnter(PointerEventData eventData) {
 		if (!selected)
 			button.color = hover;
+
+
+		OnAbilityEnter.RaiseAll();
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
 		if (!selected)
 			button.color = color;
+
+		OnAbilityExit.RaiseAll();
 	}
 
 	public void Reset() {

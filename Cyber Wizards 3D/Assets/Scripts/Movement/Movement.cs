@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour {
 	GameObject turnMaster;
 	NavMeshAgent nav;
 
+	bool movementEnabled;
+
 	public void Update() {
 		// Tallennetaan Navmeshin distance
 		dist = nav.remainingDistance;
@@ -43,12 +45,15 @@ public class Movement : MonoBehaviour {
 		//    NavMesh.CalculatePath(raypoint.position, target, NavMesh.AllAreas, path);
 		//}
 		//}
-#endregion
+		#endregion
 
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
-		if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask) && !GameManager.Instance.Moving && !EventSystem.current.IsPointerOverGameObject()) {
-			CalculatePath(hit);
+
+		if (movementEnabled) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask) && !GameManager.Instance.Moving && !EventSystem.current.IsPointerOverGameObject()) {
+				CalculatePath(hit);
+			}
 		}
 	}
 
@@ -93,7 +98,7 @@ public class Movement : MonoBehaviour {
 		//		customCursor.transform.position = hitp.position;
 		//	}
 		//}
-#endregion
+		#endregion
 
 		// Ei löytynyt seinää, joten liikutaan normaalisti 3D hiiren sijaintiin
 		if (hit.transform.CompareTag("Ground")) {
@@ -122,12 +127,17 @@ public class Movement : MonoBehaviour {
 
 	//	return (Mathf.RoundToInt(lng) / 2) + 1;
 	//}
-#endregion
+	#endregion
 
 	public void OnTurnMasterChanged() {
+		movementEnabled = true;
 		turnMaster = GameManager.Instance.TurnMaster;
 		nav = turnMaster.GetComponent<NavMeshAgent>();
 		movementRange = turnMaster.GetComponent<Stats>().GetMovementRange();
 		circlePosition = turnMaster.transform.position;
+	}
+
+	public void OnAbilitySelected() {
+		movementEnabled = false;
 	}
 }

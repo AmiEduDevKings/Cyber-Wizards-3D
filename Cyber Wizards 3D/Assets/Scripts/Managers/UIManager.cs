@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		buttonsCount = abilitybarRef.transform.childCount;
-		Debug.Log(buttonsCount);
 	}
 
 	public void OnTurnMasterChanged() {

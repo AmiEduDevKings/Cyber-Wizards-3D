@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : SingletonBehaviour<GameManager> {
 
+	public bool m_DebugLogging;
+
 	public GameEvent OnTurnMasterChanged;
 	public GameObject TurnMaster { get; set; }
 
@@ -11,7 +13,9 @@ public class GameManager : SingletonBehaviour<GameManager> {
 	public bool Casting { get; set; }
 
 	public void SetTurnMaster(GameObject character) {
+		if(m_DebugLogging)
 		Log("TurnMaster Changed!");
+
 		TurnMaster = character;
 		OnTurnMasterChanged.RaiseAll();
 	}

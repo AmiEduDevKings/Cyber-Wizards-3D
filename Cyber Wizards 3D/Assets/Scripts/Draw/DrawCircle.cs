@@ -2,6 +2,10 @@
 
 [RequireComponent(typeof (LineRenderer))]
 public class DrawCircle : MonoBehaviour {
+
+	public Color movement;
+	public Color targeting;
+
     [Range(0, 50)]
     public int segments = 50;
 
@@ -34,11 +38,29 @@ public class DrawCircle : MonoBehaviour {
         line.positionCount = 0;
     }
 
-	public void OnDrawCircle() {
+	public void OnTurnMasterChanged() {
 		RemovePoints();
+		line.materials[0].SetColor("_EmissionColor", movement);
 		GameObject c = GameManager.Instance.TurnMaster;
 		transform.position = c.transform.position + new Vector3(0f, .3f, 0f);
 		Stats s = c.GetComponent<Stats>();
 		CreatePoints(s.GetMovementRange(), s.GetMovementRange());
+	}
+
+	public void OnAbilitySelected() {
+		RemovePoints();
+		line.materials[0].SetColor("_EmissionColor", targeting);
+		GameObject c = GameManager.Instance.TurnMaster;
+		transform.position = c.transform.position + new Vector3(0f, .3f, 0f);
+		Ability a = AbilityManager.Instance.Ability;
+		CreatePoints(a.range, a.range);
+	}
+
+	public void OnAbilityEnter() {
+
+	}
+
+	public void OnAbilityExit() {
+
 	}
 }

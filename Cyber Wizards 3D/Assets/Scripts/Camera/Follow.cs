@@ -60,13 +60,18 @@ public class Follow : MonoBehaviour {
 
 	IEnumerator Move(Vector3 target) {
 		while (isKeyPressed != true && Vector3.Distance(cameraHandler.transform.position, target) > 0.3f) {
-			Debug.Log("Camera Follow -> Moving...");
+
+			if (GameManager.Instance.m_DebugLogging)
+				Debug.Log("Camera Follow -> Moving...");
+
 			isCentering = true;
 			cameraHandler.transform.position = Vector3.SmoothDamp(cameraHandler.transform.position, target, ref velocity, smoothTime);
 			yield return new WaitForEndOfFrame();
 		}
 
-		Debug.Log("Camera Follow -> Exiting Move...");
+		if (GameManager.Instance.m_DebugLogging)
+			Debug.Log("Camera Follow -> Exiting Move...");
+
 		isCentering = false;
 	}
 

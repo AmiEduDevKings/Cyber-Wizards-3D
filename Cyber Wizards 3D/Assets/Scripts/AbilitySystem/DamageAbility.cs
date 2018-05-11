@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ablities/Damage")]
+[CreateAssetMenu(menuName = "Abilities/Damage")]
 public class DamageAbility : Ability
 {
 

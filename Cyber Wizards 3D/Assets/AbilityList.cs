@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class AbilityList : MonoBehaviour {
 
-	public List<Ability> ablityList;
+	public List<Ability> abilityList;
 	
 }

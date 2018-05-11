@@ -35,7 +35,7 @@ public class Follow : MonoBehaviour {
 
 	private void LateUpdate() {
 		if (isCentering) {
-			isKeyPressed = Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f;
+			isKeyPressed = Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f || Input.GetAxis("Mouse ScrollWheel") != 0f;
 		}
 
 		float mouseScroll = -Input.GetAxis("Mouse ScrollWheel");

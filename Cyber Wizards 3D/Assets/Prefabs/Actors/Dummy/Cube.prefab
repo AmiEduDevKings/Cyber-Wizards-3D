@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65968001423050196}
   - component: {fileID: 195388669519600752}
   - component: {fileID: 114075926754660530}
+  - component: {fileID: 114800286472608566}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033468336305046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -109,7 +110,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac847df9791d517419f5e0856174f660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: b18b21ac4381e31488d81a7bfd4879c5, type: 2}
   movementRange: 10
+  health: 0
+  speed: 0
+  actionPoints: 0
+  currentActionPoints: 0
+  currentHealth: 0
+--- !u!114 &114800286472608566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033468336305046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9841a2a3ae81e4e4a807ca96fb9dbcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ablityList:
+  - {fileID: 11400000, guid: 7184978be8ac33b40a453b161b3c6222, type: 2}
+  - {fileID: 11400000, guid: 7184978be8ac33b40a453b161b3c6222, type: 2}
+  - {fileID: 11400000, guid: 7184978be8ac33b40a453b161b3c6222, type: 2}
 --- !u!195 &195388669519600752
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -6,10 +6,7 @@ namespace legacyScripts
 {
 	public abstract class Character : ScriptableObject
 	{
-
-
-
-
+		
 		public Ability[] abilities;
 
 		public int health;

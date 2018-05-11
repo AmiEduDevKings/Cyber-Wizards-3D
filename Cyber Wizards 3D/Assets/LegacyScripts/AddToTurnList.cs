@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddToTurnList : MonoBehaviour {
+namespace legacyScripts
+{
 
-	public Combat Combat;
-	//combat event lista vois olla hyvä
-	private void OnEnable()
+	public class AddToTurnList : MonoBehaviour
 	{
-		Combat.AddToTurnList(gameObject);
+
+		public Combat Combat;
+		//combat event lista vois olla hyvä
+		private void OnEnable()
+		{
+			Combat.AddToTurnList(gameObject);
+		}
+
+
+		private void OnDisable()
+		{
+			Combat.RemoveFromTurnList(gameObject);
+		}
+
+
+
+
 	}
-
-
-	private void OnDisable()
-	{
-		Combat.RemoveFromTurnList(gameObject);
-	}
-
-
-
-
 }
-

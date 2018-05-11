@@ -2,60 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-
-[RequireComponent(typeof(NavMeshAgent))]
-public class CombatMovement : MonoBehaviour
+namespace legacyScripts
 {
 
-	NavMeshAgent agent;
-	public float MovementRange;
-	public LayerMask Mask;
-	public bool canMove;
-	
-	// Use this for initialization
-	void Start()
-	{
-		agent = GetComponent<NavMeshAgent>();
-	}
-
-	// Update is called once per frame
-	void Update()
+	[RequireComponent(typeof(NavMeshAgent))]
+	public class CombatMovement : MonoBehaviour
 	{
 
-		//whileloop enumratoriin tää paska
-		if (canMove)
+		NavMeshAgent agent;
+		public float MovementRange;
+		public LayerMask Mask;
+		public bool canMove;
+
+		// Use this for initialization
+		void Start()
 		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
+			agent = GetComponent<NavMeshAgent>();
+		}
 
+		// Update is called once per frame
+		void Update()
+		{
 
-			if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+			//whileloop enumratoriin tää paska
+			if (canMove)
 			{
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				RaycastHit hit;
 
-				if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask))
+
+				if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
 				{
-					float dist = Vector3.Distance(hit.point, transform.position);
-					Debug.Log("CombatMovement > " + this.name + "distance is: " + dist + ", and movement range is " + MovementRange);
-					if (dist <= MovementRange)
+
+					if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask))
 					{
+						float dist = Vector3.Distance(hit.point, transform.position);
+						Debug.Log("CombatMovement > " + this.name + "distance is: " + dist + ", and movement range is " + MovementRange);
+						if (dist <= MovementRange)
+						{
 
-						StartCoroutine(Move(hit.point));
+							StartCoroutine(Move(hit.point));
 
+						}
 					}
 				}
 			}
+
 		}
 
-	}
 
-
-	IEnumerator Move(Vector3 target)
-	{
-		var path = new NavMeshPath();
-		agent.CalculatePath(target, path);
-		yield return new WaitUntil(() => path.status == NavMeshPathStatus.PathComplete);
-		agent.SetPath(path);
-		canMove = false;
+		IEnumerator Move(Vector3 target)
+		{
+			var path = new NavMeshPath();
+			agent.CalculatePath(target, path);
+			yield return new WaitUntil(() => path.status == NavMeshPathStatus.PathComplete);
+			agent.SetPath(path);
+			canMove = false;
+		}
 	}
 }

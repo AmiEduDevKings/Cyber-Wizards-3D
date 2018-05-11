@@ -4,45 +4,56 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AbilityPanelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
+namespace legacyScripts
+{
 
-	Image button;
+	public class AbilityPanelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+	{
 
-	public Color color;
-	public Color hover;
-	public Color pressed;
+		Image button;
 
-	bool selected = false;
+		public Color color;
+		public Color hover;
+		public Color pressed;
 
-	private void Start() {
-		button = GetComponent<Image>();
+		bool selected = false;
 
-		Reset();
-	}
+		private void Start()
+		{
+			button = GetComponent<Image>();
 
-	public void OnPointerClick(PointerEventData eventData) {
-		for(int i = 0; i < transform.parent.childCount; i++) {
-			transform.parent.GetChild(i).GetComponent<Image>().color = color;
-			transform.parent.GetChild(i).GetComponent<AbilityPanelButton>().selected = false;
+			Reset();
 		}
 
-		selected = true;
-		button.color = pressed;
-	}
+		public void OnPointerClick(PointerEventData eventData)
+		{
+			for (int i = 0; i < transform.parent.childCount; i++)
+			{
+				transform.parent.GetChild(i).GetComponent<Image>().color = color;
+				transform.parent.GetChild(i).GetComponent<AbilityPanelButton>().selected = false;
+			}
 
-	public void OnPointerEnter(PointerEventData eventData) {
-		if(!selected)
-		button.color = hover;
-	}
+			selected = true;
+			button.color = pressed;
+		}
 
-	public void OnPointerExit(PointerEventData eventData) {
-		if(!selected)
-		button.color = color;
-	}
+		public void OnPointerEnter(PointerEventData eventData)
+		{
+			if (!selected)
+				button.color = hover;
+		}
 
-	public void Reset() {
-		selected = false;
-		button.color = color;
-	}
+		public void OnPointerExit(PointerEventData eventData)
+		{
+			if (!selected)
+				button.color = color;
+		}
 
+		public void Reset()
+		{
+			selected = false;
+			button.color = color;
+		}
+
+	}
 }

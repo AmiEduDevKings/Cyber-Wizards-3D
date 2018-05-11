@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum Mode {
-	MOVEMENT,
-	TARGETING
+namespace legacyScripts
+{
+	public enum Mode
+	{
+		MOVEMENT,
+		TARGETING
+	}
 }

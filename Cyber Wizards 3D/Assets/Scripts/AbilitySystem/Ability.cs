@@ -25,4 +25,36 @@ public abstract class Ability : ScriptableObject {
 
 	public abstract void Print();
 	public abstract void TriggerAbility(GameObject target);
+
+
+	public virtual void Cast(GameObject caster, GameObject target)
+	{
+		target.GetComponent<MonoBehaviour>().StartCoroutine(ExecuteAbility(caster, target));
+	}
+
+	public virtual IEnumerator ExecuteAbility(GameObject caster, GameObject target)
+	{
+		
+		if (effect1 != null)
+		{
+			Instantiate(effect1, caster.transform.position, Quaternion.identity);
+			yield return new WaitForSeconds(startUpTime);
+		}
+
+		if (effect2 != null)
+		{
+			Instantiate(effect2, target.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			yield return new WaitForSeconds(duration);
+		}
+
+		if (effect3 != null)
+		{
+			Instantiate(effect3, target.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+			yield return new WaitForSeconds(endTime);
+		}
+
+		Debug.Log("AbilitiesInformation > Ability Executed!");
+		
+	}
+
 }

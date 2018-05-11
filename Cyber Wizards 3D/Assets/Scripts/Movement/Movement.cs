@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour {
 
 	public Vector3 target;
 	public LayerMask mask;
-	public GameObject customCursor;
+	public GameObject worldspaceCursor;
 
 	public float movementRange;
 	float dist;
@@ -72,7 +72,7 @@ public class Movement : MonoBehaviour {
 		Vector3 pointerPosition = circlePosition + (dir.normalized * mouseDistanceFromCircle);
 
 		// Laitetaan 3D hiiren laskettuun sijaintiin
-		customCursor.transform.position = pointerPosition;
+		worldspaceCursor.transform.position = pointerPosition;
 
 		// Piiretään ray debuggausta varten
 		Debug.DrawRay(circlePosition, dir, Color.green);

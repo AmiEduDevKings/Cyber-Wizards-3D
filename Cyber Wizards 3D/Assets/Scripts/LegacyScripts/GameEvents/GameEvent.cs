@@ -3,27 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace legacyScripts {
+	[CreateAssetMenu(menuName = "Game Event")]
+	public class GameEvent : ScriptableObject {
 
-[CreateAssetMenu(menuName = "Game Event")]
-public class GameEvent : ScriptableObject {
+		List<GameEventListener> activeListeners = new List<GameEventListener>();
 
-	List<GameEventListener> activeListeners = new List<GameEventListener>();
+		public void AddListener(GameEventListener gameEventListener) {
+			activeListeners.Add(gameEventListener);
+		}
 
-	public void AddListener(GameEventListener gameEventListener)
-	{
-		activeListeners.Add(gameEventListener);
-	}
+		public void RemoveListener(GameEventListener gameEventListener) {
+			activeListeners.Remove(gameEventListener);
+		}
 
-	public void RemoveListener(GameEventListener gameEventListener) {
-		activeListeners.Remove(gameEventListener);
-	}
-
-	public void Raise() {
-		for (var i = activeListeners.Count - 1; i >= 0; i--)
-		{
-			activeListeners[i].OnEventRaised();
+		public void Raise() {
+			for (var i = activeListeners.Count - 1; i >= 0; i--) {
+				activeListeners[i].OnEventRaised();
+			}
 		}
 	}
-
 
 }

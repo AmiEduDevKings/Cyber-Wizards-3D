@@ -3,25 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+namespace legacyScripts {
+	public class GameEventListener : MonoBehaviour {
 
-public class GameEventListener : MonoBehaviour
-{
+		public GameEvent ListenedEvent;
 
-	public GameEvent ListenedEvent;
+		public UnityEvent OnEvent;
 
-	public UnityEvent OnEvent;
+		public void OnEventRaised() {
+			OnEvent.Invoke();
+		}
 
-	public void OnEventRaised() {
-		OnEvent.Invoke();
-	}
+		private void OnEnable() {
+			ListenedEvent.AddListener(this);
+		}
 
-	private void OnEnable()
-	{
-		ListenedEvent.AddListener(this);
-	}
-
-	private void OnDisable()
-	{
-		ListenedEvent.RemoveListener(this);
+		private void OnDisable() {
+			ListenedEvent.RemoveListener(this);
+		}
 	}
 }

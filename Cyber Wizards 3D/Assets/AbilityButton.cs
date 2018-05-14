@@ -6,56 +6,27 @@ using UnityEngine.EventSystems;
 
 public class AbilityButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
-	Image button;
+	[HideInInspector]
+	public int index;
 
-	public GameEvent OnAbilityEnter;
-	public GameEvent OnAbilityExit;
+	[HideInInspector]
+	public bool Selected { get; set; }
 
-	public GameEvent OnClickEvent;
-	public GameEvent onSelectedEvent;
-
-	public Color color;
-	public Color hover;
-	public Color pressed;
-
-	bool selected = false;
+	Abilitybar abilitybar;
 
 	private void Start() {
-		button = GetComponent<Image>();
-
-		Reset();
+		abilitybar = GetComponentInParent<Abilitybar>();
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
-		for (int i = 0; i < transform.parent.childCount; i++) {
-			transform.parent.GetChild(i).GetComponent<Image>().color = color;
-			transform.parent.GetChild(i).GetComponent<AbilityButton>().selected = false;
-		}
-
-		OnClickEvent.RaiseAll();
-		onSelectedEvent.RaiseAll();
-		selected = true;
-		button.color = pressed;
+		abilitybar.OnClick(index);
 	}
 
 	public void OnPointerEnter(PointerEventData eventData) {
-		if (!selected)
-			button.color = hover;
-
-
-		OnAbilityEnter.RaiseAll();
+		abilitybar.OnAbilityEnter(index);
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
-		if (!selected)
-			button.color = color;
-
-		OnAbilityExit.RaiseAll();
+		abilitybar.AbilityExit(index);
 	}
-
-	public void Reset() {
-		selected = false;
-		button.color = color;
-	}
-
 }

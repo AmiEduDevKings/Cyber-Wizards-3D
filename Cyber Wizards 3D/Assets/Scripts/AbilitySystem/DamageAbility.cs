@@ -50,16 +50,16 @@ public class DamageAbility : Ability
 		if (effect3 != null)
 		{
 			p3 = Instantiate(effect3, target.transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
-			TriggerAbility(target);
 			yield return new WaitForSeconds(endTime);
 		}
+		TriggerAbility(target);
 		Debug.Log("AbilitiesInformation > Ability Executed!");
-		//GameManager.Instance.casting = false;
+		GameManager.Instance.Casting = false;
 	}
 
 	public override void Cast(GameObject caster, GameObject target)
 	{
-		//GameManager.Instance.casting = true;
+		GameManager.Instance.Casting = true;
 		target.GetComponent<MonoBehaviour>().StartCoroutine(ExecuteAbility(caster, target));
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -211,6 +211,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: c130c524f666d2a41896dd981029dd9a,
         type: 2}
+    - target: {fileID: 1033468336305046, guid: a747d706843387f47a7c2ced2b6e3153, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a747d706843387f47a7c2ced2b6e3153, type: 2}
   m_IsPrefabParent: 0
@@ -274,12 +278,12 @@ Prefab:
     - target: {fileID: 224465682242705110, guid: fd74cd39901a3b441b8cf33ba6c11a33,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 860
+      value: 860.2
       objectReference: {fileID: 0}
     - target: {fileID: 224465682242705110, guid: fd74cd39901a3b441b8cf33ba6c11a33,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -532
+      value: -489.99
       objectReference: {fileID: 0}
     - target: {fileID: 224465682242705110, guid: fd74cd39901a3b441b8cf33ba6c11a33,
         type: 2}
@@ -442,6 +446,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 202978d2c39b35f40b78e594eadd9ec8,
         type: 2}
+    - target: {fileID: 1033468336305046, guid: a747d706843387f47a7c2ced2b6e3153, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a747d706843387f47a7c2ced2b6e3153, type: 2}
   m_IsPrefabParent: 0
@@ -505,7 +513,7 @@ Prefab:
     - target: {fileID: 224023739425186386, guid: 3e8c776ed5b7e2944abb2029d2d1b398,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -543.84
+      value: -501.83
       objectReference: {fileID: 0}
     - target: {fileID: 224023739425186386, guid: 3e8c776ed5b7e2944abb2029d2d1b398,
         type: 2}
@@ -915,6 +923,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 5ab8864a88ac3b04598a46ad379e5c74,
         type: 2}
+    - target: {fileID: 1033468336305046, guid: a747d706843387f47a7c2ced2b6e3153, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a747d706843387f47a7c2ced2b6e3153, type: 2}
   m_IsPrefabParent: 0
@@ -1576,6 +1588,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 20789a31655d6144296426d796664d74, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20789a31655d6144296426d796664d74, type: 3}
   m_IsPrefabParent: 0
@@ -1617,6 +1633,10 @@ Prefab:
     - target: {fileID: 400000, guid: 076e9116470a3c849bb3ee63ab14c1ed, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 076e9116470a3c849bb3ee63ab14c1ed, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 076e9116470a3c849bb3ee63ab14c1ed, type: 3}
@@ -1676,6 +1696,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 31acfe92bf877874fb0aa61dd4bcd949, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31acfe92bf877874fb0aa61dd4bcd949, type: 3}
   m_IsPrefabParent: 0
@@ -1699,6 +1723,7 @@ GameObject:
   - component: {fileID: 1305911672}
   - component: {fileID: 1305911673}
   - component: {fileID: 1305911674}
+  - component: {fileID: 1305911675}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -1764,6 +1789,34 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1305911675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1305911671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 338e0f8f99a85ed4d86b92bd2750fb1d, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1305911673}
+        m_MethodName: OnAbilitySelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1318585252 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1407778540311078, guid: 9f72e5b1086c40f4594563f0c3214a59,
@@ -1775,6 +1828,34 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1487040089}
   m_Script: {fileID: 11500000, guid: dd47b5aca3325954aacbc35e80faebe7, type: 3}
+--- !u!114 &1318585254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318585252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 338e0f8f99a85ed4d86b92bd2750fb1d, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1318585253}
+        m_MethodName: OnAbilitySelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1318585258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2030,6 +2111,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1740868976}
   - component: {fileID: 1740868977}
+  - component: {fileID: 1740868978}
+  - component: {fileID: 1740868979}
   m_Layer: 0
   m_Name: Targeting
   m_TagString: Untagged
@@ -2056,11 +2139,70 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1740868975}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08c0e88ae6b935c4f94727cf76c6c6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &1740868978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740868975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 338e0f8f99a85ed4d86b92bd2750fb1d, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740868977}
+        m_MethodName: OnAbilitySelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1740868979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1740868975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: d3ce945895445b842a5f5c5d3a71a62e, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740868977}
+        m_MethodName: OnTurnChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1750919750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,7 +2593,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1920993640}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Actors
   m_TagString: Untagged
   m_Icon: {fileID: 0}

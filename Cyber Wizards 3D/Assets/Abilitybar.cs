@@ -31,6 +31,12 @@ public class Abilitybar : MonoBehaviour {
 	}
 
 	public void AbilityExit(int index) {
+		//for (int i = 0; i < children.Count; i++) {
+		//	if (children[i].GetComponent<AbilityButton>().Selected) {
+		//		return;
+		//	}
+		//}
+
 		AbilityManager.Instance.HoveredAbility(null);
 		ResetAllExceptSelected();
 		OnAbilityExit.RaiseAll();

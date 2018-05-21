@@ -66,6 +66,11 @@ public class DrawCircle : MonoBehaviour {
 	}
 
 	public void OnAbilityExit() {
+		if(AbilityManager.Instance.Ability != null) {
+			OnAbilitySelected();
+			return;
+		}
+
 		transform.SetParent(null);
 		RemovePoints();
 	}

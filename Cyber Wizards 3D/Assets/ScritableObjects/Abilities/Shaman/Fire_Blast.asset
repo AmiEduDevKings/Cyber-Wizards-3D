@@ -15,12 +15,12 @@ MonoBehaviour:
   id: -1
   icon: {fileID: 0}
   name: Fire Blast
-  effect1: {fileID: 0}
-  effect2: {fileID: 0}
-  effect3: {fileID: 0}
-  startUpTime: 0
-  duration: 0
-  endTime: 0
-  velocity: 0
+  effect1: {fileID: 198326844878355520, guid: b78cc08759f495f4ba4ab90851aa6034, type: 2}
+  effect2: {fileID: 198916854529027860, guid: 4ddfe2e39de127b4097fd9f7275e72b6, type: 2}
+  effect3: {fileID: 198425627620820718, guid: e09fbbe38a0eb84418b1092473150b34, type: 2}
+  startUpTime: 2
+  duration: 2
+  endTime: 2
+  velocity: 5
   range: 6
   damagePower: 0

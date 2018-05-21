@@ -112,7 +112,6 @@ public class Movement : MonoBehaviour {
 
 	public void Move(Vector3 destination) {
 		nav.SetDestination(destination);
-		GameManager.Instance.Moving = true;
 	}
 
 	#region commented

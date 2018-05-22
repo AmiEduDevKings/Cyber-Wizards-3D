@@ -9,12 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de222d436689b0041a847417eeb1ec31, type: 3}
-  m_Name: Stand_Behind_Me
+  m_Name: Mighty_Throw
   m_EditorClassIdentifier: 
-  textColor: {r: 0, g: 0, b: 0, a: 0}
+  textColor: {r: 1, g: 0, b: 0, a: 1}
   id: -1
   icon: {fileID: 0}
-  name: Stand Behind Me
+  name: Mighty Throw
+  description: Grabs nearby object and throws it at the target to stun and damage
   effect1: {fileID: 0}
   effect2: {fileID: 0}
   effect3: {fileID: 0}
@@ -22,4 +23,5 @@ MonoBehaviour:
   duration: 0
   endTime: 0
   velocity: 0
-  range: 0
+  range: 10
+  damagePower: 0

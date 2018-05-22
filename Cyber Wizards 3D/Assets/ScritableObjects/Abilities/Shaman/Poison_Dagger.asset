@@ -9,18 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de222d436689b0041a847417eeb1ec31, type: 3}
-  m_Name: Fire_Blast
+  m_Name: Poison_Dagger
   m_EditorClassIdentifier: 
-  textColor: {r: 0, g: 0, b: 0, a: 0}
+  textColor: {r: 0.043137256, g: 1, b: 0, a: 1}
   id: -1
   icon: {fileID: 0}
-  name: Fire Blast
+  name: Poison Dagger
+  description: Shaman uses his dagger to stab an enemy, inflicting a debuff
   effect1: {fileID: 198326844878355520, guid: b78cc08759f495f4ba4ab90851aa6034, type: 2}
   effect2: {fileID: 198916854529027860, guid: 4ddfe2e39de127b4097fd9f7275e72b6, type: 2}
   effect3: {fileID: 198425627620820718, guid: e09fbbe38a0eb84418b1092473150b34, type: 2}
   startUpTime: 2
   duration: 2
   endTime: 2
-  velocity: 5
-  range: 6
+  velocity: 1
+  range: 1
   damagePower: 0

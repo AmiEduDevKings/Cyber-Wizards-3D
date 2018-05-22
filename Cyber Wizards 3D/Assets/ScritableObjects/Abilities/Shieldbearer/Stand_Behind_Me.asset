@@ -11,10 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de222d436689b0041a847417eeb1ec31, type: 3}
   m_Name: Stand_Behind_Me
   m_EditorClassIdentifier: 
-  textColor: {r: 0, g: 0, b: 0, a: 0}
+  textColor: {r: 0, g: 0.627451, b: 1, a: 1}
   id: -1
   icon: {fileID: 0}
-  name: Stand Behind Me
+  name: Charge
+  description: Charges forward, stunning enemies in the path. Does no damage.
   effect1: {fileID: 0}
   effect2: {fileID: 0}
   effect3: {fileID: 0}
@@ -23,3 +24,4 @@ MonoBehaviour:
   endTime: 0
   velocity: 0
   range: 0
+  damagePower: 0

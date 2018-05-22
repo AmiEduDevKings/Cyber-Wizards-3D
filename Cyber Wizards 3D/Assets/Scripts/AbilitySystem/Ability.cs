@@ -11,6 +11,7 @@ public abstract class Ability : ScriptableObject {
 	public int id = -1;
 	public Sprite icon;
 	public new string name = "new ability";
+	public string description = "Default";
 
 	public ParticleSystem effect1;
 	public ParticleSystem effect2;

@@ -9,18 +9,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de222d436689b0041a847417eeb1ec31, type: 3}
-  m_Name: Block
+  m_Name: Raise_Shield
   m_EditorClassIdentifier: 
-  textColor: {r: 0, g: 0, b: 0, a: 0}
+  textColor: {r: 0, g: 0.627451, b: 1, a: 1}
   id: -1
   icon: {fileID: 0}
-  name: Block
+  name: Raise Shield
+  description: Protects allies behind him, taking damage himself. Cannot attack for
+    one turn
   effect1: {fileID: 0}
   effect2: {fileID: 0}
   effect3: {fileID: 0}
-  startUpTime: 0
-  duration: 0
-  endTime: 0
-  velocity: 0
+  startUpTime: 2
+  duration: 2
+  endTime: 2
+  velocity: 2
   range: 2
   damagePower: 0

@@ -16,12 +16,12 @@ MonoBehaviour:
   icon: {fileID: 0}
   name: Listen To The Gods
   description: Shaman enters a trance-like state, protecting his allies in an area
-  effect1: {fileID: 198326844878355520, guid: 00d024891bba91f4aa4e29ab37e9921f, type: 2}
-  effect2: {fileID: 198916854529027860, guid: a21a0724b6cf5274a80bfef859eb13eb, type: 2}
-  effect3: {fileID: 198425627620820718, guid: ea7f109b2f360de499019a184b8ee65a, type: 2}
+  effect1: {fileID: 198326844878355520, guid: 9f5699f7ccadfb44397545c1809bd4a5, type: 2}
+  effect2: {fileID: 0}
+  effect3: {fileID: 198425627620820718, guid: 721de330c2e323e43a3f996765bfedb3, type: 2}
   startUpTime: 2
   duration: 2
   endTime: 2
-  velocity: 5
-  range: 6
+  velocity: 0
+  range: 0.1
   damagePower: 0

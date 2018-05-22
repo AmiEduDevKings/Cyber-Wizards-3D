@@ -24,5 +24,5 @@ MonoBehaviour:
   duration: 2
   endTime: 2
   velocity: 2
-  range: 2
+  range: 0.1
   damagePower: 0

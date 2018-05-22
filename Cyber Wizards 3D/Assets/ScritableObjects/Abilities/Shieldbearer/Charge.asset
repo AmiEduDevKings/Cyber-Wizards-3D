@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de222d436689b0041a847417eeb1ec31, type: 3}
-  m_Name: Stand_Behind_Me
+  m_Name: Charge
   m_EditorClassIdentifier: 
   textColor: {r: 0, g: 0.627451, b: 1, a: 1}
   id: -1
@@ -23,5 +23,5 @@ MonoBehaviour:
   duration: 0
   endTime: 0
   velocity: 0
-  range: 0
+  range: 7
   damagePower: 0

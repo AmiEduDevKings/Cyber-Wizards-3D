@@ -974,7 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7078ca2548abf74fbccd7bbfae8a83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DebugLogging: 1
+  m_DebugLogging: 0
   OnTurnMasterChanged: {fileID: 11400000, guid: bf2d0aab1d168ac4492b8a0a7dbaf571,
     type: 2}
 --- !u!1 &748155583 stripped
@@ -2851,7 +2851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnTurnChanged: {fileID: 11400000, guid: d3ce945895445b842a5f5c5d3a71a62e, type: 2}
-  isEnabled: 1
+  isEnabled: 0
   panel: {fileID: 1235881210}
 --- !u!1 &1740868975
 GameObject:

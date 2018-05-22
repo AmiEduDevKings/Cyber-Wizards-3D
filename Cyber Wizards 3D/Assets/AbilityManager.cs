@@ -31,15 +31,15 @@ public class AbilityManager : SingletonBehaviour<AbilityManager> {
 	}
 
 	public void SelectedAbility(Ability ability) {
-		if (ability != null)
-			Debug.Log("Selected: " + ability.name);
+		if (ability != null && GameManager.Instance.m_DebugLogging)
+			Debug.Log("AbilityManager -> Selected: " + ability.name);
 
 		Ability = ability;
 	}
 
 	public void HoveredAbility(Ability ability) {
-		if (ability != null)
-			Debug.Log("Hovering over: " + ability.name);
+		if (ability != null && GameManager.Instance.m_DebugLogging)
+			Debug.Log("AbilityManager -> Hovering over: " + ability.name);
 
 		Hovered = ability;
 	}

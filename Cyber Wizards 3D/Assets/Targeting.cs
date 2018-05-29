@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Targeting : MonoBehaviour {
 
+	public GameEvent OnAbilityUsed;
 	public LayerMask mask;
 	bool targetingEnabled = false;
 
@@ -21,10 +22,14 @@ public class Targeting : MonoBehaviour {
 						GameObject target = hit.collider.gameObject;
 						Ability ability = AbilityManager.Instance.Ability;
 
-						if(Vector3.Distance(caster.transform.position, target.transform.position) < ability.range) {
+						if(Vector3.Distance(caster.transform.position, target.transform.position) < ability.range &&
+							caster.GetComponent<Stats>().currentActionPoints >= ability.cost) {
+							OnAbilityUsed.RaiseAll();
 							ability.Cast(caster, target);
 						} else {
-							Debug.Log("Targeting -> Out of ability range");
+
+							if(GameManager.Instance.m_DebugLogging)
+							Debug.Log("Targeting -> Out of ability range or not enough action points!");
 						}
 					}
 				}

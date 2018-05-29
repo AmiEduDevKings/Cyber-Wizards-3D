@@ -6,6 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour {
 
 	public GameObject abilitybarRef;
+	public GameObject actionPointsRef;
 
 	private int buttonsCount;
 	// Use this for initialization
@@ -14,11 +15,8 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void OnTurnMasterChanged() {
-		UpdateUI();
-	}
-
-	public void UpdateUI() {
 		UpdateAbilitybar();
+		UpdateStats();
 	}
 
 	void UpdateAbilitybar() {
@@ -26,5 +24,9 @@ public class UIManager : MonoBehaviour {
 		for(int i = 0; i < buttonsCount; i++) {
 			abilitybarRef.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = l[i].name;
 		}
+	}
+
+	public void UpdateStats() {
+		actionPointsRef.GetComponent<TextMeshProUGUI>().text = "ActionPoints: " + GameManager.Instance.TurnMaster.GetComponent<Stats>().currentActionPoints;
 	}
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   name: Poison Dagger
   description: Shaman uses his dagger to stab an enemy, inflicting a debuff
+  cost: 4
   effect1: {fileID: 198326844878355520, guid: b78cc08759f495f4ba4ab90851aa6034, type: 2}
   effect2: {fileID: 198916854529027860, guid: 4ddfe2e39de127b4097fd9f7275e72b6, type: 2}
   effect3: {fileID: 198425627620820718, guid: e09fbbe38a0eb84418b1092473150b34, type: 2}

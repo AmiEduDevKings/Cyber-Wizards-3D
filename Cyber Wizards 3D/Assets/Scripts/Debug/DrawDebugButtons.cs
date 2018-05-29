@@ -48,7 +48,11 @@ namespace dks {
 
 public class DrawDebugButtons : MonoBehaviour {
 
+	// GameEvents
 	public GameEvent OnTurnChanged;
+	public GameEvent OnResetActionPoints;
+
+
 	public bool isEnabled = true;
 	public GameObject panel;
 
@@ -58,12 +62,12 @@ public class DrawDebugButtons : MonoBehaviour {
 
 	dks.DebugRect debugRect = new dks.DebugRect(m_buttonWidth, m_buttonHeight, m_offset);
 
-	Rect debugToggle, debugEndturn, debugTestButton1, debugTestButton2;
+	Rect debugToggle, debugEndturn, debugResetActionPoints, debugTestButton2;
 
 	private void Start() {
 		debugToggle = debugRect.Create();
 		debugEndturn = debugRect.Create();
-		debugTestButton1 = debugRect.Create();
+		debugResetActionPoints = debugRect.Create();
 		debugTestButton2 = debugRect.Create();
 	}
 
@@ -85,8 +89,8 @@ public class DrawDebugButtons : MonoBehaviour {
 				OnTurnChanged.RaiseAll();
 			}
 
-			if (GUI.Button(debugTestButton1, "Test Button")) {
-				Debug.LogWarning("Unimplemented!");
+			if (GUI.Button(debugResetActionPoints, "Reset AP")) {
+				OnResetActionPoints.RaiseAll();
 			}
 
 			if (GUI.Button(debugTestButton2, "Test Button")) {

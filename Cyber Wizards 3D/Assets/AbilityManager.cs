@@ -43,4 +43,8 @@ public class AbilityManager : SingletonBehaviour<AbilityManager> {
 
 		Hovered = ability;
 	}
+
+	public void OnAbilityUsed() {
+		GameManager.Instance.TurnMaster.GetComponent<Stats>().currentActionPoints -= Ability.cost;
+	}
 }

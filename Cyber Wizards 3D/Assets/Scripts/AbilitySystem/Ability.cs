@@ -13,6 +13,8 @@ public abstract class Ability : ScriptableObject {
 	public new string name = "new ability";
 	public string description = "Default";
 
+	public int cost;
+
 	public ParticleSystem effect1;
 	public ParticleSystem effect2;
 	public ParticleSystem effect3;

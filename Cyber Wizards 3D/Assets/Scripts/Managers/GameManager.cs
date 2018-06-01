@@ -17,6 +17,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
 		Log("TurnMaster Changed!");
 
 		TurnMaster = character;
+
 		OnTurnMasterChanged.RaiseAll();
 	}
 

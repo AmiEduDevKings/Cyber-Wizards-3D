@@ -128,10 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9841a2a3ae81e4e4a807ca96fb9dbcf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ablityList:
-  - {fileID: 11400000, guid: 7184978be8ac33b40a453b161b3c6222, type: 2}
-  - {fileID: 11400000, guid: 7184978be8ac33b40a453b161b3c6222, type: 2}
-  - {fileID: 11400000, guid: 7184978be8ac33b40a453b161b3c6222, type: 2}
+  abilityList: []
 --- !u!195 &195388669519600752
 NavMeshAgent:
   m_ObjectHideFlags: 1

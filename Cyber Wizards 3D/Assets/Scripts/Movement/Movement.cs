@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour {
 			GameManager.Instance.Moving = false;
 		}
 
+
+        
 		#region commented
 		//if (caster.CheckHit(mask) && !EventSystem.current.IsPointerOverGameObject()) {
 		//	EnablePointer();
@@ -49,11 +51,21 @@ public class Movement : MonoBehaviour {
 
 
 		if (movementEnabled) {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask) && !GameManager.Instance.Moving && !EventSystem.current.IsPointerOverGameObject()) {
-				CalculatePath(hit);
-			}
+            if (!turnMaster.GetComponent<GiantAI>())
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask) && !GameManager.Instance.Moving && !EventSystem.current.IsPointerOverGameObject())
+                {
+                    CalculatePath(hit);
+                }
+            }
+            else {
+                turnMaster.GetComponent<GiantAI>().StartTurn();
+            }
+			
+			
 		}
 	}
 

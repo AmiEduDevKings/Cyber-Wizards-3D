@@ -43,11 +43,14 @@ public class Abilitybar : MonoBehaviour {
 	}
 
 	public void OnClick(int index) {
-		ResetAll();
-		children[index].GetComponent<Image>().color = selected;
-		children[index].GetComponent<AbilityButton>().Selected = true;
-		AbilityManager.Instance.SelectedAbility(GameManager.Instance.TurnMaster.GetComponent<AbilityList>().abilityList[index]);
-		OnAbilitySelected.RaiseAll();
+        if (!GameManager.Instance.AiTurn)
+        {
+            ResetAll();
+            children[index].GetComponent<Image>().color = selected;
+            children[index].GetComponent<AbilityButton>().Selected = true;
+            AbilityManager.Instance.SelectedAbility(GameManager.Instance.TurnMaster.GetComponent<AbilityList>().abilityList[index]);
+            OnAbilitySelected.RaiseAll();
+        }
 	}
 
 	public void ResetAllExceptSelected() {

@@ -13,6 +13,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
 
 	public bool Moving { get; set; }
 	public bool Casting { get; set; }
+    public bool AiTurn { get; set; }
 
 	public void SetTurnMaster(GameObject character) {
 		if(m_DebugLogging)
@@ -22,10 +23,12 @@ public class GameManager : SingletonBehaviour<GameManager> {
         {
             Debug.Log("GameManager -> AI Turn!");
             CurrentAi = character;
+            AiTurn = true;
             OnAiTurn.RaiseAll();
             return;
         }
 
+        AiTurn = false;
         TurnMaster = character;
         OnTurnMasterChanged.RaiseAll();
 	}

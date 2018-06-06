@@ -23,6 +23,12 @@ public class WorldspaceCursor : MonoBehaviour {
 		visible = false;
 	}
 
+    public void OnAiTurn()
+    {
+        r.enabled = false;
+        visible = false;
+    }
+
 	public void OnTurnChanged() {
 		r.enabled = true;
 		visible = true;

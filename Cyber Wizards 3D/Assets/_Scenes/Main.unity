@@ -991,6 +991,7 @@ MonoBehaviour:
   m_DebugLogging: 1
   OnTurnMasterChanged: {fileID: 11400000, guid: bf2d0aab1d168ac4492b8a0a7dbaf571,
     type: 2}
+  OnAiTurn: {fileID: 11400000, guid: 92ad6abd6063c054dbc77c7e73d8b1b0, type: 2}
 --- !u!1 &748155583 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1200405610934252, guid: 3e8c776ed5b7e2944abb2029d2d1b398,
@@ -1307,6 +1308,7 @@ GameObject:
   - component: {fileID: 809084860}
   - component: {fileID: 809084861}
   - component: {fileID: 809084862}
+  - component: {fileID: 809084863}
   m_Layer: 0
   m_Name: MovementRange
   m_TagString: Untagged
@@ -1449,6 +1451,34 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 809084861}
         m_MethodName: OnTurnMasterChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &809084863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809084858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 92ad6abd6063c054dbc77c7e73d8b1b0, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 809084861}
+        m_MethodName: RemovePoints
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1620,6 +1650,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1920993640}
     m_Modifications:
+    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: Characters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4119371596880248, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.45
@@ -1630,7 +1665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4119371596880248, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 9.54
+      value: 38.566
       objectReference: {fileID: 0}
     - target: {fileID: 4119371596880248, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1651,6 +1686,26 @@ Prefab:
     - target: {fileID: 4119371596880248, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: Characters.Array.data[0]
+      value: 
+      objectReference: {fileID: 1269950253}
+    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: Characters.Array.data[1]
+      value: 
+      objectReference: {fileID: 800253962}
+    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: Characters.Array.data[2]
+      value: 
+      objectReference: {fileID: 63631406}
+    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: movementRange
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}
@@ -1727,6 +1782,7 @@ GameObject:
   - component: {fileID: 999495523}
   - component: {fileID: 999495529}
   - component: {fileID: 999495524}
+  - component: {fileID: 999495526}
   m_Layer: 0
   m_Name: AbilityRange
   m_TagString: Untagged
@@ -1792,6 +1848,34 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 999495524}
         m_MethodName: OnTurnMasterChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &999495526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 999495522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 92ad6abd6063c054dbc77c7e73d8b1b0, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 999495524}
+        m_MethodName: RemovePoints
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2412,6 +2496,7 @@ GameObject:
   - component: {fileID: 1305911673}
   - component: {fileID: 1305911674}
   - component: {fileID: 1305911675}
+  - component: {fileID: 1305911676}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -2505,6 +2590,34 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1305911676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1305911671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 92ad6abd6063c054dbc77c7e73d8b1b0, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1305911673}
+        m_MethodName: OnAiTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1318585252 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1407778540311078, guid: 9f72e5b1086c40f4594563f0c3214a59,
@@ -2533,6 +2646,34 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1318585253}
         m_MethodName: OnAbilitySelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1318585255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318585252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a957ed0067ccc4db9fdea07ee87451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenedEvent: {fileID: 11400000, guid: 92ad6abd6063c054dbc77c7e73d8b1b0, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1318585253}
+        m_MethodName: OnAiTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -19,13 +19,6 @@ public class Movement : MonoBehaviour {
 	bool movementEnabled;
 
 	public void Update() {
-		// Tallennetaan Navmeshin distance
-		dist = nav.remainingDistance;
-
-		// Jos ollaan määränpäässä niin laitetaan liikkuminen falseksi
-		if (dist != Mathf.Infinity && nav.pathStatus == NavMeshPathStatus.PathComplete && nav.remainingDistance == 0) {
-			GameManager.Instance.Moving = false;
-		}
 
 
         
@@ -51,8 +44,16 @@ public class Movement : MonoBehaviour {
 
 
 		if (movementEnabled) {
-            if (!turnMaster.GetComponent<GiantAI>())
+
+            // Tallennetaan Navmeshin distance
+            dist = nav.remainingDistance;
+
+            // Jos ollaan määränpäässä niin laitetaan liikkuminen falseksi
+            if (dist != Mathf.Infinity && nav.pathStatus == NavMeshPathStatus.PathComplete && nav.remainingDistance == 0)
             {
+                GameManager.Instance.Moving = false;
+            }
+
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
@@ -60,10 +61,6 @@ public class Movement : MonoBehaviour {
                 {
                     CalculatePath(hit);
                 }
-            }
-            else {
-                turnMaster.GetComponent<GiantAI>().StartTurn();
-            }
 			
 			
 		}
@@ -151,4 +148,10 @@ public class Movement : MonoBehaviour {
 	public void OnAbilitySelected() {
 		movementEnabled = false;
 	}
+
+    public void OnAiTurn()
+    {
+        Debug.Log("Disabled movement");
+        movementEnabled = false;
+    }
 }

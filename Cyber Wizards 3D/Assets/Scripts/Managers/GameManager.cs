@@ -7,6 +7,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
 	public bool m_DebugLogging;
 
 	public GameEvent OnTurnMasterChanged;
+    public GameEvent OnAiTurn;
 	public GameObject TurnMaster { get; set; }
 
 	public bool Moving { get; set; }
@@ -16,9 +17,15 @@ public class GameManager : SingletonBehaviour<GameManager> {
 		if(m_DebugLogging)
 		Log("TurnMaster Changed!");
 
-		TurnMaster = character;
+        if (character.GetComponent<GiantAI>())
+        {
+            Debug.Log("GameManager -> AI Turn!");
+            OnAiTurn.RaiseAll();
+            return;
+        }
 
-		OnTurnMasterChanged.RaiseAll();
+        TurnMaster = character;
+        OnTurnMasterChanged.RaiseAll();
 	}
 
 	public void Log(string str) {

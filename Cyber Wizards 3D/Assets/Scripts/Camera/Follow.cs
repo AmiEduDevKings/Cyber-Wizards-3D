@@ -76,11 +76,13 @@ public class Follow : MonoBehaviour {
 	}
 
 	public void OnTurnMasterChanged() {
+        StopAllCoroutines();
 		CenterCameraOn(GameManager.Instance.TurnMaster.transform.position);
-	}
+    }
 
     public void OnAiTurn()
     {
+        StopAllCoroutines();
         CenterCameraOn(GameManager.Instance.CurrentAi.transform.position);
     }
 }

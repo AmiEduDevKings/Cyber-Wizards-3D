@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class GiantAI : MonoBehaviour {
 
     public GameObject[] Characters;
-    public GameEvent OnTurnMasterChanged;
+    public GameEvent OnTurnChanged;
 
     public bool moving = false;
     private NavMeshAgent agent;
@@ -67,7 +67,7 @@ public class GiantAI : MonoBehaviour {
     }
 
     private void EndTurn() {
-        OnTurnMasterChanged.RaiseAll();
+        OnTurnChanged.RaiseAll();
     }
 
     public void StartTurn()

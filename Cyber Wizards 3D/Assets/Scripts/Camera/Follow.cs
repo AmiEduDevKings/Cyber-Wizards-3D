@@ -78,4 +78,9 @@ public class Follow : MonoBehaviour {
 	public void OnTurnMasterChanged() {
 		CenterCameraOn(GameManager.Instance.TurnMaster.transform.position);
 	}
+
+    public void OnAiTurn()
+    {
+        CenterCameraOn(GameManager.Instance.CurrentAi.transform.position);
+    }
 }

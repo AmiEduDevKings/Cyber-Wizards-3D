@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745290017511636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.738639, y: 2.708, z: 8.282356}
+  m_LocalPosition: {x: -1.45, y: 0, z: 38.566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4734677912699506}
@@ -228,8 +228,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fbe5a022e96394f9a94d11acd19160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Characters: []
+  Characters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  OnTurnChanged: {fileID: 11400000, guid: d3ce945895445b842a5f5c5d3a71a62e, type: 2}
   moving: 0
+  movementRange: 10
+  moved: 0
+  path: 0
   Damage: 50
   HittingDistance: 5
 --- !u!195 &195793279614116388

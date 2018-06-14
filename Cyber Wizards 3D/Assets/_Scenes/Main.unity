@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1650,10 +1650,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1920993640}
     m_Modifications:
-    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+    - target: {fileID: 114774428637331272, guid: 41a2e3672ca1f7a40bd750895ef69101,
         type: 2}
-      propertyPath: Characters.Array.size
-      value: 3
+      propertyPath: OnEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4119371596880248, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1702,10 +1702,25 @@ Prefab:
       propertyPath: Characters.Array.data[2]
       value: 
       objectReference: {fileID: 63631406}
-    - target: {fileID: 114975144115644222, guid: 41a2e3672ca1f7a40bd750895ef69101,
+    - target: {fileID: 114774428637331272, guid: 41a2e3672ca1f7a40bd750895ef69101,
         type: 2}
-      propertyPath: movementRange
-      value: 10
+      propertyPath: OnEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774428637331272, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: OnEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774428637331272, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: OnEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774428637331272, guid: 41a2e3672ca1f7a40bd750895ef69101,
+        type: 2}
+      propertyPath: OnEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41a2e3672ca1f7a40bd750895ef69101, type: 2}

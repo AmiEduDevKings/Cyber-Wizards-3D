@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Stats : MonoBehaviour {
 
 	public StatsSO stats;
 	public float movementRange = 20f;
+
+    public UnityEvent DeathEvent;
 
 	[HideInInspector]
 	public float health;
@@ -39,8 +42,8 @@ public class Stats : MonoBehaviour {
 	private void Death()
 	{
 		Debug.Log("Stats: " + name + ": Im Dead");
-		
-		gameObject.SetActive(false);
+
+        DeathEvent.Invoke();
 	}
 
 

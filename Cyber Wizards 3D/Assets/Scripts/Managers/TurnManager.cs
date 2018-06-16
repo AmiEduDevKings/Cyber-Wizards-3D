@@ -6,11 +6,9 @@ public class TurnManager : MonoBehaviour {
 
 	public List<GameObject> turnList = new List<GameObject>();
 
-	int index;
+	int index = 0;
 
-	private void Start() {
-		OnTurnChanged();
-	}
+	
 
 	public void AddToList(GameObject character) {
 		if (!turnList.Contains(character)) {
@@ -30,8 +28,12 @@ public class TurnManager : MonoBehaviour {
 		Debug.LogError("Character " + character.name + " doesn't exist in the turnlist.");
 	}
 
+    public void StartMatch() {
+        turnList[index].GetComponent<TurnStatus>().StartTurn();
+    }
+
 	public void OnTurnChanged() {
 		index = (index + 1) % turnList.Count;
-		GameManager.Instance.SetTurnMaster(turnList[index]);
-	}
+        turnList[index].GetComponent<TurnStatus>().StartTurn();
+    }
 }

@@ -6,15 +6,14 @@ using UnityEngine.AI;
 
 public class GiantAI : MonoBehaviour {
 
-    public GameObject[] Characters;
+    
     public GameEvent OnTurnChanged;
 
     public bool moving = false;
     private NavMeshAgent agent;
     public float movementRange;
-    public float moved;
-    public float path;
-    GameObject target;
+    
+    public GameObject target;
     public int Damage;
     public float HittingDistance;
 
@@ -34,48 +33,27 @@ public class GiantAI : MonoBehaviour {
                 agent.isStopped = true;
                 Hit();
             }
-            
-            
         }
-
-
-	}
+    }
 
     private void Hit()
     {   //tänna animaatiot ja muut paskat
         target.GetComponent<Stats>().TakeDamage(Damage);
         Debug.Log("hittaa hahmoa: " + target + " damagen verran: " + Damage);
         Debug.Log(Vector3.Distance(target.transform.position, gameObject.transform.position));
-    }
-
-    public GameObject GetTargetPosition()
-    {
-        float dist = 0;
-        target = Characters[0];
-        for (int i = 0; i < Characters.Length; i++)
-        {
-
-            if (dist < Vector3.Distance(gameObject.transform.position, Characters[i].transform.position))
-            {
-                dist = Vector3.Distance(gameObject.transform.position, Characters[i].transform.position);
-                target = Characters[i];
-            }
-
-        }
+        EndTurn();
         
-        return target;
     }
 
+   
     private void EndTurn() {
         OnTurnChanged.RaiseAll();
     }
 
     public void StartTurn()
     {
-        agent.SetDestination(GetTargetPosition().transform.position);
+        agent.SetDestination(target.transform.position);
         agent.isStopped = false;
         moving = true;
-        path = agent.destination.magnitude;
-    
     }
 }

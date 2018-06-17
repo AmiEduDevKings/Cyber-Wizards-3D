@@ -9,7 +9,7 @@ public class Stats : MonoBehaviour {
 	public float movementRange = 20f;
 
     public UnityEvent DeathEvent;
-
+    Attack attack;
 	[HideInInspector]
 	public float health;
 
@@ -19,6 +19,8 @@ public class Stats : MonoBehaviour {
 
 	public float actionPoints;
 
+    public float Potion;
+
 	public float currentActionPoints;
 	public float currentHealth;
 
@@ -27,7 +29,8 @@ public class Stats : MonoBehaviour {
 		stats.Initialize(this);
 		currentActionPoints = actionPoints;
 		currentHealth = health;
-	}
+        attack = GetComponent<Attack>();
+    }
 
 	public float GetMovementRange() {
 		return movementRange;
@@ -45,7 +48,9 @@ public class Stats : MonoBehaviour {
 
         DeathEvent.Invoke();
 	}
-
+    public void UseActionPoint() {
+        currentActionPoints--;
+    }
 
 	public void TakeDamage(int amount)
 	{
@@ -56,4 +61,18 @@ public class Stats : MonoBehaviour {
 			Death();
 		}
 	}
+
+    public void UsePotion() {
+        if (currentActionPoints > 0) {
+            Debug.Log("käytit potionin");
+            currentHealth += Potion;
+        }
+    }
+
+    public void Buff() {
+        if (currentActionPoints > 0) {
+            Debug.Log("Käytit buffia");
+            attack.BoostDamage();
+        }
+    }
 }

@@ -39,8 +39,8 @@ public class GiantAI : MonoBehaviour {
     private void Hit()
     {   //tänna animaatiot ja muut paskat
         target.GetComponent<Stats>().TakeDamage(Damage);
-        Debug.Log("hittaa hahmoa: " + target + " damagen verran: " + Damage);
-        Debug.Log(Vector3.Distance(target.transform.position, gameObject.transform.position));
+        Debug.Log("Giant hittaa hahmoa: " + target + " damagen verran: " + Damage);
+        
         EndTurn();
         
     }

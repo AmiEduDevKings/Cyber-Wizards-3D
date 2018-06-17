@@ -27,27 +27,21 @@ public class CombatMovement : MonoBehaviour
         //whileloop enumratoriin tää paska
         if (canMove)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-
             if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, Mask))
+                Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                RaycastHit interactionInfo;
+                if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
                 {
-                    float dist = Vector3.Distance(hit.point, transform.position);
-
-                    if (dist <= MovementRange)
-                    {
-
-                        StartCoroutine(Move(hit.point));
-
-                    }
+                    agent.stoppingDistance = 0f;
+                    agent.destination = interactionInfo.point;
+                    canMove = false;
+                    Debug.Log("liikuit combatissa");
                 }
             }
         }
-
     }
 
 
@@ -56,12 +50,5 @@ public class CombatMovement : MonoBehaviour
         canMove = true;
     }
 
-    IEnumerator Move(Vector3 target)
-    {
-        var path = new NavMeshPath();
-        agent.CalculatePath(target, path);
-        yield return new WaitUntil(() => path.status == NavMeshPathStatus.PathComplete);
-        agent.SetPath(path);
-        canMove = false;
-    }
+  
 }

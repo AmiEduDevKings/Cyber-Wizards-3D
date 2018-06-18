@@ -9,6 +9,8 @@ public class Attack : MonoBehaviour {
     public int damagebonus = 0;
     Stats stats;
 
+    public Animator anim;
+
     public float HitRange;
 
     private void Start()
@@ -21,6 +23,7 @@ public class Attack : MonoBehaviour {
         {
             if(Vector3.Distance(Target.transform.position, gameObject.transform.position) <= HitRange)
             {
+                anim.SetTrigger("Attack");
                 Target.GetComponent<Stats>().TakeDamage(damage + damagebonus);
                 damagebonus = 0;
             }

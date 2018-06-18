@@ -9,7 +9,9 @@ public class WorldMovement : MonoBehaviour {
 
     NavMeshAgent agent;
 
+    public Animator anim;
 
+    public GameObject player;
 
     bool follow = true;
 
@@ -20,8 +22,14 @@ public class WorldMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (follow) {
+        if (player.GetComponent<NavMeshAgent>().velocity.magnitude >= 0.11 & follow == true) {
             agent.SetDestination(followPoint.transform.position);
+            anim.SetBool("Walking", true);
+        }
+        
+
+        if (player.GetComponent<NavMeshAgent>().velocity.magnitude <= 0.1) {
+            anim.SetBool("Walking", false);
         }
 	}
 

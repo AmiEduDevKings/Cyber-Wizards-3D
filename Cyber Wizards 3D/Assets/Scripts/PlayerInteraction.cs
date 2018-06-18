@@ -9,6 +9,8 @@ public class PlayerInteraction : MonoBehaviour {
     public NavMeshAgent agent;
     public bool inCombat;
 
+   
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -16,6 +18,8 @@ public class PlayerInteraction : MonoBehaviour {
 
     void Update()
     {
+
+        
         if (!inCombat) {
             if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
@@ -41,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour {
             }
             else
             {
-                agent.stoppingDistance = 0f;
+                agent.stoppingDistance = 0.0f;
                 agent.destination = interactionInfo.point;
             }
         }

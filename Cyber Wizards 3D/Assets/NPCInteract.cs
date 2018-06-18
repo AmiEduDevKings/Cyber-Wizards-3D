@@ -8,8 +8,24 @@ public class NPCInteract : MonoBehaviour {
 	public string NPCName;
 	public string Quest;
 
-	public void OpenDialogue() {
-		DialogueSystem.instance.AddNewDialogue(dialogue, NPCName, Quest);
-	}
+    public bool questDone = false;
+    public string secondDialogue;
 
+	public void OpenDialogue() {
+        if (questDone)
+        {
+            DialogueSystem.instance.AddNewDialogue(secondDialogue, NPCName, " ");
+        }
+        else
+        {
+            DialogueSystem.instance.AddNewDialogue(dialogue, NPCName, Quest);
+        }
+    }
+
+    public void QuestDone() {
+        questDone = true;
+    }
+
+
+   
 }

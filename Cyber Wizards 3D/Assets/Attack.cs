@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour {
         stats = GetComponent<Stats>();
     }
     public void AttackToEnemy() {
-
+        Debug.Log(name + "attacktoenemy");
         if (stats.currentActionPoints > 0)
         {
             if(Vector3.Distance(Target.transform.position, gameObject.transform.position) <= HitRange)
@@ -28,7 +28,8 @@ public class Attack : MonoBehaviour {
     }
 
     public void BoostDamage() {
-        damagebonus = 10;
+        Debug.Log(name + "boostdamage");
+        damagebonus = 100;
     }
     
 }

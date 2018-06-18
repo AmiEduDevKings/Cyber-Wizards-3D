@@ -47,7 +47,12 @@ public class CombatMovement : MonoBehaviour
 
     public void CanMove()
     {
+        Debug.Log("combat move can move: " + name);
         canMove = true;
+    }
+
+    public void CantMove() {
+        canMove = false;
     }
 
   

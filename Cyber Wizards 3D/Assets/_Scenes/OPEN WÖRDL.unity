@@ -2965,7 +2965,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 0c50a2b0440a0aa488ffaf739289d54c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -58.46
+      value: -57.42
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c50a2b0440a0aa488ffaf739289d54c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9380,7 +9380,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 9a91eccb23af4e44180b8de3021e8583, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -57.2
+      value: -56.22
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9a91eccb23af4e44180b8de3021e8583, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10457,11 +10457,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 0c50a2b0440a0aa488ffaf739289d54c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -71.03
+      value: -75.73
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c50a2b0440a0aa488ffaf739289d54c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.84
+      value: 22.73
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c50a2b0440a0aa488ffaf739289d54c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13436,7 +13436,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 9a91eccb23af4e44180b8de3021e8583, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69.81904
+      value: -73.46
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9a91eccb23af4e44180b8de3021e8583, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30763,10 +30763,10 @@ RectTransform:
   m_Father: {fileID: 1656542929}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 516.1, y: 298.3}
-  m_SizeDelta: {x: -1032.3, y: -596.8}
+  m_AnchoredPosition: {x: -130, y: -74.2}
+  m_SizeDelta: {x: 259.9, y: 148.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1638792503
 GameObject:

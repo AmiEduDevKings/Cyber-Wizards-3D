@@ -12,7 +12,9 @@ public class GiantAI : MonoBehaviour {
     public bool moving = false;
     private NavMeshAgent agent;
     public float movementRange;
-    
+
+    public Animator anim;
+
     public GameObject target;
     public int Damage;
     public float HittingDistance;
@@ -26,18 +28,24 @@ public class GiantAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (moving) {
-            
-            if (Vector3.Distance(target.transform.position, gameObject.transform.position) <= HittingDistance) {
+        if (moving)
+        {
+            anim.SetBool("Walking", true);
+            if (Vector3.Distance(target.transform.position, gameObject.transform.position) <= HittingDistance)
+            {
                 moving = false;
                 agent.isStopped = true;
                 Hit();
             }
         }
+        else {
+            anim.SetBool("Walking", false);
+        }
     }
 
     private void Hit()
     {   //tänna animaatiot ja muut paskat
+        anim.SetTrigger("Attack");
         target.GetComponent<Stats>().TakeDamage(Damage);
         Debug.Log("Giant hittaa hahmoa: " + target + " damagen verran: " + Damage);
         

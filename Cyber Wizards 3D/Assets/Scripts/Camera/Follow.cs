@@ -30,7 +30,7 @@ public class Follow : MonoBehaviour {
 		//}
 		isKeyPressed = false;
 		isCentering = false;
-		Camera.main.transform.position = new Vector3(offset.x, cameraDepth + offset.y, offset.z);
+		//Camera.main.transform.position = new Vector3(offset.x, cameraDepth + offset.y, offset.z);
 	}
 
 	private void LateUpdate() {
@@ -43,7 +43,7 @@ public class Follow : MonoBehaviour {
 		Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 		move = move.normalized * Time.deltaTime * aswdSpeed * Camera.main.transform.position.y;
 
-		move += new Vector3(0f, mouseScroll * scrollAmount * Camera.main.transform.position.y, 0f);
+		//move += new Vector3(0f, mouseScroll * scrollAmount * Camera.main.transform.position.y, 0f);
 
 		cameraHandler.transform.Translate(move);
 	}

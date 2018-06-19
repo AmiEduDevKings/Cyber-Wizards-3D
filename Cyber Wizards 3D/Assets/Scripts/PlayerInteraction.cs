@@ -8,7 +8,7 @@ public class PlayerInteraction : MonoBehaviour {
     [HideInInspector]
     public NavMeshAgent agent;
     public bool inCombat;
-
+    public Animator anim;
    
 
     void Start()
@@ -26,6 +26,10 @@ public class PlayerInteraction : MonoBehaviour {
                 GetInteraction();
             }
         }
+
+        if (agent.velocity.magnitude <= 0.01) {
+            anim.SetBool("Walking", false);
+        }
     }
 
     public void GetInteraction()
@@ -42,12 +46,16 @@ public class PlayerInteraction : MonoBehaviour {
             {
                 Debug.Log("interaction löytyi");
                 interactedObject.GetComponent<Interactable>().MoveToInteraction(this.agent);
+                anim.SetBool("Walking", true);
             }
             else
             {
                 agent.stoppingDistance = 0.0f;
                 agent.destination = interactionInfo.point;
+                anim.SetBool("Walking", true);
             }
+
+            
         }
 
     }

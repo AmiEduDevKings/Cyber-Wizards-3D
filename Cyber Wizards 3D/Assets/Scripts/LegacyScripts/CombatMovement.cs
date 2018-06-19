@@ -12,7 +12,7 @@ public class CombatMovement : MonoBehaviour
     public LayerMask Mask;
     public bool canMove;
     public int Damage = 10;
-
+    public Animator anim;
     
 
     void Start()
@@ -37,11 +37,15 @@ public class CombatMovement : MonoBehaviour
                 {
                     agent.stoppingDistance = 0f;
                     agent.destination = interactionInfo.point;
+                    anim.SetBool("Walking", true);
                     canMove = false;
+                    
                     Debug.Log("liikuit combatissa");
                 }
             }
         }
+
+
     }
 
 

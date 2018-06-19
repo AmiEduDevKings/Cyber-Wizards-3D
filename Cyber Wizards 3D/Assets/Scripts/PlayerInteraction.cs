@@ -30,6 +30,11 @@ public class PlayerInteraction : MonoBehaviour {
         if (agent.velocity.magnitude <= 0.01) {
             anim.SetBool("Walking", false);
         }
+
+        if (agent.velocity.magnitude >= 0.4) {
+            anim.SetBool("Walking", true);
+        }
+       
     }
 
     public void GetInteraction()

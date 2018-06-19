@@ -80,7 +80,23 @@ public class DialogueSystem : MonoBehaviour {
 		CreateDialogue();
 	}
 
-	private void ContinueDialogue()
+    public void AddNewDialogue(string[] lines, string NPCName)
+    {
+
+        dialogueIndex = 0;
+        dialogueLines = new List<string>(lines.Length);
+        dialogueLines.AddRange(lines);
+
+        this.NPCName = NPCName;
+        Debug.Log(dialogueLines.Count);
+
+        
+
+        CreateDialogue();
+    }
+
+
+    private void ContinueDialogue()
 	{
 		if (dialogueIndex < dialogueLines.Count - 1)
 		{

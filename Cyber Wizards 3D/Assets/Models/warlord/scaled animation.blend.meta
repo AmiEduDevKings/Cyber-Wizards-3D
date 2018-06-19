@@ -1,0 +1,316 @@
+fileFormatVersion: 2
+guid: 98ff4474e9412e243aef8764191f30a0
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: body
+    100004: Bone
+    100006: Head
+    100008: IK_L_arm
+    100010: IK_R_arm
+    100012: IK_R_leg
+    100014: L_arm
+    100016: L_calf
+    100018: L_elbow
+    100020: L_femur
+    100022: L_foot
+    100024: L_shoulder
+    100026: L_toe
+    100028: L_wrist1
+    100030: L_wrist_2
+    100032: L_wrist_3
+    100034: R_arm
+    100036: R_calf_001
+    100038: R_elbow
+    100040: R_femur_001
+    100042: R_foot_001
+    100044: R_shoulder
+    100046: R_shoulder_001
+    100048: R_toe_001
+    100050: R_wrist1
+    100052: R_wrist_2
+    100054: R_wrist_3
+    100056: root
+    100058: root_001
+    100060: root_002
+    100062: root_003
+    100064: root_004
+    100066: RR_wrist2
+    100068: RR_wrist2_003
+    100070: RR_wrist3
+    100072: RR_wrist3_003
+    100074: RR_writs1
+    100076: RR_writs1_003
+    100078: //RootNode
+    100080: shield
+    100082: skirt_1
+    100084: skirt_2
+    100086: skirt_3
+    100088: skirt_4
+    100090: Spine
+    100092: sword
+    400000: Armature
+    400002: body
+    400004: Bone
+    400006: Head
+    400008: IK_L_arm
+    400010: IK_R_arm
+    400012: IK_R_leg
+    400014: L_arm
+    400016: L_calf
+    400018: L_elbow
+    400020: L_femur
+    400022: L_foot
+    400024: L_shoulder
+    400026: L_toe
+    400028: L_wrist1
+    400030: L_wrist_2
+    400032: L_wrist_3
+    400034: R_arm
+    400036: R_calf_001
+    400038: R_elbow
+    400040: R_femur_001
+    400042: R_foot_001
+    400044: R_shoulder
+    400046: R_shoulder_001
+    400048: R_toe_001
+    400050: R_wrist1
+    400052: R_wrist_2
+    400054: R_wrist_3
+    400056: root
+    400058: root_001
+    400060: root_002
+    400062: root_003
+    400064: root_004
+    400066: RR_wrist2
+    400068: RR_wrist2_003
+    400070: RR_wrist3
+    400072: RR_wrist3_003
+    400074: RR_writs1
+    400076: RR_writs1_003
+    400078: //RootNode
+    400080: shield
+    400082: skirt_1
+    400084: skirt_2
+    400086: skirt_3
+    400088: skirt_4
+    400090: Spine
+    400092: sword
+    2100000: Material1
+    2100002: unnamed
+    4300000: body
+    4300002: sword
+    4300004: shield
+    7400000: Default Take
+    7400002: attack
+    7400004: idle
+    7400006: walking
+    9500000: //RootNode
+    13700000: body
+    13700002: shield
+    13700004: sword
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material1
+    second: {fileID: 2100000, guid: 018ff4b7b913c7c4ebf74e0f58208f79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 2100000, guid: 87c35f3fbc8276c4f803ff0de3160385, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: -1
+      lastFrame: 46
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack
+      takeName: attack
+      firstFrame: -1
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle
+      takeName: idle
+      firstFrame: -1
+      lastFrame: 46
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walking
+      takeName: walking
+      firstFrame: -1
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
